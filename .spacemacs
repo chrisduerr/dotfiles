@@ -1,1 +1,0 @@
-/home/undeadleech/.spacemacs
