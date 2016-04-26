@@ -9,4 +9,8 @@ Configs for the following apps:
  - thunar
  - gtk2
  - lemonbar
+ - dmenu2
 
+Screenshot:
+(Slightly out of date)
+![alt tag](http://i.imgur.com/qngIcu3.jpg)
