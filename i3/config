@@ -1,0 +1,124 @@
+# vim:filetype=i3
+# i3 config file
+# Inspired by: https://github.com/Airblader/dotfiles-manjaro/blob/master/.i3/config
+set $mod Mod4
+set $editor termite
+
+set $red 	 #870000
+set $yellow      #f1c40f
+
+set $gray0       #121212
+set $gray1       #262626
+set $gray2       #a0a0a0
+set $gray3       #e0e0e0
+
+set $default_gaps_inner 15
+set $default_gaps_outer 10
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+
+floating_minimum_size -1 x -1
+floating_maximum_size -1 x -1
+
+font pango:Hack, FontAwesome 12
+
+#                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
+client.focused          #red     $gray0      $gray2  $red       $red
+client.unfocused        #red     $gray0      $gray2  $red       $red
+client.focused_inactive #red     $gray0      $gray2  $red       $red
+client.urgent           $yellow  $gray0      $gray2  $red       $yellow
+client.background       $gray0
+
+floating_modifier $mod
+
+bindsym $mod+Return exec i3-sensible-terminal
+
+bindsym $mod+q kill
+
+bindsym $mod+d exec dmenu_run -fn "-10:Semibold" -nb "$gray0" -nf "$gray2" -sb "$red" -sf "$gray3"
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen
+bindsym $mod+g fullscreen global
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+#bindsym $mod+d focus child
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+s sticky toggle
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+n exec --no-startup-id thunar
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
+bindsym XF86AudioLowerVolume exec amixer set Master 1%-
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+new_window pixel 5
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+#AUTOSTART
+exec --no-startup-id compton -b
+exec --no-startup-id $HOME/.config/panel/bar_config DisplayPort-0 2560 1920 8 15
+exec --no-startup-id $HOME/.config/panel/bar_config DVI-1 1920 0 6 15

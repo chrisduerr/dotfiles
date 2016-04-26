@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Parse command line args
+if [ "$5" == "" ]; then
+    echo "Invalid number of arguments."
+    echo -e "\nCommand Syntax:"
+    echo "command <display> <resx> <posx> <barh> <barw>"
+    echo -e "\nExample:"
+    echo "command DisplayPort-0 2560 1920 8 15"
+    exit
+fi
+
+display=$1
+RESX=$2
+POSX=$3
+BARH=$4
+BARW=$5
+BARSTRING=""
+for ((i=0; i<$BARW; i++))
+do
+    BARSTRING="$BARSTRING-"
+done
+
+# Color Theme File
+CTF="$HOME/.config/termite/config"
+
+# Colors
+ACTIVE_COLOR=$(cat ${CTF} | grep -ixe 'foreground =.*' | tail -c 8)
+NORMAL_COLOR=$(cat ${CTF} | grep -ixe 'color8  =.*' | tail -c 8)
+OTHERS_COLOR=$(cat ${CTF} | grep -ixe 'color0  =.*' | tail -c 8)
+
+active="%{U$ACTIVE_COLOR+u}$BARSTRING%{U#00000000}"
+normal="%{U$NORMAL_COLOR+u}$BARSTRING%{U#00000000}"
+others="%{U$OTHERS_COLOR+u}$BARSTRING%{U#00000000}"
+
+
+desktops() {
+    active_desktop=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep "true\*"$display"" | sed 's/\([0-9]*\).*/\1/')
+    other_desktops=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep '\*true\*' | sed 's/\([0-9]*\).*/\1/')
+    desktops=""
+    for i in $(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep '*' | sed 's/\([0-9]*\).*/\1/' | sort)
+    do
+	if [ "$active_desktop" == "$i" ]; then
+            desktops="$desktops $active"
+        else
+            others_set="false"
+            for d in $other_desktops
+            do
+                if [ "$d" == "$i" ]; then
+                    desktops="$desktops $others"
+                    others_set="true"
+                fi
+            done
+            if [ "$others_set" == "false" ]; then
+                desktops="$desktops $normal"
+            fi
+        fi
+    done
+    echo $desktops
+}
+
+
+while :; do
+    output=$(desktops $line)
+    echo "%{c}$output%{r}"
+    sleep .1
+done | lemonbar -p -g ${RESX}x${BARH}+${POSX}+0 -u ${BARH} -F "#00000000" -B "#00000000"
