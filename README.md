@@ -10,6 +10,7 @@ Configs for the following apps:
  - gtk2
  - lemonbar
  - dmenu2
+ - spacemacs
 
 Screenshot:
 (Slightly out of date)
