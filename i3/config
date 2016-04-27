@@ -27,9 +27,9 @@ floating_maximum_size -1 x -1
 font pango:Hack, FontAwesome 12
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
-client.focused          #red     $gray0      $gray2  $red       $red
-client.unfocused        #red     $gray0      $gray2  $red       $red
-client.focused_inactive #red     $gray0      $gray2  $red       $red
+client.focused          $red     $gray0      $gray2  $red       $red
+client.unfocused        $gray0   $gray0      $gray2  $gray0     $gray0
+client.focused_inactive $gray0   $gray0      $gray2  $gray0     $gray0
 client.urgent           $yellow  $gray0      $gray2  $red       $yellow
 client.background       $gray0
 
@@ -117,6 +117,12 @@ new_window pixel 5
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="(?i)thunar"] floating enable
 
 #AUTOSTART
 exec --no-startup-id compton -b
