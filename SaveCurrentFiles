@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cp .bashrc ~/
+cp .xinitrc ~/
+cp .spacemacs ~/
+cp termite/config ~/.config/termite
+
+cp -r i3/ ~/.config/
+cp -r panel/ ~/.config/
+cp -r Thunar/ ~/.config/
+cp -r neofetch/ ~/.config/
+cp -r powerline/ ~/.config/
+cr -r usr/share/themes/Numix-Undead /usr/share/themes/
