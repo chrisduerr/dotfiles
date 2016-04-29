@@ -10,4 +10,4 @@ cp -r panel/ ~/.config/
 cp -r Thunar/ ~/.config/
 cp -r neofetch/ ~/.config/
 cp -r powerline/ ~/.config/
-cr -r usr/share/themes/Numix-Undead /usr/share/themes/
+cp -r usr/share/themes/Numix-Undead /usr/share/themes/
