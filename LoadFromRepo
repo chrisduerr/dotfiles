@@ -10,4 +10,4 @@ cp -r panel/ ~/.config/
 cp -r Thunar/ ~/.config/
 cp -r neofetch/ ~/.config/
 cp -r powerline/ ~/.config/
-cp -r usr/share/themes/Numix-Undead /usr/share/themes/
+echo "Please copy the usr/share/themes/Numix-Undead folder into /usr/share/themes/ with root permissions yourself."
