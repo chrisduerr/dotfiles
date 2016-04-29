@@ -3,7 +3,7 @@
 cp .bashrc ~/
 cp .xinitrc ~/
 cp .spacemacs ~/
-cp termite/config ~/.config/termite
+cp termite/config ~/.config/termite/
 
 cp -r i3/ ~/.config/
 cp -r panel/ ~/.config/
