@@ -11,3 +11,4 @@ cp -r Thunar/ ~/.config/
 cp -r neofetch/ ~/.config/
 cp -r powerline/ ~/.config/
 echo "Please copy the usr/share/themes/Numix-Undead folder into /usr/share/themes/ with root permissions yourself."
+echo "Please remember to setup the bar in your i3 config."
