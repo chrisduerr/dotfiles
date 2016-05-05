@@ -97,8 +97,13 @@ bindsym $mod+Shift+r restart
 
 bindsym $mod+n exec --no-startup-id thunar
 
+# Bind corsair k70 volume keys
 bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
+
+# Bind fullscreen screenshot and region screenshoot
+bindsym Print exec xfce4-screenshooter --fullscreen
+bindsym $mod+Print exec xfce4-screenshooter --region
 
 bindsym $mod+r mode "resize"
 mode "resize" {

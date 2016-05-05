@@ -247,10 +247,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (setq-default rust-enable-racer t)
     (setq racer-rust-src-path "/usr/src/rust/src")
     (custom-set-variables '(spacemacs-theme-custom-colors
-                            '((bg1 . "#262626")
-                              (bg2 . "#121212")
+                            '((bg1 . "#121212")
+                              (bg2 . "#262626")
                               (border . "#870000")
-                              (act1 . "#121212")
+                              (act1 . "#262626")
                               (act2 . "#870000")
                               (func . "#c0392b"))))
   )
