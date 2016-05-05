@@ -15,4 +15,4 @@ Configs for the following apps:
 
 Screenshot:
 (Slightly out of date)
-![alt tag](http://i.imgur.com/qngIcu3.jpg)
+![alt tag](http://i.imgur.com/ND48GOs.jpg)
