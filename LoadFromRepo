@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp .bashrc ~/
+cp .zshrc ~/
 cp .xinitrc ~/
 cp .spacemacs ~/
 cp termite/config ~/.config/termite/
