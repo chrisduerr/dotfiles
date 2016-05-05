@@ -11,6 +11,7 @@ Configs for the following apps:
  - lemonbar
  - dmenu2
  - spacemacs
+ - zsh
 
 Screenshot:
 (Slightly out of date)

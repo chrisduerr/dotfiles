@@ -23,18 +23,21 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
      emacs-lisp
      rust
-     ;; git
-     ;; markdown
+     git
+     markdow
+     syntax-checking
+     eyebrowse
+     html
+     javascript
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -241,6 +244,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+    (setq-default rust-enable-racer t)
+    (setq racer-rust-src-path "/usr/src/rust/src")
     (custom-set-variables '(spacemacs-theme-custom-colors
                             '((bg1 . "#262626")
                               (bg2 . "#121212")
@@ -257,6 +262,14 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'company-mode)
+
+  (global-set-key (kbd "TAB") #'company-ident-or-complete-common)
+  (setq company-tooltip-align-annotations t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
