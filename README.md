@@ -14,5 +14,4 @@ Configs for the following apps:
  - zsh
 
 Screenshot:
-(Slightly out of date)
 ![alt tag](http://i.imgur.com/MEvZLGV.jpg)
