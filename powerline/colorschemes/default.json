@@ -46,7 +46,7 @@
 		"cwd":                       "information:additional",
 		"cwd:current_folder":        "information:regular",
 		"cwd:divider":               { "fg": "darkred", "bg": "gray2", "attrs": [] },
-		"virtualenv":                { "fg": "white", "bg": "darkcyan", "attrs": [] },
+		"virtualenv":                { "fg": "gray0", "bg": "darkred", "attrs": [] },
 		"attached_clients":          { "fg": "gray8", "bg": "gray0", "attrs": [] }
 	}
 }
