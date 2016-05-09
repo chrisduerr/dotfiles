@@ -28,10 +28,10 @@ font pango:Hack, FontAwesome 12
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
 client.focused          $red     $gray0      $gray2  $red       $red
-client.unfocused        $gray0   $gray0      $gray2  $gray0     $gray0
-client.focused_inactive $gray0   $gray0      $gray2  $gray0     $gray0
-client.urgent           $yellow  $gray0      $gray2  $red       $yellow
-client.background       $gray0
+client.unfocused        $gray1   $gray0      $gray2  $gray1     $gray1
+client.focused_inactive $gray1   $gray0      $gray2  $gray1     $gray1
+client.urgent           $yellow  $gray0      $gray2  $yellow    $yellow
+client.background       $gray1
 
 floating_modifier $mod
 
@@ -131,5 +131,4 @@ for_window [class="(?i)thunar"] floating enable
 
 #AUTOSTART
 exec --no-startup-id compton -b
-exec --no-startup-id $HOME/.config/panel/bar_config DisplayPort-0 2560 1920 8 15
-exec --no-startup-id $HOME/.config/panel/bar_config DVI-1 1920 0 6 15
+exec --no-startup-id $HOME/.config/panel/bar_config LVDS1 1366 0 6 15

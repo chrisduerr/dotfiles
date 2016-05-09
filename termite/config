@@ -1,17 +1,17 @@
 [colors]
-foreground = #870000
+foreground = #4e4e4e
 background = rgba(18, 18, 18, .95)
 
 # Colors Dark -> Light
 # Shades
 color0  = #121212
 color8  = #262626
-color7  = #a0a0a0
-color15 = #e0e0e0
+color7  = #4e4e4e
+color15 = #a0a0a0
 
 # Reds
 color1  = #870000
-color9  = #c0392b
+color9  = #b71c0c
 
 # Greens
 color2  = #009c41
@@ -19,7 +19,7 @@ color10 = #27ae60
 
 # Yellows
 color3  = #f1c40f
-color11 = #fde3a7
+color11 = #ffdf3b
 
 # Blues
 color4  = #0067b0
