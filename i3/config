@@ -130,5 +130,5 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)thunar"] floating enable
 
 #AUTOSTART
-exec --no-startup-id compton -b
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id $HOME/.config/panel/bar_config LVDS1 1366 0 6 15

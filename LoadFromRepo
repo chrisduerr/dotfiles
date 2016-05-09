@@ -3,6 +3,7 @@
 cp .zshrc ~/
 cp .xinitrc ~/
 cp .spacemacs ~/
+cp compton.conf ~/.config/
 cp termite/config ~/.config/termite/
 
 cp -r i3/ ~/.config/

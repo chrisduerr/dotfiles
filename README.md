@@ -12,6 +12,7 @@ Configs for the following apps:
  - dmenu2
  - spacemacs
  - zsh
+ - compton
 
 Screenshot:
 ![alt tag](http://i.imgur.com/MEvZLGV.jpg)
