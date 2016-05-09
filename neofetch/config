@@ -211,7 +211,7 @@ block_width=5
 # the text in this order:
 # title, @, underline, subtitle, colon, info
 # colors=(4 6 1 8 8 6)
-colors=(1 1 8 8 8 1)
+colors=(7 1 1 1 1 7)
 
 
 # }}}
@@ -342,7 +342,7 @@ ascii="distro"
 # which will allow you to custom color distro logos
 # --ascii_colors distro
 # --ascii_colors 2 4 5 6
-ascii_colors=(1 8)
+ascii_colors=(7 8)
 
 # Logo size
 # Arch, Crux and Gentoo have a smaller logo
