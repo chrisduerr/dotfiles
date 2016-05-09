@@ -25,9 +25,9 @@ done
 CTF="$HOME/.config/termite/config"
 
 # Colors
-ACTIVE_COLOR=$(cat ${CTF} | grep -ixe 'color1 =.*' | tail -c 8)
-NORMAL_COLOR=$(cat ${CTF} | grep -ixe 'color8  =.*' | tail -c 8)
-OTHERS_COLOR=$(cat ${CTF} | grep -ixe 'color0  =.*' | tail -c 8)
+ACTIVE_COLOR=$(cat ${CTF} | grep -ixe 'color1  =.*' | tail -c 8)
+NORMAL_COLOR=$(cat ${CTF} | grep -ixe 'color7  =.*' | tail -c 8)
+OTHERS_COLOR=$(cat ${CTF} | grep -ixe 'color8  =.*' | tail -c 8)
 
 active="%{U$ACTIVE_COLOR+u}$BARSTRING%{U#00000000}"
 normal="%{U$NORMAL_COLOR+u}$BARSTRING%{U#00000000}"
