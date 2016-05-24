@@ -57,9 +57,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 bindsym $mod+g fullscreen global
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
@@ -128,7 +127,9 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 for_window [class="(?i)thunar"] floating enable
+for_window [class="(?i)lemonbar"] floating enable
 
 #AUTOSTART
 exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec --no-startup-id $HOME/.config/panel/bar_config LVDS1 1366 0 6 15
+exec --no-startup-id $HOME/.config/panel/bar_config DisplayPort-0 top 23 8
+exec --no-startup-id $HOME/.config/panel/bar_config DVI-1 top 23 8
