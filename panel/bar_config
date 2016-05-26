@@ -83,12 +83,12 @@ get_bar() {
 desktops() {
     active_desktop=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep "true\*"$display"" | sed 's/\([0-9]*\).*/\1/')
     other_desktops=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep '\*true\*' | sed 's/\([0-9]*\).*/\1/')
-    desktops=""
+    desktops="%{U#00000000}---" # Add spaces for correct centering
     for i in $(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep '*' | sed 's/\([0-9]*\).*/\1/' | sort -g); do
         if [ "$active_desktop" == "$i" ]; then
-            desktops="$desktops%{U#00000000}---$(get_bar 1 $i)"
+            desktops="$desktops$(get_bar 1 $i)%{U#00000000}---"
         else
-            desktops="$desktops%{U#00000000}---$(get_bar 0 $i)"
+            desktops="$desktops$(get_bar 0 $i)%{U#00000000}---"
         fi
     done
     echo $desktops
