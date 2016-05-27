@@ -98,4 +98,4 @@ while :; do
     output=$(desktops $line)
     echo "%{c}$output%{r}"
     sleep .1
-done | lemonbar -p ${BOTTOM} -g ${RESX}x${BARH}+${POSX}+0 -u ${BARH} -F "#00000000" -B "#00000000"
+done | lemonbar -p -d ${BOTTOM} -g ${RESX}x${BARH}+${POSX}+0 -u ${BARH} -F "#00000000" -B "#00000000"
