@@ -1,0 +1,9 @@
+These are files and folders that need to be changed to change colors.
+Gonna automate that at one point!
+
+/usr/share/theme/Numix-Undead + Numix-Folders!
+~/.config/termite/config
+~/.config/i3/config
+~/.config/panel/config
+~/.config/powerline/colorschemes/default.json
+dmenu_run inside of i3/config
