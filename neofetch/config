@@ -211,7 +211,7 @@ block_width=5
 # the text in this order:
 # title, @, underline, subtitle, colon, info
 # colors=(4 6 1 8 8 6)
-colors=(7 1 1 1 1 7)
+colors=(7 9 9 9 9 7)
 
 
 # }}}
