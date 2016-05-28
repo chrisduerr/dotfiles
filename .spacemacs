@@ -259,7 +259,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
                                    ("hybrid" "#ff00ff" (bar . 2))
                                    ("replace" "#ff9800" (hbar . 2))
                                    ("evilified" "#ff00ff" box)
-                                   ("visual" "#757575" (hbar . 2))
+                                   ("visual" "#a0a0a0" (hbar . 2))
                                    ("motion" "#801414" box)
                                    ("lisp" "#ff00ff" box)
                                    ("iedit" "#ff00ff" box)

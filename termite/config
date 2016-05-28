@@ -7,7 +7,7 @@ background = rgba(18, 18, 18, .95)
 color0  = #121212
 color8  = #212121
 color7  = #424242
-color15 = #757575
+color15 = #a0a0a0
 
 # Reds
 color1  = #c0392b
