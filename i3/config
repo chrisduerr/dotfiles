@@ -10,7 +10,7 @@ set $yellow      #ff9800
 set $gray0       #121212
 set $gray1       #212121
 set $gray2       #424242
-set $gray3       #757575
+set $gray3       #a0a0a0
 
 set $default_gaps_inner 15
 set $default_gaps_outer 10
