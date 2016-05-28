@@ -44,8 +44,8 @@ POSX=$(echo $SCREENDATA | sed 's/[^+]*+\([^+]*\)+.*/\1/')
 CTF="$HOME/.config/termite/config"
 
 # Colors
-PRIMARY_COLOR=$(cat ${CTF} | grep -ixe 'color8  =.*' | tail -c 8)
-SECONDARY_COLOR=$(cat ${CTF} | grep -ixe 'color1  =.*' | tail -c 8)
+PRIMARY_COLOR=$(cat ${CTF} | grep -ixe 'color0  =.*' | tail -c 8)
+SECONDARY_COLOR=$(cat ${CTF} | grep -ixe 'color9  =.*' | tail -c 8)
 
 
 # Takes two parameters

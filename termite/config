@@ -1,37 +1,37 @@
 [colors]
-foreground = #4e4e4e
+foreground = #424242
 background = rgba(18, 18, 18, .95)
 
 # Colors Dark -> Light
 # Shades
 color0  = #121212
-color8  = #262626
-color7  = #4e4e4e
-color15 = #a0a0a0
+color8  = #212121
+color7  = #424242
+color15 = #757575
 
 # Reds
-color1  = #870000
-color9  = #b71c0c
+color1  = #c0392b
+color9  = #801414
 
 # Greens
-color2  = #009c41
-color10 = #27ae60
+color2  = #4CAF50
+color10 = #1B5E20
 
 # Yellows
-color3  = #f1c40f
-color11 = #ffdf3b
+color3  = #FF9800
+color11 = #EF6C00
 
 # Blues
-color4  = #0067b0
-color12 = #2980b9
+color4  = #3F51B5
+color12 = #283593
 
 # Purples
-color5  = #6e248d
-color13 = #8e44ad
+color5  = #8e44ad
+color13 = #6A1B9A
 
 # Cyans
-color6  = #008b80
-color14 = #27cbc0
+color6  = #16a085
+color14 = #004D40
 
 [options]
 font = Source Code Pro Semibold 11
