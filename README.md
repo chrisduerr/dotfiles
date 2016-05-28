@@ -15,4 +15,4 @@ Configs for the following apps:
  - compton
 
 Screenshot:
-![alt tag](http://i.imgur.com/RYGlWj8.jpg)
+![alt tag](http://i.imgur.com/RWOJJ1D.png)
