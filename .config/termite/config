@@ -1,0 +1,37 @@
+[colors]
+foreground = #626262
+background = rgba(18, 18, 18, .95)
+
+# Colors Dark -> Light
+# Shades
+color0  = #121212
+color8  = #323232
+color7  = #626262
+color15 = #b2b2b2
+
+# Reds
+color1  = #c0392b
+color9  = #801414
+
+# Greens
+color2  = #A1B56C
+color10 = #1B5E20
+
+# Yellows
+color3  = #F1C40F
+color11 = #EF6C00
+
+# Blues
+color4  = #3498DB
+color12 = #283593
+
+# Purples
+color5  = #9B59B6
+color13 = #6A1B9A
+
+# Cyans
+color6  = #1ABC9C
+color14 = #004D40
+
+[options]
+font = Source Code Pro Semibold 11

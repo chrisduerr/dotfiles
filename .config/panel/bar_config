@@ -1,0 +1,101 @@
+#!/bin/bash
+
+# Parse command line args
+if [ "$4" == "" ] || [ "$1" == "h" ] || [ "$1" == "help" ]; then
+    echo "Invalid number of arguments."
+    echo -e "\nCommand Syntax:"
+    echo "command <display> <top|bottom> <barw> <barh>"
+    echo -e "\nExample:"
+    echo "command DisplayPort-0 top 23 8"
+    exit
+fi
+
+# Check if top|bottom is present
+if [ "$2" != "top" ] && [ "$2" != "bottom" ]; then
+    echo "Please specify either 'top' or 'bottom' as bar position"
+    exit
+fi
+
+# Check if BARW is valid
+if [ "$3" -lt 19 ] || [ "$(($3%2))" == 0 ]; then
+    echo "Bar width has to be uneven and at least 19!"
+    exit
+fi
+
+
+# Set bottom dock option if bar is set to 'bottom'
+if [ "$2" == "bottom" ]; then
+    BOTTOM="-b"
+fi
+
+display=$1
+BARW=$3
+BARH=$4
+RESX=0
+POSX=0
+
+# Automatically get screen data from xrandr
+SCREENDATA=$(xrandr | grep $display | sed 's/[^+]* \([^+]*[^ ]*\).*/\1/')
+RESX=$(echo $SCREENDATA | sed 's/\([^x]*\).*/\1/')
+POSX=$(echo $SCREENDATA | sed 's/[^+]*+\([^+]*\)+.*/\1/')
+
+
+# Color Theme File
+CTF="$HOME/.config/termite/config"
+
+# Colors
+PRIMARY_COLOR=$(cat ${CTF} | grep -ixe 'color0  =.*' | tail -c 8)
+SECONDARY_COLOR=$(cat ${CTF} | grep -ixe 'color9  =.*' | tail -c 8)
+
+
+# Takes two parameters
+# $1: "bool", pass 1 if this bar is active on any monitor
+# $2: "int", workspace number displayed on bar
+get_bar() {
+    # Swap primary and secondary when bar is active
+    if [ "$1" == 1 ]; then
+        TMP=$PRIMARY_COLOR
+        PRIMARY_COLOR=$SECONDARY_COLOR
+        SECONDARY_COLOR=$TMP
+    fi
+
+    # Get the core bar parts that display workspace number
+    RESULT=""
+    for ((i=0;i<$2;i++)); do
+         RESULT="$RESULT%{U$PRIMARY_COLOR+u}-%{U$SECONDARY_COLOR+u}-"
+         if [ "$i" == "$(($2-1))" ]; then
+             RESULT="$RESULT%{U$PRIMARY_COLOR+u}-"
+         fi
+    done
+
+    # Add remaining bar parts
+    REMAINING=$((($BARW-($2*2+1))/2))
+    REMAINING_STRING="%{U$PRIMARY_COLOR+u}"
+    for ((i=0;i<$REMAINING;i++)); do
+        REMAINING_STRING="$REMAINING_STRING-"
+    done
+
+    RESULT="$REMAINING_STRING$RESULT$REMAINING_STRING"
+    echo "$RESULT"
+}
+
+
+desktops() {
+    active_desktop=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep "true\*"$display"" | sed 's/\([0-9]*\).*/\1/')
+    other_desktops=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep '\*true\*' | sed 's/\([0-9]*\).*/\1/')
+    desktops="%{U#00000000}---" # Add spaces for correct centering
+    for i in $(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep '*' | sed 's/\([0-9]*\).*/\1/' | sort -g); do
+        if [ "$active_desktop" == "$i" ]; then
+            desktops="$desktops$(get_bar 1 $i)%{U#00000000}---"
+        else
+            desktops="$desktops$(get_bar 0 $i)%{U#00000000}---"
+        fi
+    done
+    echo $desktops
+}
+
+while :; do
+    output=$(desktops $line)
+    echo "%{c}$output%{r}"
+    sleep .1
+done | lemonbar -p ${BOTTOM} -g ${RESX}x${BARH}+${POSX}+0 -u ${BARH} -F "#00000000" -B "#00000000"

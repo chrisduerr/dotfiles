@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Load old and new colorschemes
+OLD_COLORS=$(cat "/home/undeadleech/.config/termite/config" | grep " #" | sed 's/.*\(#[^ ]*\).*/\1/g')
+NEW_COLORS=$(cat "$1" | grep " #" | sed 's/.*\(#[^ ]*\).*/\1/g')
+
+# Put copy of current colorscheme into current/colorscheme
+cp "$1" "current/colorscheme"
+
+IFS=$'\r\n' GLOBIGNORE='*' command eval 'LINES_OLD=($OLD_COLORS)'
+IFS=$'\r\n' GLOBIGNORE='*' command eval 'LINES_NEW=($NEW_COLORS)'
+
+declare -a color_files=("/home/undeadleech/.config/termite/config" "/home/undeadleech/.config/i3/config" "/home/undeadleech/.spacemacs" "/home/undeadleech/.themes/Numix-Undead/gtk-2.0/gtkrc")
+
+for index in "${!LINES_OLD[@]}"; do
+	for f in "${color_files[@]}"; do
+		COLOR0="${LINES_OLD[index]}"
+		COLOR1="${LINES_NEW[index]}"
+		sed -i "s/$COLOR0/$COLOR1/g" "$f"
+		echo "CHANGED $COLOR0 TO $COLOR1 IN #$f#"
+	done
+done
+echo "Please remember to change numix-folders!"
+echo "Please remember to change firefox!"
+echo "Please remember to change powerline!"
+echo "Please remember to change termite transparent background!"

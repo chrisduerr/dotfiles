@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cp ~/.zshrc .
+cp ~/.xinitrc .
+cp ~/.spacemacs .
+
+cp ~/.config/compton.conf ./.config/
+
+cp -r ~/.config/i3 ./.config/
+cp -r ~/.config/panel ./.config/
+cp -r ~/.config/Thunar ./.config/
+cp -r ~/.config/termite ./.config/
+cp -r ~/.config/neofetch ./.config/
+cp -r ~/.config/powerline ./.config/
+
+cp -r ~/.themes/Numix-Undead ./themes/
