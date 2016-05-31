@@ -9,7 +9,7 @@ cp ./.config/compton.conf ~/.config/
 cp -r ./.config/i3 ~/.config/
 cp -r ./.config/panel ~/.config/
 cp -r ./.config/Thunar ~/.config/
-cp -r ./.config/termite ~/.config/termite/
+cp -r ./.config/termite ~/.config/
 cp -r ./.config/neofetch ~/.config/
 cp -r ./.config/powerline ~/.config/
 
