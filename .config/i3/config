@@ -134,6 +134,6 @@ for_window [class="(?i)keepass"] move scratchpad
 
 #AUTOSTART
 exec --no-startup-id compton --config ~/.config/compton.conf -b
-exec --no-startup-id $HOME/.config/panel/bar_config DisplayPort-0 top 23 8
-exec --no-startup-id $HOME/.config/panel/bar_config DVI-1 top 23 8
+exec --no-startup-id $HOME/.config/panel/bar_config DP-1 top 23 8
+exec --no-startup-id $HOME/.config/panel/bar_config DVI-D-2 top 23 8
 exec --no-startup-id keepass
