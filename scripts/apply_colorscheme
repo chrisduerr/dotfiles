@@ -17,7 +17,7 @@ for index in "${!LINES_OLD[@]}"; do
 		COLOR0="${LINES_OLD[index]}"
 		COLOR1="${LINES_NEW[index]}"
 		sed -i "s/$COLOR0/$COLOR1/g" "$f"
-		echo "CHANGED $COLOR0 TO $COLOR1 IN #$f#"
+		echo "CHANGED $COLOR0 TO $COLOR1 IN $f"
 	done
 done
 echo "Please remember to change numix-folders!"
