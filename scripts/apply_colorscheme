@@ -4,9 +4,6 @@
 OLD_COLORS=$(cat "/home/undeadleech/.config/termite/config" | grep " #" | sed 's/.*\(#[^ ]*\).*/\1/g')
 NEW_COLORS=$(cat "$1" | grep " #" | sed 's/.*\(#[^ ]*\).*/\1/g')
 
-# Put copy of current colorscheme into current/colorscheme
-cp "$1" "current/colorscheme"
-
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'LINES_OLD=($OLD_COLORS)'
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'LINES_NEW=($NEW_COLORS)'
 
