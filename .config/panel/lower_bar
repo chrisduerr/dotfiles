@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while (( attempt++ < 5 )); do
+    xdo lower -a "LMNBAR"; sleep 0.1
+done

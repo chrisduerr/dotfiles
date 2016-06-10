@@ -45,7 +45,7 @@ CTF="$HOME/.config/termite/config"
 
 # Colors
 PRIMARY_COLOR=$(cat ${CTF} | grep -ixe 'color0  =.*' | tail -c 8)
-SECONDARY_COLOR=$(cat ${CTF} | grep -ixe 'color9  =.*' | tail -c 8)
+SECONDARY_COLOR=$(cat ${CTF} | grep -ixe 'color1  =.*' | tail -c 8)
 
 
 # Takes two parameters
@@ -98,4 +98,4 @@ while :; do
     output=$(desktops $line)
     echo "%{c}$output%{r}"
     sleep .1
-done | lemonbar -p ${BOTTOM} -g ${RESX}x${BARH}+${POSX}+0 -u ${BARH} -F "#00000000" -B "#00000000"
+done | lemonbar -p -d -n "LMNBAR" ${BOTTOM} -g ${RESX}x${BARH}+${POSX}+0 -u ${BARH} -F "#00000000" -B "#00000000"

@@ -190,7 +190,7 @@ birthday_format="+%a %d %b %Y %l:%M %p"
 # Color block range
 # --block_range start end
 start=0
-end=15
+end=7
 
 # Toggle color blocks
 # --color_blocks on/off
@@ -211,7 +211,7 @@ block_width=5
 # the text in this order:
 # title, @, underline, subtitle, colon, info
 # colors=(4 6 1 8 8 6)
-colors=(7 9 9 9 9 7)
+colors=(15 1 1 1 1 15)
 
 
 # }}}

@@ -3,6 +3,7 @@
 cp ~/.zshrc .
 cp ~/.xinitrc .
 cp ~/.spacemacs .
+cp ~/.Xresources .
 
 cp ~/.config/compton.conf ./.config/
 

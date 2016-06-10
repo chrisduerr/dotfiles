@@ -4,13 +4,12 @@
 set $mod Mod4
 set $editor termite
 
-set $red 	 #801414
-set $yellow      #ff9800
-
-set $gray0       #121212
-set $gray1       #323232
-set $gray2       #626262
-set $gray3       #b2b2b2
+set_from_resource $red    color1  #000000
+set_from_resource $yellow color3  #000000
+set_from_resource $gray0  color0  #000000
+set_from_resource $gray1  color8  #000000
+set_from_resource $gray2  color7  #000000
+set_from_resource $gray3  color15 #000000
 
 set $default_gaps_inner 15
 set $default_gaps_outer 10
@@ -39,7 +38,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec dmenu_run -fn "-10:Semibold" -nb "$gray0" -nf "$gray2" -sb "$red" -sf "$gray3"
+bindsym $mod+d exec rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -119,7 +118,8 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-new_window pixel 5
+# Setup Window Borders
+new_window none
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -132,8 +132,11 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)thunar"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
 
-#AUTOSTART
+# AUTOSTART
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id $HOME/.config/panel/bar_config DP-1 top 23 8
 exec --no-startup-id $HOME/.config/panel/bar_config DVI-D-2 top 23 8
 exec --no-startup-id keepass
+
+# Move lemonbar into background
+exec --no-startup-id $HOME/.config/panel/lower_bar
