@@ -9,10 +9,11 @@ Configs for the following apps:
  - thunar
  - gtk2
  - lemonbar
- - dmenu2
+ - rofi
  - spacemacs
  - zsh
  - compton
+ - vivaldi
 
 Screenshot:
 ![alt tag](http://i.imgur.com/Ne0wpCz.jpg)
