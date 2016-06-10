@@ -1,23 +1,39 @@
 #!/bin/bash
 
 # Load old and new colorschemes
-OLD_COLORS=$(cat "/home/undeadleech/.config/termite/config" | grep " #" | sed 's/.*\(#[^ ]*\).*/\1/g')
-NEW_COLORS=$(cat "$1" | grep " #" | sed 's/.*\(#[^ ]*\).*/\1/g')
+OLD_COLORS=$(cat "/home/undeadleech/.Xresources" | grep '^\*color' | sed 's/.*\(#[0-9a-zA-Z]\{6\}\).*/\1/g')
+NEW_COLORS=$(cat "$1" | grep '^\*color' | sed 's/.*\(#[0-9a-zA-Z]\{6\}\).*/\1/g')
 
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'LINES_OLD=($OLD_COLORS)'
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'LINES_NEW=($NEW_COLORS)'
 
-declare -a color_files=("/home/undeadleech/.config/termite/config" "/home/undeadleech/.config/i3/config" "/home/undeadleech/.spacemacs" "/home/undeadleech/.themes/Numix-Undead/gtk-2.0/gtkrc")
+# Files to search for colors and replace:
+declare -a color_files=("/home/undeadleech/.config/termite/config" "/home/undeadleech/.spacemacs" "/home/undeadleech/.themes/Numix-Undead/gtk-2.0/gtkrc" "/home/undeadleech/.Xresources")
 
+# Replace old colors with new colors inside of all files
 for index in "${!LINES_OLD[@]}"; do
 	for f in "${color_files[@]}"; do
 		COLOR0="${LINES_OLD[index]}"
 		COLOR1="${LINES_NEW[index]}"
-		sed -i "s/$COLOR0/$COLOR1/g" "$f"
-		echo "CHANGED $COLOR0 TO $COLOR1 IN $f"
+		# Only continue when colors are different
+		if [[ "$COLOR0" != "$COLOR1" ]]; then
+		    # Search file for COLOR0
+		    EXISTING=$(cat "$f" | grep "$COLOR0" | wc -l)
+		    # Only continue when color exists inside of file
+		    if [[ "$EXISTING" -gt 0 ]]; then
+		        sed -i "s/$COLOR0/$COLOR1/g" "$f"
+		        echo "CHANGED $COLOR0 TO $COLOR1 IN $f"
+		    fi
+		fi
 	done
 done
+
+# Print the new colorscheme
+for index in "${!LINES_NEW[@]}"; do
+	echo "Color$index: ${LINES_NEW[index]}"
+done
+
 echo "Please remember to change numix-folders!"
-echo "Please remember to change firefox!"
-echo "Please remember to change powerline!"
+echo "Please remember to change Browser!"
+echo "Please remember to change Powerline!"
 echo "Please remember to change termite transparent background!"
