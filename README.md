@@ -16,4 +16,4 @@ Configs for the following apps:
  - vivaldi
 
 Screenshot:
-![alt tag](http://i.imgur.com/Ne0wpCz.jpg)
+![alt tag](http://i.imgur.com/rACjhOs.jpg)
