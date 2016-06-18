@@ -11,9 +11,9 @@ rofi.hide-scrollbar: true
 rofi.fullscreen: true
 
 !                    bg       fg      altbg    hlbg     hlfg
-rofi.color-normal: #121212, #616161, #121212, #801414, #9e9e9e
-rofi.color-urgent: #121212, #616161, #121212, #801414, #9e9e9e
-rofi.color-active: #121212, #616161, #121212, #801414, #9e9e9e
+rofi.color-normal: #121212, #616161, #121212, #212121, #801414
+rofi.color-urgent: #121212, #616161, #121212, #212121, #801414
+rofi.color-active: #121212, #616161, #121212, #212121, #801414
 rofi.color-window: #121212, #616161
 !---------------------------------------------------------------
 

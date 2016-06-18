@@ -114,7 +114,7 @@ values."
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.3)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -234,7 +234,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    ))
 
 (defun dotspacemacs/user-init ()
@@ -252,18 +252,22 @@ before packages are loaded. If you are unsure, you should try in setting them in
                               (border . "#801414")
                               (act1 . "#212121")
                               (act2 . "#801414")
-                              (func . "#801414"))))
+                              (func . "#801414")
+			      (lnum . "#616161")
+			      (base . "#9e9e9e")
+			      (base-dim . "#616161")
+			      (cursor . "#801414"))))
     (setq spacemacs-evil-cursors '(("normal" "#801414" box)
-                                   ("insert" "4caf50" (bar . 2))
-                                   ("emacs" "#ff00ff" box)
-                                   ("hybrid" "#ff00ff" (bar . 2))
-                                   ("replace" "#ff9800" (hbar . 2))
-                                   ("evilified" "#ff00ff" box)
+                                   ("insert" "#1b5e20" (bar . 2))
+                                   ("emacs" "#801414" box)
+                                   ("hybrid" "#801414" (bar . 2))
+                                   ("replace" "#f9a825" (hbar . 2))
+                                   ("evilified" "#801414" box)
                                    ("visual" "#9e9e9e" (hbar . 2))
                                    ("motion" "#801414" box)
-                                   ("lisp" "#ff00ff" box)
-                                   ("iedit" "#ff00ff" box)
-                                   ("iedit-insert" "#ff00ff" (bar . 2))))
+                                   ("lisp" "#801414" box)
+                                   ("iedit" "#801414" box)
+                                   ("iedit-insert" "#801414" (bar . 2))))
      )
 
 (defun dotspacemacs/user-config ()
@@ -273,14 +277,16 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (require 'package)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'company-mode)
-
-  (global-set-key (kbd "TAB") #'company-ident-or-complete-common)
   (setq company-tooltip-align-annotations t)
+
+  (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+
+  (setq indent-tabs-mode nil)
+
+  (setq powerline-default-separator 'butt)
+  (spaceline-compile)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

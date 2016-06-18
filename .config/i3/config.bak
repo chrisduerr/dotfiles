@@ -12,7 +12,7 @@ set_from_resource $gray2  color7  #ff00ff
 set_from_resource $gray3  color15 #ff00ff
 
 set $default_gaps_inner 15
-set $default_gaps_outer 0
+set $default_gaps_outer 10
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
@@ -34,11 +34,11 @@ client.background       $gray1
 
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -65,26 +65,30 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
-bindsym $mod+1 focus output DVI-D-2; workspace 1; focus output DP-1; workspace 2
-bindsym $mod+2 focus output DVI-D-2; workspace 3; focus output DP-1; workspace 4
-bindsym $mod+3 focus output DVI-D-2; workspace 5; focus output DP-1; workspace 6
-bindsym $mod+4 focus output DVI-D-2; workspace 7; focus output DP-1; workspace 8
-bindsym $mod+5 focus output DVI-D-2; workspace 9; focus output DP-1; workspace 10
-
-bindsym $mod+Ctrl+1 exec --no-startup-id /home/undeadleech/Scripts/switch_focused_workspace 1 DVI-D-2 DP-1
-bindsym $mod+Ctrl+2 exec --no-startup-id /home/undeadleech/Scripts/switch_focused_workspace 2 DVI-D-2 DP-1
-bindsym $mod+Ctrl+3 exec --no-startup-id /home/undeadleech/Scripts/switch_focused_workspace 3 DVI-D-2 DP-1
-bindsym $mod+Ctrl+4 exec --no-startup-id /home/undeadleech/Scripts/switch_focused_workspace 4 DVI-D-2 DP-1
-bindsym $mod+Ctrl+5 exec --no-startup-id /home/undeadleech/Scripts/switch_focused_workspace 5 DVI-D-2 DP-1
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+s sticky toggle
 
-bindsym $mod+Shift+1 exec --no-startup-id /home/undeadleech/Scripts/move_focused_window 1 DVI-D-2 DP-1
-bindsym $mod+Shift+2 exec --no-startup-id /home/undeadleech/Scripts/move_focused_window 2 DVI-D-2 DP-1
-bindsym $mod+Shift+3 exec --no-startup-id /home/undeadleech/Scripts/move_focused_window 3 DVI-D-2 DP-1
-bindsym $mod+Shift+4 exec --no-startup-id /home/undeadleech/Scripts/move_focused_window 4 DVI-D-2 DP-1
-bindsym $mod+Shift+5 exec --no-startup-id /home/undeadleech/Scripts/move_focused_window 5 DVI-D-2 DP-1
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -92,12 +96,12 @@ bindsym $mod+Shift+r restart
 bindsym $mod+n exec --no-startup-id thunar
 
 # Bind corsair k70 volume keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
+bindsym XF86AudioLowerVolume exec amixer set Master 1%-
 
 # Bind fullscreen screenshot and region screenshoot
-bindsym Print exec --no-startup-id xfce4-screenshooter --fullscreen
-bindsym $mod+Print exec --no-startup-id xfce4-screenshooter --region
+bindsym Print exec xfce4-screenshooter --fullscreen
+bindsym $mod+Print exec xfce4-screenshooter --region
 
 # Bind toggle scratchpad for window
 bindsym $mod+w scratchpad show
@@ -130,10 +134,9 @@ for_window [class="(?i)keepass"] move scratchpad
 
 # AUTOSTART
 exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id $HOME/.config/panel/bar_config DP-1 top 23 8
+exec --no-startup-id $HOME/.config/panel/bar_config DVI-D-2 top 23 8
 exec --no-startup-id keepass
 
-# START BARS
-exec --no-startup-id $HOME/.config/panel/bar_config DP-1 2 30 15
-exec --no-startup-id $HOME/.config/panel/bar_config DVI-D-2 2 30 15
+# Move lemonbar into background
 exec --no-startup-id $HOME/.config/panel/lower_bar
-exec lemonbar -p -g 4480x45+0+0 -F "#00000000" -B "#00000000"
