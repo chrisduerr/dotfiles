@@ -33,6 +33,7 @@ values."
      eyebrowse
      html
      javascript
+     colors
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -282,8 +283,6 @@ you should place your code here."
   (setq company-tooltip-align-annotations t)
 
   (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
-
-  (setq indent-tabs-mode nil)
 
   (setq powerline-default-separator 'butt)
   (spaceline-compile)

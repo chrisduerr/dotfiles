@@ -86,6 +86,7 @@ export EDITOR="nvim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -g sshul="ssh -p 6666 undeadleech@undeadleech.com"
 alias -g vim="nvim"
+alias -g leechnot="python2 ~/Scripts/leechnot.py"
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then

@@ -6,7 +6,7 @@ if [ "$4" == "" ]; then
     echo -e "\nCommand Syntax:"
     echo "command <display> <display_count> <height> <gaps>"
     echo -e "\nExample:"
-    echo "command DP-1 2 30 10"
+    echo "command DP-1 2 30 15"
     exit
 fi
 
@@ -35,28 +35,29 @@ FOREGROUND_LIGHT=$(cat ${CTF} | grep -ixe '*color15:.*' | tail -c 8)
 HIGHLIGHT=$(cat ${CTF} | grep -ixe '*color1:.*' | tail -c 8)
 
 # Shutdown popup
-POW="$HOME/.config/panel/shutdown_popup"
+POW="/usr/bin/python $HOME/Scripts/shutdown_menu.py $display &"
+VOL="/usr/bin/python $HOME/Scripts/volume_slider.py $display &"
+NOT="/usr/bin/python $HOME/Scripts/notification_popup.py $display &"
+
+# Some bar templates
+HOMEICON=$(echo ''$'\n'''$'\n'''$'\n''' | sort -R | head -n 1)
+POWERBUTTON="%{B$BACKGROUND}%{F$FOREGROUND}%{A:$POW:}  ${HOMEICON}  %{A}%{B$BACKGROUND}%{F$FOREGROUND}"
+PLACEHOLDER="%{B$BACKGROUND} "
 
 ws() {
-    WORKSPACE_ICONS=("    " "    " "    " "    " "    ")
+    WORKSPACE_ICONS=("    " "    " "    " "    " "    ")
     ACTIVE=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g'| grep "true\*"$display"" | sed 's/\([0-9]*\).*/\1/')
     ALL=$(i3-msg -t get_workspaces | sed 's/"num":\([^,]*\)[^{]*"visible":\([^,]*\)[^}]*},"output":"\([^"]*\)/\n\1*\2*\3\n/g' | grep "\*"$display"" | sed 's/\([^\*]*\).*/\1/' | sort -g)
     OUTPUT=""
     for i in $ALL; do
         ICON="${WORKSPACE_ICONS[$((($i - 1) / $DISPLAY_COUNT))]}"
 	if [[ "$i" -eq "$ACTIVE" ]]; then
-	    OUTPUT="$OUTPUT%{B$HIGHLIGHT}%{F$FOREGROUND_LIGHT}$ICON"
+	    OUTPUT="$OUTPUT%{B$HIGHLIGHT}%{F$BACKGROUND}$ICON${PLACEHOLDER}"
 	else
-	    OUTPUT="$OUTPUT%{B$BACKGROUND_LIGHT}%{F$FOREGROUND}$ICON"
+	    OUTPUT="$OUTPUT%{B$BACKGROUND_LIGHT}%{F$FOREGROUND}$ICON${PLACEHOLDER}"
 	fi
     done
     OUTPUT="$OUTPUT%{B$BACKGROUND}%{F$FOREGROUND}"
-    echo "$OUTPUT"
-}
-
-get_vol() {
-    LEVEL=$(amixer -D pulse get Master | grep -o "\[.*%\]" | grep -o "[0-9]*" | head -n1)
-    OUTPUT="   $LEVEL  "
     echo "$OUTPUT"
 }
 
@@ -66,7 +67,34 @@ get_date() {
     echo "$OUTPUT"
 }
 
+get_not() {
+    NEW_NOT=$(python2 $HOME/Scripts/leechnot.py show | wc -l) 
+    if [[ "$NEW_NOT" -eq 0 ]]; then
+        echo ""
+    else
+	echo "%{B$HIGHLIGHT}%{F$BACKGROUND}%{A:$NOT:}    %{A}%{B$BACKGROUND}%{F$FOREGROUND}"
+    fi
+}
+
+get_vol() {
+    CURRENT=$(amixer -D pulse get Master | grep -o "\[.*%\]" | grep -o "[0-9]*" | head -n1)
+    OUTPUT="%{B$BACKGROUND}%{F$FOREGROUND}%{A:$VOL:}   ${CURRENT}  %{A}%{B$BACKGROUND}%{F$FOREGROUND}"
+    echo "$OUTPUT"
+}
+
 while :; do
-	echo "%{B$BACKGROUND}%{F$HIGHLIGHT}%{A:$POW:}    %{A}%{B$BACKGROUND}%{F$FOREGROUND}$(ws)%{c}$(get_date)%{r}$(get_vol)"
-    sleep .5
-done | lemonbar -d -p -n "LMNBAR" -g ${BARW}x${BARH}+${POSX}+${GAPS} -F "$FOREGROUND" -B "$BACKGROUND" -f "Source Code Pro Semibold-12" -f "FontAwesome-15"
+    # Hide bar if fullscreen, show if not
+    ACTIVE_WORKSPACE=$(i3-msg -t get_workspaces | display="$display" perl -pe 's|.*num":([0-9]*).*?"visible":true.*?output":"$ENV{display}.*|\1|')
+    IS_FULLSCREEN=$(i3-msg -t get_tree | ACTIVE_WORKSPACE="$ACTIVE_WORKSPACE" perl -pe 's|.*("num":$ENV{ACTIVE_WORKSPACE}.*?((?!num":).)*).*|\1|' | grep -o '"fullscreen_mode":1' | wc -l)
+    if [[ "$IS_FULLSCREEN" -eq 2 ]]; then
+        xdo hide -a "$display-LMNBAR"
+    else
+        xdo show -a "$display-LMNBAR"
+    fi
+
+    # Echo bar layout
+    echo "${POWERBUTTON}$(ws)%{c}$(get_date)%{r}$(get_not)$(get_vol)"
+    sleep .1
+done | lemonbar -d -p -n "$display-LMNBAR" -g ${BARW}x${BARH}+${POSX}+${GAPS} -F "$FOREGROUND" -B "$BACKGROUND" -f "Source Code Pro Semibold-12" -f "FontAwesome-15" | \
+    while :; do read line; eval $line; done &
+
