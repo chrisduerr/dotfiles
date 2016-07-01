@@ -14,6 +14,8 @@ Configs for the following apps:
  - zsh
  - compton
  - vivaldi
+ - leechnot (customized statnot)
+ - firefox / chromium / vivaldi
 
 Screenshot:
 ![alt tag](http://i.imgur.com/rACjhOs.jpg)
