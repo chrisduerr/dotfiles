@@ -1,0 +1,18 @@
+#!/bin/bash
+
+OUTPUT_COUNT=$(($# - 1))
+INPUT_NUM=$1
+OUTPUT_NAME=$(i3-msg -t get_workspaces | sed 's/.*"focused":true[^}]*},"output":"\([^"]*\)".*/\1/')
+
+OUTPUT_NUM=-1
+for var in "$@"; do
+	OUTPUT_NUM=$(($OUTPUT_NUM + 1))
+	if [[ "$OUTPUT_NUM" -gt 0 ]]; then
+		if [[ "$OUTPUT_NAME" == "$var" ]]; then
+			break
+		fi
+	fi
+done
+
+WORKSPACE_NUM=$(($OUTPUT_COUNT*($INPUT_NUM-1)+$OUTPUT_NUM))
+i3-msg workspace "$WORKSPACE_NUM"
