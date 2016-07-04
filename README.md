@@ -18,4 +18,4 @@ Configs for the following apps:
  - firefox / chromium / vivaldi
 
 Screenshot:
-![alt tag](http://i.imgur.com/rACjhOs.jpg)
+![alt tag](http://i.imgur.com/slD3qk0.jpg)
