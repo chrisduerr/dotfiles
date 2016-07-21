@@ -28,7 +28,7 @@ values."
      emacs-lisp
      rust
      git
-     markdow
+     markdown
      syntax-checking
      eyebrowse
      html
@@ -245,30 +245,39 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-    (setq-default rust-enable-racer t)
-    (setq racer-rust-src-path "/usr/src/rust/src")
-    (custom-set-variables '(spacemacs-theme-custom-colors
-                            '((bg1 . "#121212")
-                              (bg2 . "#212121")
-                              (border . "#801414")
-                              (act1 . "#212121")
-                              (act2 . "#801414")
-                              (func . "#801414")
-			      (lnum . "#616161")
-			      (base . "#9e9e9e")
-			      (base-dim . "#616161")
-			      (cursor . "#801414"))))
-    (setq spacemacs-evil-cursors '(("normal" "#801414" box)
-                                   ("insert" "#1b5e20" (bar . 2))
-                                   ("emacs" "#801414" box)
-                                   ("hybrid" "#801414" (bar . 2))
-                                   ("replace" "#f9a825" (hbar . 2))
-                                   ("evilified" "#801414" box)
-                                   ("visual" "#9e9e9e" (hbar . 2))
-                                   ("motion" "#801414" box)
-                                   ("lisp" "#801414" box)
-                                   ("iedit" "#801414" box)
-                                   ("iedit-insert" "#801414" (bar . 2))))
+  (setq-default rust-enable-racer t)
+  (setq racer-cmd "~/.cargo/bin/racer")
+  (setq racer-rust-src-path "/usr/src/rust/src")
+  (custom-set-variables '(spacemacs-theme-custom-colors
+                        '((bg1 . "#121212")
+                          (bg2 . "#212121")
+                          (str . "#90a959")
+                          (var . "#6a9fb5")
+                          (act1 . "#121212")
+                          (act2 . "#ac4142")
+                          (func . "#ac4142")
+                          (lnum . "#616161")
+                          (base . "#9e9e9e")
+                          (type . "#6a9fb5")
+                          (comp . "#ac4142")
+                          (const . "#f4bf75")
+                          (border . "#212121")
+                          (cursor . "#ac4142")
+                          (comment . "#616161")
+                          (keyword . "#90a959")
+                          (base-dim . "#616161")
+                          (comment-bg . "#121212"))))
+  (setq spacemacs-evil-cursors '(("normal" "#ac4142" box)
+                                 ("insert" "#90a959" (bar . 2))
+                                 ("emacs" "#ac4142" box)
+                                 ("hybrid" "#ac4142" (bar . 2))
+                                 ("replace" "#f4bf75" (hbar . 2))
+                                 ("evilified" "#ac4142" box)
+                                 ("visual" "#9e9e9e" (hbar . 2))
+                                 ("motion" "#ac4142" box)
+                                 ("lisp" "#ac4142" box)
+                                 ("iedit" "#ac4142" box)
+                                 ("iedit-insert" "#ac4142" (bar . 2))))
      )
 
 (defun dotspacemacs/user-config ()
@@ -283,6 +292,8 @@ you should place your code here."
   (setq company-tooltip-align-annotations t)
 
   (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+
+  (global-linum-mode)
 
   (setq powerline-default-separator 'butt)
   (spaceline-compile)

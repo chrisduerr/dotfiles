@@ -16,5 +16,5 @@ cp -r ./.config/termite ~/.config/
 cp -r ./.config/neofetch ~/.config/
 cp -r ./.config/powerline ~/.config/
 
-cp -r ./.themes/Numix-Undead ~/.themes/
+cp -r ./themes/* ~/.themes/
 echo "Please remember to setup the bar in your i3 config."

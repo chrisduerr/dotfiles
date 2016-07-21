@@ -28,10 +28,10 @@ BARW=$(($RESX - $GAPS * 2))
 CTF="$HOME/.Xresources"
 
 # Colors
-BACKGROUND=$(cat ${CTF} | grep -ixe '*color0:.*' | tail -c 8)
-BACKGROUND_LIGHT=$(cat ${CTF} | grep -ixe '*color8:.*' | tail -c 8)
+BACKGROUND=$(cat ${CTF} | grep -ixe '*color8:.*' | tail -c 8)
+BACKGROUND_SECONDARY=$(cat ${CTF} | grep -ixe '*color0:.*' | tail -c 8)
 FOREGROUND=$(cat ${CTF} | grep -ixe '*color7:.*' | tail -c 8)
-FOREGROUND_LIGHT=$(cat ${CTF} | grep -ixe '*color15:.*' | tail -c 8)
+FOREGROUND_SECONDARY=$(cat ${CTF} | grep -ixe '*color15:.*' | tail -c 8)
 HIGHLIGHT=$(cat ${CTF} | grep -ixe '*color1:.*' | tail -c 8)
 
 # Shutdown popup
@@ -42,7 +42,7 @@ NOT="/usr/bin/python $HOME/Scripts/notification_popup.py $display &"
 # Some bar templates
 HOMEICON=$(echo ''$'\n'''$'\n'''$'\n''' | sort -R | head -n 1)
 POWERBUTTON="%{B$BACKGROUND}%{F$FOREGROUND}%{A:$POW:}  ${HOMEICON}  %{A}%{B$BACKGROUND}%{F$FOREGROUND}"
-PLACEHOLDER="%{B$BACKGROUND} "
+PLACEHOLDER="%{B$BACKGROUND_SECONDARY} %{B$BACKGROUND}"
 
 ws() {
     WORKSPACE_ICONS=("    " "    " "    " "    " "    ")
@@ -52,9 +52,9 @@ ws() {
     for i in $ALL; do
         ICON="${WORKSPACE_ICONS[$((($i - 1) / $DISPLAY_COUNT))]}"
 	if [[ "$i" -eq "$ACTIVE" ]]; then
-	    OUTPUT="$OUTPUT%{B$HIGHLIGHT}%{F$BACKGROUND}$ICON${PLACEHOLDER}"
+	    OUTPUT="$OUTPUT%{B$HIGHLIGHT}%{F$BACKGROUND_SECONDARY}$ICON$PLACEHOLDER"
 	else
-	    OUTPUT="$OUTPUT%{B$BACKGROUND_LIGHT}%{F$FOREGROUND}$ICON${PLACEHOLDER}"
+	    OUTPUT="$OUTPUT%{B$BACKGROUND}%{F$FOREGROUND}$ICON$PLACEHOLDER"
 	fi
     done
     OUTPUT="$OUTPUT%{B$BACKGROUND}%{F$FOREGROUND}"
@@ -93,7 +93,7 @@ while :; do
     fi
 
     # Echo bar layout
-    echo "${POWERBUTTON}$(ws)%{c}$(get_date)%{r}$(get_not)$(get_vol)"
+    echo "${POWERBUTTON}$PLACEHOLDER$(ws)%{c}$(get_date)%{r}$(get_not)$(get_vol)"
     sleep .1
 done | lemonbar -d -p -n "$display-LMNBAR" -g ${BARW}x${BARH}+${POSX}+${GAPS} -F "$FOREGROUND" -B "$BACKGROUND" -f "Source Code Pro Semibold-12" -f "FontAwesome-15" | \
     while :; do read line; eval $line; done &
