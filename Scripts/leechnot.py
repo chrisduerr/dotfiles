@@ -1,1 +1,1 @@
-/home/undeadleech/Informatik/Python2/Projects/leechnot/leechnot.py
+/home/undeadleech/Programming/Python2/Projects/leechnot/leechnot.py

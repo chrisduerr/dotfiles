@@ -1,1 +1,0 @@
-/home/undeadleech/Informatik/Python3/Projects/shutdown_menu/shutdown_menu.py

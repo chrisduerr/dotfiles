@@ -23,7 +23,7 @@ focus_on_window_activation urgent
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
-font pango:Hack, FontAwesome 12
+font pango:Fira Mono 12, FontAwesome 12
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
 client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
@@ -127,23 +127,21 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)thunar"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
 
-for_window [title="shutdown_menu-DVI-D-2"] floating enable move absolute position 15 405
-for_window [title="shutdown_menu-DP-1"] floating enable move absolute position 1935 45
-for_window [title="volume_slider-DVI-D-2"] floating enable move absolute position 1816 405
-for_window [title="volume_slider-DP-1"] floating enable move absolute position 4376 45
-for_window [title="notification_popup-DVI-D-2"] floating enable move absolute position 1390 405
-for_window [title="notification_popup-DP-1"] floating enable move absolute position 3950 45
+for_window [title="shutdown_menu-DVI-D-2"] floating enable move absolute position 0 395
+for_window [title="shutdown_menu-DP-1"] floating enable move absolute position 1920 35
+for_window [title="volume_slider-DVI-D-2"] floating enable move absolute position 1570 395
+for_window [title="volume_slider-DP-1"] floating enable move absolute position 4130 35
+for_window [title="notification_popup-DVI-D-2"] floating enable move absolute position 1570 395
+for_window [title="notification_popup-DP-1"] floating enable move absolute position 4130 35
 
 # ---START STUFF---
 exec --no-startup-id compton --config $HOME/.config/compton.conf -b 	# composite manager
-exec --no-startup-id sh $HOME/.fehbg 					# set Wallpaper
+exec --no-startup-id sh $HOME/.fehbg 					                # set Wallpaper
 
-exec lemonbar -p -g 4480x45+0+0 -F "#00000000" -B "#00000000" 		# placeholder for bars
-exec --no-startup-id $HOME/.config/panel/bar_config DP-1 2 30 15 	# right screen bar
-exec --no-startup-id $HOME/.config/panel/bar_config DVI-D-2 2 30 15 	# left screen bar
+exec --no-startup-id $HOME/Scripts/bar_control                          # start Lemonbar Rust
 
-exec --no-startup-id keepass 						# password manager
-exec --no-startup-id numlockx 						# enable numlock
-exec --no-startup-id python2 $HOME/Scripts/leechnot_server.py 		# start Notification Server
-exec --no-startup-id $HOME/Scripts/sensor_notifications 75 		# start notifications for overheating
+exec --no-startup-id keepass 			                    			# password manager
+exec --no-startup-id numlockx 						                    # enable numlock
+exec --no-startup-id python2 $HOME/Scripts/leechnot_server.py 	    	# start Notification Server
+exec --no-startup-id $HOME/Scripts/sensor_notifications 75 		        # start notifications for overheating
 

@@ -1,1 +1,0 @@
-/home/undeadleech/Informatik/Python3/Projects/volume_slider/volume_slider.py

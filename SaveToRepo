@@ -2,18 +2,16 @@
 
 cp ~/.zshrc .
 cp ~/.xinitrc .
-cp ~/.spacemacs .
 cp ~/.Xresources .
 
 cp ~/.config/compton.conf ./.config/
+cp ~/.config/nvim/init.vim ./.config/nvim/
 
 cp -r ~/Scripts .
+cp -r ~/.themes .
 
 cp -r ~/.config/i3 ./.config/
-cp -r ~/.config/panel ./.config/
 cp -r ~/.config/Thunar ./.config/
 cp -r ~/.config/termite ./.config/
 cp -r ~/.config/neofetch ./.config/
-cp -r ~/.config/powerline ./.config/
 
-cp -r ~/.themes/ ./themes/
