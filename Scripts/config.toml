@@ -1,0 +1,20 @@
+[colors]
+background_color = "#121212"
+background_secondary = "#262626"
+foreground_color = "#9e9e9e"
+foreground_secondary = "#616161"
+highlight_color = "#702020"
+
+[exec]
+power = "$HOME/Scripts/shutdown_menu"
+volume = "$HOME/Scripts/volume_slider"
+notifications = "$HOME/Scripts/notification_popup"
+
+[general]
+height = 30
+workspace_icons = ""
+power_icons = ""
+font = "Source Code Pro Semibold-12"
+icon_font = "FontAwesome-15"
+
+

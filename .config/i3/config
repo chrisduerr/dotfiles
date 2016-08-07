@@ -4,7 +4,7 @@
 set $mod Mod4
 set $editor termite
 
-set_from_resource $red    color1  #ff00ff
+set_from_resource $red    color9  #ff00ff
 set_from_resource $yellow color3  #ff00ff
 set_from_resource $gray0  color0  #ff00ff
 set_from_resource $gray1  color8  #ff00ff
@@ -23,10 +23,10 @@ focus_on_window_activation urgent
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
-font pango:Fira Mono 12, FontAwesome 12
+font pango:Source Code Pro Semibold 11, FontAwesome 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
-client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
+client.focused          $gray1   $gray0      $gray3  $red       $red
 client.unfocused        $gray1   $gray0      $gray3  $gray1     $gray1
 client.focused_inactive $gray1   $gray0      $gray3  $gray1     $gray1
 client.urgent           $gray1   $gray0      $gray3  $gray1     $gray1
@@ -114,7 +114,7 @@ mode "resize" {
 }
 
 # Setup Window Borders
-new_window none
+new_window pixel 3
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -127,16 +127,16 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)thunar"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
 
-for_window [title="shutdown_menu-DVI-D-2"] floating enable move absolute position 0 395
-for_window [title="shutdown_menu-DP-1"] floating enable move absolute position 1920 35
-for_window [title="volume_slider-DVI-D-2"] floating enable move absolute position 1570 395
-for_window [title="volume_slider-DP-1"] floating enable move absolute position 4130 35
-for_window [title="notification_popup-DVI-D-2"] floating enable move absolute position 1570 395
-for_window [title="notification_popup-DP-1"] floating enable move absolute position 4130 35
+for_window [title="shutdown_menu-DVI-D-2"] floating enable move absolute position 0 390
+for_window [title="shutdown_menu-DP-1"] floating enable move absolute position 1920 30
+for_window [title="volume_slider-DVI-D-2"] floating enable move absolute position 1570 390
+for_window [title="volume_slider-DP-1"] floating enable move absolute position 4130 30
+for_window [title="notification_popup-DVI-D-2"] floating enable move absolute position 1570 390
+for_window [title="notification_popup-DP-1"] floating enable move absolute position 4130 30
 
 # ---START STUFF---
 exec --no-startup-id compton --config $HOME/.config/compton.conf -b 	# composite manager
-exec --no-startup-id sh $HOME/.fehbg 					                # set Wallpaper
+exec --no-startup-id nitrogen --restore					                # set Wallpaper
 
 exec --no-startup-id $HOME/Scripts/bar_control                          # start Lemonbar Rust
 

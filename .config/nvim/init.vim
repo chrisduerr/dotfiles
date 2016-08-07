@@ -37,12 +37,21 @@ set encoding=utf-8
     function! AirlineInit()
         let g:airline_section_z = airline#section#create(['%l/%L %c'])
         let g:airline_section_b = airline#section#create(['branch'])
-        "Disable for now to remove annoying orange blob at the end 24/7
+        " Disable for now to remove annoying orange blob at the end 24/7
         let g:airline_section_warning = ''
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
     let g:airline_theme = 'undead'
-    let g:airline_powerline_fonts = 1
+
+    " Airline symbols
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = '⸾'
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = '⸾'
 
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
