@@ -23,4 +23,4 @@ Fonts used:
  - ttf-everson-mono
 
 Screenshot:
-![alt tag](http://i.imgur.com/slD3qk0.jpg)
+![alt tag](http://i.imgur.com/IfOjZUR.png)
