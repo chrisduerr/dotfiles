@@ -15,7 +15,7 @@ Some of the apps I use:
  - thunar
 
 Fonts used:
- - adobe-source-sans/serif/code-pro-fonts
+ - otf-fira-mono/-sans
  - noto-fonts(-cjk/-emoji)
  - ttf-font-awesome
  - ttf-bitstream-vera
