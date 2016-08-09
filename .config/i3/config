@@ -26,7 +26,7 @@ floating_maximum_size -1 x -1
 font pango:Source Code Pro Semibold 11, FontAwesome 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
-client.focused          $gray1   $gray0      $gray3  $red       $red
+client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
 client.unfocused        $gray1   $gray0      $gray3  $gray1     $gray1
 client.focused_inactive $gray1   $gray0      $gray3  $gray1     $gray1
 client.urgent           $gray1   $gray0      $gray3  $gray1     $gray1
@@ -127,12 +127,12 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)thunar"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
 
-for_window [title="shutdown_menu-DVI-D-2"] floating enable move absolute position 0 390
-for_window [title="shutdown_menu-DP-1"] floating enable move absolute position 1920 30
-for_window [title="volume_slider-DVI-D-2"] floating enable move absolute position 1570 390
-for_window [title="volume_slider-DP-1"] floating enable move absolute position 4130 30
-for_window [title="notification_popup-DVI-D-2"] floating enable move absolute position 1570 390
-for_window [title="notification_popup-DP-1"] floating enable move absolute position 4130 30
+for_window [title="shutdown_menu-DVI-D-2"] floating enable, border none, move absolute position 0 390
+for_window [title="shutdown_menu-DP-1"] floating enable, border none, move absolute position 1920 30
+for_window [title="volume_slider-DVI-D-2"] floating enable, border none, move absolute position 1570 390
+for_window [title="volume_slider-DP-1"] floating enable, border none, move absolute position 4130 30
+for_window [title="notification_popup-DVI-D-2"] floating enable, border none, move absolute position 1570 390
+for_window [title="notification_popup-DP-1"] floating enable, border none, move absolute position 4130 30
 
 # ---START STUFF---
 exec --no-startup-id compton --config $HOME/.config/compton.conf -b 	# composite manager

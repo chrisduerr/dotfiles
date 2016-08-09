@@ -1,6 +1,6 @@
 [colors]
 foreground = #9e9e9e
-background = rgba(18, 18, 18, .95)
+background = rgba(18, 18, 18, .90)
 
 # Colors Dark -> Light
 # Shades
@@ -35,4 +35,4 @@ color14 = #006064
 
 [options]
 font = FontAwesome Regular 11
-font = Source Code Pro for Powerline Semibold 11
+font = Fira Mono Medium 11
