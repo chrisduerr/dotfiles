@@ -14,4 +14,4 @@ cp -r ~/.config/i3 ./.config/
 cp -r ~/.config/Thunar ./.config/
 cp -r ~/.config/termite ./.config/
 cp -r ~/.config/neofetch ./.config/
-
+cp -t ~/.local/share/QtCurve .local/share

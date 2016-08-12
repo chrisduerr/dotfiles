@@ -15,4 +15,5 @@ cp -r ./.config/nvim ~/.config/
 cp -r ./.config/Thunar ~/.config/
 cp -r ./.config/termite ~/.config/
 cp -r ./.config/neofetch ~/.config/
+cp -r ./.local/share/QtCurve ~/.local/share/
 echo "Please remember to setup the bar in your i3 config."
