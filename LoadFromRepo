@@ -12,5 +12,5 @@ cp -r ./.themes ~/
 
 cp -r ./.config/i3 ~/.config/
 cp -r ./.config/termite ~/.config/
-cp -r ./.config/pcmanfm ./.config/
+cp -r ./.config/pcmanfm ~/.config/
 cp -r ./.config/neofetch ~/.config/
