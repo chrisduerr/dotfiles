@@ -98,3 +98,6 @@ set relativenumber scrolloff=5
 
 " Set colorscheme
 colorscheme undead
+
+" Set cursor shape
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1

@@ -1,16 +1,16 @@
 #!/bin/bash
 
-cp ~/.zshrc .
-cp ~/.xinitrc .
-cp ~/.Xresources .
+cp ~/.zshrc ./
+cp ~/.xinitrc ./
+cp ~/.Xresources ./
 
 cp ~/.config/compton.conf ./.config/
 cp ~/.config/nvim/init.vim ./.config/nvim/
 
-cp -r ~/Scripts .
-cp -r ~/.themes .
+cp -r ~/Scripts ./
+cp -r ~/.themes ./
 
 cp -r ~/.config/i3 ./.config/
-cp -r ~/.config/qt5ct ./.config/
+cp -r ~/.config/termite ./.config/
+cp -r ~/.config/pcmanfm ./.config/
 cp -r ~/.config/neofetch ./.config/
-cp -r ~/.local/share/QtCurve .local/share

@@ -2,7 +2,6 @@
 # i3 config file
 # Inspired by: https://github.com/Airblader/dotfiles-manjaro/blob/master/.i3/config
 set $mod Mod4
-set $editor termite
 
 set_from_resource $red    color9  #ff00ff
 set_from_resource $yellow color3  #ff00ff
@@ -11,19 +10,19 @@ set_from_resource $gray1  color8  #ff00ff
 set_from_resource $gray2  color7  #ff00ff
 set_from_resource $gray3  color15 #ff00ff
 
-set $default_gaps_inner 16
+set $default_gaps_inner 20
 set $default_gaps_outer 0
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
 
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
-font pango:Source Code Pro Semibold 11, FontAwesome 11
+font pango:Fira Mono 11, FontAwesome 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
 client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
@@ -34,7 +33,7 @@ client.background       $gray1
 
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id termite
 
 bindsym $mod+q kill
 
@@ -64,39 +63,42 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
-bindsym $mod+1 focus output DVI-D-2; workspace 1; focus output DP-1; workspace 2
-bindsym $mod+2 focus output DVI-D-2; workspace 3; focus output DP-1; workspace 4
-bindsym $mod+3 focus output DVI-D-2; workspace 5; focus output DP-1; workspace 6
-bindsym $mod+4 focus output DVI-D-2; workspace 7; focus output DP-1; workspace 8
-bindsym $mod+5 focus output DVI-D-2; workspace 9; focus output DP-1; workspace 10
+workspace 1 output DVI-D-1
+workspace 2 output DVI-D-2
+workspace 3 output DP-1
 
-bindsym $mod+Ctrl+1 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 1 DVI-D-2 DP-1
-bindsym $mod+Ctrl+2 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 2 DVI-D-2 DP-1
-bindsym $mod+Ctrl+3 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 3 DVI-D-2 DP-1
-bindsym $mod+Ctrl+4 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 4 DVI-D-2 DP-1
-bindsym $mod+Ctrl+5 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 5 DVI-D-2 DP-1
+bindsym $mod+1 focus output DVI-D-1; workspace 1; focus output DVI-D-2; workspace 2; focus output DP-1; workspace 3
+bindsym $mod+2 focus output DVI-D-1; workspace 4; focus output DVI-D-2; workspace 5; focus output DP-1; workspace 6
+bindsym $mod+3 focus output DVI-D-1; workspace 7; focus output DVI-D-2; workspace 8; focus output DP-1; workspace 9
+bindsym $mod+4 focus output DVI-D-1; workspace 10; focus output DVI-D-2; workspace 11; focus output DP-1; workspace 12
+bindsym $mod+5 focus output DVI-D-1; workspace 13; focus output DVI-D-2; workspace 14; focus output DP-1; workspace 15
 
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Ctrl+1 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 1 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Ctrl+2 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 2 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Ctrl+3 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 3 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Ctrl+4 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 4 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Ctrl+5 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 5 DVI-D-1 DVI-D-2 DP-1
+
 bindsym $mod+Shift+s sticky toggle
 
-bindsym $mod+Shift+1 exec --no-startup-id $HOME/Scripts/move_focused_window 1 DVI-D-2 DP-1
-bindsym $mod+Shift+2 exec --no-startup-id $HOME/Scripts/move_focused_window 2 DVI-D-2 DP-1
-bindsym $mod+Shift+3 exec --no-startup-id $HOME/Scripts/move_focused_window 3 DVI-D-2 DP-1
-bindsym $mod+Shift+4 exec --no-startup-id $HOME/Scripts/move_focused_window 4 DVI-D-2 DP-1
-bindsym $mod+Shift+5 exec --no-startup-id $HOME/Scripts/move_focused_window 5 DVI-D-2 DP-1
+bindsym $mod+Shift+1 exec --no-startup-id $HOME/Scripts/move_focused_window 1 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Shift+2 exec --no-startup-id $HOME/Scripts/move_focused_window 2 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Shift+3 exec --no-startup-id $HOME/Scripts/move_focused_window 3 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Shift+4 exec --no-startup-id $HOME/Scripts/move_focused_window 4 DVI-D-1 DVI-D-2 DP-1
+bindsym $mod+Shift+5 exec --no-startup-id $HOME/Scripts/move_focused_window 5 DVI-D-1 DVI-D-2 DP-1
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-bindsym $mod+n exec --no-startup-id thunar
+bindsym $mod+n exec --no-startup-id pcmanfm
 
 # Bind corsair k70 volume keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
 
 # Bind fullscreen screenshot and region screenshoot
-bindsym Print exec --no-startup-id xfce4-screenshooter --fullscreen
-bindsym $mod+Print exec --no-startup-id xfce4-screenshooter --region
+bindsym Print exec --no-startup-id spectacle -f -b -n -o $HOME/Pictures/tmp.png
+bindsym $mod+Print exec --no-startup-id spectacle -r -b -n -o $HOME/Pictures/tmp.png
 
 # Bind toggle scratchpad for window
 bindsym $mod+w scratchpad show
@@ -124,24 +126,29 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-for_window [class="(?i)thunar"] floating enable
+for_window [class="(?i)pcmanfm"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
 
-for_window [title="shutdown_menu-DVI-D-2"] floating enable, border none, move absolute position 0 390
-for_window [title="shutdown_menu-DP-1"] floating enable, border none, move absolute position 1920 30
-for_window [title="volume_slider-DVI-D-2"] floating enable, border none, move absolute position 1570 390
-for_window [title="volume_slider-DP-1"] floating enable, border none, move absolute position 4130 30
-for_window [title="notification_popup-DVI-D-2"] floating enable, border none, move absolute position 1570 390
-for_window [title="notification_popup-DP-1"] floating enable, border none, move absolute position 4130 30
+for_window [title="shutdown_menu-DVI-D-1"] floating enable, border none, move absolute position 0 420
+for_window [title="shutdown_menu-DVI-D-2"] floating enable, border none, move absolute position 1680 390
+for_window [title="shutdown_menu-DP-1"] floating enable, border none, move absolute position 3600 30
+
+for_window [title="volume_slider-DVI-D-1"] floating enable, border none, move absolute position 1330 420
+for_window [title="volume_slider-DVI-D-2"] floating enable, border none, move absolute position 3250 390
+for_window [title="volume_slider-DP-1"] floating enable, border none, move absolute position 5810 30
+
+for_window [title="notification_popup-DVI-D-1"] floating enable, border none, move absolute position 1330 420
+for_window [title="notification_popup-DVI-D-2"] floating enable, border none, move absolute position 3250 390
+for_window [title="notification_popup-DP-1"] floating enable, border none, move absolute position 5810 30
 
 # ---START STUFF---
-exec --no-startup-id compton --config $HOME/.config/compton.conf -b 	# composite manager
-exec --no-startup-id nitrogen --restore					                # set Wallpaper
+exec --no-startup-id compton --config $HOME/.config/compton.conf -b     # composite manager
+exec --no-startup-id nitrogen --restore                                 # set Wallpaper
 
 exec --no-startup-id $HOME/Scripts/bar_control                          # start Lemonbar Rust
 
-exec --no-startup-id keepass 			                    			# password manager
-exec --no-startup-id numlockx 						                    # enable numlock
-exec --no-startup-id python2 $HOME/Scripts/leechnot_server.py 	    	# start Notification Server
-exec --no-startup-id $HOME/Scripts/sensor_notifications 75 		        # start notifications for overheating
+exec --no-startup-id keepass                                            # password manager
+exec --no-startup-id numlockx                                           # enable numlock
+exec --no-startup-id python2 $HOME/Scripts/leechnot_server.py           # start Notification Server
+#exec --no-startup-id $HOME/Scripts/sensor_notifications 75              # start notifications for overheating
 

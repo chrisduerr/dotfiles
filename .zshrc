@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh/
+# Enbale 256 color mode
+export TERM=konsole-256color
 
 
 #####################
@@ -14,6 +16,9 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon background_jobs virtualenv dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
+POWERLEVEL9K_HOME_ICON=""
+POWERLEVEL9K_FOLDER_ICON=""
+POWERLEVEL9K_HOME_SUB_ICON=""
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=""
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR="⸾"
 POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR=""
@@ -44,7 +49,6 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="007"
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="008"
 POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="007"
 
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
@@ -57,7 +61,6 @@ ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
-
 
 ####################
 ##### ENVSTUFF #####
