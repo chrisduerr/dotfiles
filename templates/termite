@@ -1,0 +1,38 @@
+[colors]
+foreground = {{color15}}
+background = {{termitebg}}
+
+# Colors Dark -> Light
+# Shades
+color0  = {{color00}}
+color8  = {{color08}}
+color7  = {{color07}}
+color15 = {{color15}}
+
+# Reds
+color1  = {{color01}}
+color9  = {{color09}}
+
+# Greens
+color2  = {{color02}}
+color10 = {{color10}}
+
+# Yellows
+color3  = {{color03}}
+color11 = {{color11}}
+
+# Blues
+color4  = {{color04}}
+color12 = {{color12}}
+
+# Purples
+color5  = {{color05}}
+color13 = {{color13}}
+
+# Cyans
+color6  = {{color06}}
+color14 = {{color14}}
+
+[options]
+font = FontAwesome Regular 12
+font = Fira Mono Medium 12

@@ -89,6 +89,8 @@ set encoding=utf-8
 " Remaps
     " Clear search
     nnoremap <C-l> :noh<cr><C-l>
+    " Sudo write
+    cnoremap w!! w !sudo tee %
 
 " indentation
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
