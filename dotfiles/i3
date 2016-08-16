@@ -95,8 +95,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
 
 # Bind fullscreen screenshot and region screenshoot
-bindsym Print exec --no-startup-id spectacle -f -b -n -o $HOME/Pictures/tmp.png
-bindsym $mod+Print exec --no-startup-id spectacle -r -b -n -o $HOME/Pictures/tmp.png
+bindsym Print exec --no-startup-id scrot -q 100 '/home/undeadleech/Pictures/tmp.png'
+bindsym $mod+Print exec --no-startup-id scrot -s -q 100 '/home/undeadleech/Pictures/tmp.png'
 
 # Bind toggle scratchpad for window
 bindsym $mod+w scratchpad show
