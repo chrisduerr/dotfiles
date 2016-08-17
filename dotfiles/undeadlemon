@@ -14,7 +14,5 @@ notifications = "$HOME/Scripts/notification_popup"
 height = 30
 workspace_icons = ""
 power_icons = ""
-font = "Source Code Pro Semibold-12"
+font = "Fira Mono-12"
 icon_font = "FontAwesome-15"
-
-

@@ -9,6 +9,7 @@ i3 = "~/.config/i3/config"
 nvim = "~/.config/nvim/init.vim"
 compton = "~/.config/compton.conf"
 neofetch = "~/.config/neofetch/config"
+undeadlemon = "~/.config/undeadlemon.toml"
 
 scripts = "~/Scripts"
 pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
