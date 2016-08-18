@@ -3,12 +3,12 @@
 # Inspired by: https://github.com/Airblader/dotfiles-manjaro/blob/master/.i3/config
 set $mod Mod4
 
-set_from_resource $red    color9  #ff00ff
-set_from_resource $yellow color3  #ff00ff
-set_from_resource $gray0  color0  #ff00ff
-set_from_resource $gray1  color8  #ff00ff
-set_from_resource $gray2  color7  #ff00ff
-set_from_resource $gray3  color15 #ff00ff
+set $red {{color09}}
+set $yellow {{color03}}
+set $gray0 {{color00}}
+set $gray1 {{color08}}
+set $gray2 {{color07}}
+set $gray3 {{color15}}
 
 set $default_gaps_inner 20
 set $default_gaps_outer 0
@@ -22,7 +22,7 @@ focus_on_window_activation urgent
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
-font pango:Fira Mono 11, FontAwesome 11
+font pango:{{monofont}} 11, {{iconfont}} 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
 client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
@@ -79,11 +79,11 @@ bindsym $mod+Ctrl+5 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 
 
 bindsym $mod+Shift+s sticky toggle
 
-bindsym $mod+Shift+1 exec --no-startup-id $HOME/Scripts/move_focused_window 1
-bindsym $mod+Shift+2 exec --no-startup-id $HOME/Scripts/move_focused_window 2
-bindsym $mod+Shift+3 exec --no-startup-id $HOME/Scripts/move_focused_window 3
-bindsym $mod+Shift+4 exec --no-startup-id $HOME/Scripts/move_focused_window 4
-bindsym $mod+Shift+5 exec --no-startup-id $HOME/Scripts/move_focused_window 5
+bindsym $mod+Shift+exclam exec --no-startup-id $HOME/Scripts/move_focused_window 1
+bindsym $mod+Shift+quotedbl exec --no-startup-id $HOME/Scripts/move_focused_window 2
+bindsym $mod+Shift+section exec --no-startup-id $HOME/Scripts/move_focused_window 3
+bindsym $mod+Shift+dollar exec --no-startup-id $HOME/Scripts/move_focused_window 4
+bindsym $mod+Shift+percent exec --no-startup-id $HOME/Scripts/move_focused_window 5
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart

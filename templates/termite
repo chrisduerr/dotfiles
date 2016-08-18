@@ -34,5 +34,5 @@ color6  = {{color06}}
 color14 = {{color14}}
 
 [options]
-font = FontAwesome Regular 12
-font = Fira Mono Medium 12
+font = {{iconfont}} Regular 12
+font = {{monofont}} Medium 12

@@ -3,7 +3,7 @@ rofi.modi: run
 rofi.location: 0
 rofi.lines: 20
 rofi.bw: 0
-rofi.font: Fira Sans 18
+rofi.font: {{font}} 18
 rofi.padding: 300
 rofi.seperator-style: none
 rofi.opacity: 95

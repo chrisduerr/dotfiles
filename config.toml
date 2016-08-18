@@ -1,21 +1,24 @@
 [templates]
+i3 = "~/.config/i3/config"
 xresources = "~/.Xresources"
 termite = "~/.config/termite/config"
+undeadlemon = "~/.config/undeadlemon.toml"
 
 [dotfiles]
 zshrc = "~/.zshrc"
 xinitrc = "~/.xinitrc"
-i3 = "~/.config/i3/config"
 nvim = "~/.config/nvim/init.vim"
 compton = "~/.config/compton.conf"
 neofetch = "~/.config/neofetch/config"
-undeadlemon = "~/.config/undeadlemon.toml"
 
 scripts = "~/Scripts"
 pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
 oomox-numix-undead = "~/.themes/oomox-numix-undead"
 
 [variables]
+font = "Fira Sans"
+monofont = "Fira Mono"
+iconfont = "FontAwesome"
 color00 = "#121212"
 color01 = "#ac4142"
 color02 = "#90a959"
