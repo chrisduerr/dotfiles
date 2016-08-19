@@ -14,5 +14,13 @@ notifications = "$HOME/Scripts/notification_popup"
 height = 30
 workspace_icons = ""
 power_icons = ""
-font = "{{monofont}}-12"
+font = "{{font}}-12"
 icon_font = "{{iconfont}}-15"
+
+[placeholders]
+general = "          "
+power = "    "
+workspace = "     "
+clock = "          "
+notification = "     "
+volume = "     "
