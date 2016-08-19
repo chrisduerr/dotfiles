@@ -3,6 +3,8 @@
 # Inspired by: https://github.com/Airblader/dotfiles-manjaro/blob/master/.i3/config
 set $mod Mod4
 
+set $exec exec --no-startup-id
+
 set $red {{color09}}
 set $yellow {{color03}}
 set $gray0 {{color00}}
@@ -33,11 +35,11 @@ client.background       $gray1
 
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id termite
+bindsym $mod+Return $exec termite
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d $exec rofi -show run
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -63,40 +65,40 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
-exec --no-startup-id $HOME/Scripts/change_workspaces 1
+$exec $HOME/Scripts/change_workspaces 1
 
-bindsym $mod+1 exec --no-startup-id $HOME/Scripts/change_workspaces 1
-bindsym $mod+2 exec --no-startup-id $HOME/Scripts/change_workspaces 2
-bindsym $mod+3 exec --no-startup-id $HOME/Scripts/change_workspaces 3
-bindsym $mod+4 exec --no-startup-id $HOME/Scripts/change_workspaces 4
-bindsym $mod+5 exec --no-startup-id $HOME/Scripts/change_workspaces 5
+bindsym $mod+1 $exec $HOME/Scripts/change_workspaces 1
+bindsym $mod+2 $exec $HOME/Scripts/change_workspaces 2
+bindsym $mod+3 $exec $HOME/Scripts/change_workspaces 3
+bindsym $mod+4 $exec $HOME/Scripts/change_workspaces 4
+bindsym $mod+5 $exec $HOME/Scripts/change_workspaces 5
 
-bindsym $mod+Ctrl+1 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 1
-bindsym $mod+Ctrl+2 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 2
-bindsym $mod+Ctrl+3 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 3
-bindsym $mod+Ctrl+4 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 4
-bindsym $mod+Ctrl+5 exec --no-startup-id $HOME/Scripts/switch_focused_workspace 5
+bindsym $mod+Ctrl+1 $exec $HOME/Scripts/switch_focused_workspace 1
+bindsym $mod+Ctrl+2 $exec $HOME/Scripts/switch_focused_workspace 2
+bindsym $mod+Ctrl+3 $exec $HOME/Scripts/switch_focused_workspace 3
+bindsym $mod+Ctrl+4 $exec $HOME/Scripts/switch_focused_workspace 4
+bindsym $mod+Ctrl+5 $exec $HOME/Scripts/switch_focused_workspace 5
 
 bindsym $mod+Shift+s sticky toggle
 
-bindsym $mod+Shift+exclam exec --no-startup-id $HOME/Scripts/move_focused_window 1
-bindsym $mod+Shift+quotedbl exec --no-startup-id $HOME/Scripts/move_focused_window 2
-bindsym $mod+Shift+section exec --no-startup-id $HOME/Scripts/move_focused_window 3
-bindsym $mod+Shift+dollar exec --no-startup-id $HOME/Scripts/move_focused_window 4
-bindsym $mod+Shift+percent exec --no-startup-id $HOME/Scripts/move_focused_window 5
+bindsym $mod+Shift+1 $exec $HOME/Scripts/move_focused_window 1
+bindsym $mod+Shift+2 $exec $HOME/Scripts/move_focused_window 2
+bindsym $mod+Shift+3 $exec $HOME/Scripts/move_focused_window 3
+bindsym $mod+Shift+4 $exec $HOME/Scripts/move_focused_window 4
+bindsym $mod+Shift+5 $exec $HOME/Scripts/move_focused_window 5
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-bindsym $mod+n exec --no-startup-id pcmanfm
+bindsym $mod+n $exec pcmanfm
 
 # Bind corsair k70 volume keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 1%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 1%-
+bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
+bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
 
 # Bind fullscreen screenshot and region screenshoot
-bindsym Print exec --no-startup-id scrot -q 100 '/home/undeadleech/Pictures/tmp.png'
-bindsym $mod+Print exec --no-startup-id scrot -s -q 100 '/home/undeadleech/Pictures/tmp.png'
+bindsym Print $exec scrot -q 100 '/home/undeadleech/Pictures/tmp.png'
+bindsym --release $mod+Print $exec scrot -s -q 100 '/home/undeadleech/Pictures/tmp.png'
 
 # Bind toggle scratchpad for window
 bindsym $mod+w scratchpad show
@@ -140,13 +142,13 @@ for_window [title="notification_popup-DVI-D-2"] floating enable, border none, mo
 for_window [title="notification_popup-DP-1"] floating enable, border none, move absolute position 5810 30
 
 # ---START STUFF---
-exec --no-startup-id compton --config $HOME/.config/compton.conf -b     # composite manager
-exec --no-startup-id nitrogen --restore                                 # set Wallpaper
+$exec compton --config $HOME/.config/compton.conf -b     # composite manager
+$exec nitrogen --restore                                 # set Wallpaper
 
-exec --no-startup-id $HOME/Scripts/bar_control                          # start Lemonbar Rust
+$exec $HOME/Scripts/bar_control                          # start Lemonbar Rust
 
-exec --no-startup-id keepass                                            # password manager
-exec --no-startup-id numlockx                                           # enable numlock
-exec --no-startup-id python2 $HOME/Scripts/leechnot_server.py           # start Notification Server
-#exec --no-startup-id $HOME/Scripts/sensor_notifications 75              # start notifications for overheating
+$exec keepass                                            # password manager
+$exec numlockx                                           # enable numlock
+$exec python2 $HOME/Scripts/leechnot_server.py           # start Notification Server
+#$exec $HOME/Scripts/sensor_notifications 75              # start notifications for overheating
 

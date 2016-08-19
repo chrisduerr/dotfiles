@@ -23,7 +23,6 @@ printinfo () {
     info "Uptime" uptime
     info "Packages" packages
     info "Shell" shell
-    info "Resolution" resolution
     info "DE" de
     info "WM" wm
     info "WM Theme" wmtheme
@@ -31,7 +30,6 @@ printinfo () {
     info "Icons" icons
     info "CPU" cpu
     info "GPU" gpu
-    info "Memory" memory
 
     # info "Font" font
     # info "Disk" disk
@@ -75,14 +73,14 @@ os_arch="on"
 
 # Shorten the output of the uptime function
 # --uptime_shorthand tiny, on, off
-uptime_shorthand="off"
+uptime_shorthand="tiny"
 
 
 # Shell
 
 # Show the path to $SHELL
 # --shell_path on/off
-shell_path="on"
+shell_path="off"
 
 # Show $SHELL's version
 # --shell_version on/off
@@ -100,20 +98,20 @@ speed_type="max"
 # CPU Display
 # Set shorthand setting and progress bar setting
 # --cpu_display (name, speed, tiny, on, off) (bar, infobar, barinfo, off)
-cpu_shorthand="off"
+cpu_shorthand="on"
 cpu_display="off"
 
 # CPU Cores
 # Display CPU cores in output
 # --cpu_cores on/off
-cpu_cores="on"
+cpu_cores="off"
 
 
 # GPU
 
 # Shorten output of the getgpu funcion
 # --gpu_shorthand on/off/tiny
-gpu_shorthand="on"
+gpu_shorthand="off"
 
 # Resolution
 
@@ -127,16 +125,16 @@ refresh_rate="off"
 
 # Shorten output (Hide [GTK2] etc)
 # --gtk_shorthand on/off
-gtk_shorthand="off"
+gtk_shorthand="on"
 
 
 # Enable/Disable gtk2 theme/icons output
 # --gtk2 on/off
-gtk2="off"
+gtk2="on"
 
 # Enable/Disable gtk3 theme/icons output
 # --gtk3 on/off
-gtk3="off"
+gtk3="on"
 
 
 # Battery
@@ -198,7 +196,11 @@ color_blocks="on"
 
 # Color block width
 # --color_block_width num
-block_width=5
+block_width=10
+
+# Color block height
+# --block_height num
+block_height=2
 
 
 # }}}
@@ -211,7 +213,7 @@ block_width=5
 # the text in this order:
 # title, @, underline, subtitle, colon, info
 # colors=(4 6 1 8 8 6)
-colors=(15 1 1 1 1 15)
+colors=(7 7 7 7 7 15)
 
 
 # }}}
@@ -225,7 +227,7 @@ line_wrap="off"
 
 # Toggle bold text
 # --bold on/off
-bold="on"
+bold="off"
 
 # Enable/Disable Underline
 # --underline on/off
@@ -233,7 +235,7 @@ underline="on"
 
 # Underline character
 # --underline_char char
-underline_char="-"
+underline_char="="
 
 # Prompt height
 # You should only have to change this if your
@@ -284,7 +286,7 @@ disk_display="off"
 
 # Image Source
 # --image wall, ascii, /path/to/img, /path/to/dir/, off
-image="wall"
+image="$HOME/Pictures/jiu-jitsu_neofetch.png"
 
 # Thumbnail directory
 thumbnail_dir="$HOME/.cache/thumbnails/neofetch"
@@ -315,7 +317,7 @@ image_size="auto"
 
 # Right gap between image and text
 # --gap num
-gap=2
+gap=7
 
 # Image offsets
 # --xoffset px

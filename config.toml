@@ -9,6 +9,7 @@ zshrc = "~/.zshrc"
 xinitrc = "~/.xinitrc"
 nvim = "~/.config/nvim/init.vim"
 compton = "~/.config/compton.conf"
+libfm = "~/.config/libfm/libfm.conf"
 neofetch = "~/.config/neofetch/config"
 
 scripts = "~/Scripts"
