@@ -129,17 +129,9 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)pcmanfm"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
 
-for_window [title="shutdown_menu-DVI-D-1"] floating enable, border none, move absolute position 0 420
-for_window [title="shutdown_menu-DVI-D-2"] floating enable, border none, move absolute position 1680 390
-for_window [title="shutdown_menu-DP-1"] floating enable, border none, move absolute position 3600 30
-
-for_window [title="volume_slider-DVI-D-1"] floating enable, border none, move absolute position 1330 420
-for_window [title="volume_slider-DVI-D-2"] floating enable, border none, move absolute position 3250 390
-for_window [title="volume_slider-DP-1"] floating enable, border none, move absolute position 5810 30
-
-for_window [title="notification_popup-DVI-D-1"] floating enable, border none, move absolute position 1330 420
-for_window [title="notification_popup-DVI-D-2"] floating enable, border none, move absolute position 3250 390
-for_window [title="notification_popup-DP-1"] floating enable, border none, move absolute position 5810 30
+for_window [title="shutdown_menu"] floating enable, border none
+for_window [title="volume_slider"] floating enable, border none
+for_window [title="notification_popup"] floating enable, border none
 
 # ---START STUFF---
 $exec compton --config $HOME/.config/compton.conf -b     # composite manager
@@ -149,6 +141,5 @@ $exec $HOME/Scripts/bar_control                          # start Lemonbar Rust
 
 $exec keepass                                            # password manager
 $exec numlockx                                           # enable numlock
-$exec python2 $HOME/Scripts/leechnot_server.py           # start Notification Server
+#$exec python2 $HOME/Scripts/leechnot_server.py           # start Notification Server
 #$exec $HOME/Scripts/sensor_notifications 75              # start notifications for overheating
-
