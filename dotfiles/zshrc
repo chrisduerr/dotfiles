@@ -81,6 +81,18 @@ export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:*:*:*' menu yes select
 
+# Colorized Manpages
+man() {
+    env \
+        LESS_TERMCAP_md=$'\e[32m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[100;37m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[34m' \
+            man "$@"
+}
+
 
 ######################
 ##### ALIASSTUFF #####
