@@ -9,6 +9,7 @@ highlight_color = "{{color09}}"
 power = "$HOME/Scripts/shutdown_menu"
 volume = "$HOME/Scripts/volume_slider"
 notifications = "$HOME/Scripts/notification_popup"
+switch_focused_workspace = "$HOME/Scripts/switch_focused_workspace"
 
 [general]
 height = 30
