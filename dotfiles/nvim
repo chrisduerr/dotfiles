@@ -8,6 +8,8 @@ call plug#begin("~/.config/nvim/plugins")
     Plug 'UndeadLeech/vim-undead'
     " Fancy Startscreen
     Plug 'mhinz/vim-startify'
+    " Color highlighting
+    Plug 'ap/vim-css-color'
 
 " Programming
     " Auto Completion Engine
