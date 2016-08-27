@@ -12,8 +12,8 @@ call plug#begin("~/.config/nvim/plugins")
 " Programming
     " Auto Completion Engine
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
-    " YCM  configs
-    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+    " Syntax Checking
+    Plug 'scrooloose/syntastic'
     " Rust
     Plug 'rust-lang/rust.vim'
     " Git Diff
@@ -58,6 +58,20 @@ set encoding=utf-8
 
     " YCM
     let g:ycm_rust_src_path = '/usr/src/rust/src'
+
+    " Syntastic
+    let g:syntastic_rust_clippy_post_args = ['--release', '--', '-Dclippy', '-Wclippy_pedantic']
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+
+    " rust.vim
+    let g:rustfmt_autosave = 1
 
     " Startify
     let g:startify_list_order = [
