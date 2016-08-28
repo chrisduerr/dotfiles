@@ -63,7 +63,6 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
-#bindsym $mod+d focus child
 
 $exec $HOME/Scripts/change_workspaces 1
 
