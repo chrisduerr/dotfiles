@@ -14,8 +14,6 @@ set $gray3 {{color15}}
 
 set $default_gaps_inner 20
 set $default_gaps_outer 0
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
 
 workspace_auto_back_and_forth no
 force_display_urgency_hint 0 ms
@@ -24,22 +22,45 @@ focus_on_window_activation urgent
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
 
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
 font pango:{{monofont}} 11, {{iconfont}} 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
 client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
 client.unfocused        $gray1   $gray0      $gray3  $gray1     $gray1
 client.focused_inactive $gray1   $gray0      $gray3  $gray1     $gray1
-client.urgent           $gray1   $gray0      $gray3  $gray1     $gray1
+client.urgent           $red     $gray0      $gray3  $red       $red
 client.background       $gray1
 
+
+### Bindsyms
+# i3 Controls
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Scratchpad
+bindsym $mod+w scratchpad show
+
+# Floating Windows
 floating_modifier $mod
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+s sticky toggle
 
-bindsym $mod+Return $exec termite
+# Tiling Windows
+bindsym $mod+h split h
+bindsym $mod+v split v
 
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+
+# General Window Manipulation
+# bindsym $mod+a focus parent
 bindsym $mod+q kill
 
-bindsym $mod+d $exec rofi -show run
+bindsym $mod+f fullscreen
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -51,19 +72,19 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-bindsym $mod+f fullscreen
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
-bindsym $mod+t layout tabbed
-bindsym $mod+s layout toggle split
-
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-
-bindsym $mod+a focus parent
-
+# Workspaces
 $exec $HOME/Scripts/change_workspaces 1
 
 bindsym $mod+1 $exec $HOME/Scripts/change_workspaces 1
@@ -78,44 +99,29 @@ bindsym $mod+Ctrl+3 $exec $HOME/Scripts/switch_focused_workspace 3
 bindsym $mod+Ctrl+4 $exec $HOME/Scripts/switch_focused_workspace 4
 bindsym $mod+Ctrl+5 $exec $HOME/Scripts/switch_focused_workspace 5
 
-bindsym $mod+Shift+s sticky toggle
-
 bindsym $mod+Shift+1 $exec $HOME/Scripts/move_focused_window 1
 bindsym $mod+Shift+2 $exec $HOME/Scripts/move_focused_window 2
 bindsym $mod+Shift+3 $exec $HOME/Scripts/move_focused_window 3
 bindsym $mod+Shift+4 $exec $HOME/Scripts/move_focused_window 4
 bindsym $mod+Shift+5 $exec $HOME/Scripts/move_focused_window 5
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-
-bindsym $mod+n $exec pcmanfm
-
+# Applications / Tools
 # Bind corsair k70 volume keys
 bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
+
+bindsym $mod+n $exec pcmanfm
 
 # Bind fullscreen screenshot and region screenshoot
 bindsym Print $exec scrot -q 100 '/home/undeadleech/Pictures/tmp.png'
 bindsym --release $mod+Print $exec scrot -s -q 100 '/home/undeadleech/Pictures/tmp.png'
 
-# Bind toggle scratchpad for window
-bindsym $mod+w scratchpad show
+bindsym $mod+Return $exec termite
 
-bindsym $mod+r mode "resize"
-mode "resize" {
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+bindsym $mod+d $exec rofi -show run
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-# Setup Window Borders
-new_window pixel 3
+# Window Presets
+new_window pixel 1
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -132,13 +138,11 @@ for_window [title="shutdown_menu"] floating enable, border none
 for_window [title="volume_slider"] floating enable, border none
 for_window [title="notification_popup"] floating enable, border none
 
-# ---START STUFF---
+# Start Stuff
 $exec compton --config $HOME/.config/compton.conf -b     # composite manager
-$exec nitrogen --restore                                 # set Wallpaper
-
 $exec $HOME/Scripts/bar_control                          # start Lemonbar Rust
-
+$exec nitrogen --restore                                 # set Wallpaper
 $exec keepass                                            # password manager
 $exec numlockx                                           # enable numlock
-#$exec python2 $HOME/Scripts/leechnot_server.py           # start Notification Server
-#$exec $HOME/Scripts/sensor_notifications 75              # start notifications for overheating
+# $exec python2 $HOME/Scripts/leechnot_server.py         # start Notification Server
+# $exec $HOME/Scripts/sensor_notifications 75            # start notifications for overheating
