@@ -136,7 +136,6 @@ for_window [class="(?i)keepass"] move scratchpad
 
 for_window [title="shutdown_menu"] floating enable, border none
 for_window [title="volume_slider"] floating enable, border none
-for_window [title="notification_popup"] floating enable, border none
 
 # Start Stuff
 $exec compton --config $HOME/.config/compton.conf -b     # composite manager
@@ -144,5 +143,3 @@ $exec $HOME/Scripts/bar_control                          # start Lemonbar Rust
 $exec nitrogen --restore                                 # set Wallpaper
 $exec keepass                                            # password manager
 $exec numlockx                                           # enable numlock
-# $exec python2 $HOME/Scripts/leechnot_server.py         # start Notification Server
-# $exec $HOME/Scripts/sensor_notifications 75            # start notifications for overheating

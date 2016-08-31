@@ -13,7 +13,8 @@ shadow-red = 0.05;
 shadow-green = 0.05;
 shadow-blue = 0.05;
 shadow-exclude = [
-    "name = 'Notification'",
+    "name = 'volume_slider'",
+    "name = 'shutdown_menu'",
     "_GTK_FRAME_EXTENS@:c",
     "class_g = 'i3-frame'",
     "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'",

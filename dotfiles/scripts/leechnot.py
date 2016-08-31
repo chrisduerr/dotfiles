@@ -1,1 +1,0 @@
-/home/undeadleech/Programming/Python2/leechnot/leechnot.py
