@@ -87,17 +87,17 @@ mode "resize" {
 # Workspaces
 $exec $HOME/Scripts/change_workspaces 1
 
-bindsym $mod+1 $exec $HOME/Scripts/change_workspaces 1
-bindsym $mod+2 $exec $HOME/Scripts/change_workspaces 2
-bindsym $mod+3 $exec $HOME/Scripts/change_workspaces 3
-bindsym $mod+4 $exec $HOME/Scripts/change_workspaces 4
-bindsym $mod+5 $exec $HOME/Scripts/change_workspaces 5
+bindsym $mod+1 $exec $HOME/Scripts/switch_focused_workspace 1
+bindsym $mod+2 $exec $HOME/Scripts/switch_focused_workspace 2
+bindsym $mod+3 $exec $HOME/Scripts/switch_focused_workspace 3
+bindsym $mod+4 $exec $HOME/Scripts/switch_focused_workspace 4
+bindsym $mod+5 $exec $HOME/Scripts/switch_focused_workspace 5
 
-bindsym $mod+Ctrl+1 $exec $HOME/Scripts/switch_focused_workspace 1
-bindsym $mod+Ctrl+2 $exec $HOME/Scripts/switch_focused_workspace 2
-bindsym $mod+Ctrl+3 $exec $HOME/Scripts/switch_focused_workspace 3
-bindsym $mod+Ctrl+4 $exec $HOME/Scripts/switch_focused_workspace 4
-bindsym $mod+Ctrl+5 $exec $HOME/Scripts/switch_focused_workspace 5
+bindsym $mod+Ctrl+1 $exec $HOME/Scripts/change_workspaces 1
+bindsym $mod+Ctrl+2 $exec $HOME/Scripts/change_workspaces 2
+bindsym $mod+Ctrl+3 $exec $HOME/Scripts/change_workspaces 3
+bindsym $mod+Ctrl+4 $exec $HOME/Scripts/change_workspaces 4
+bindsym $mod+Ctrl+5 $exec $HOME/Scripts/change_workspaces 5
 
 bindsym $mod+Shift+1 $exec $HOME/Scripts/move_focused_window 1
 bindsym $mod+Shift+2 $exec $HOME/Scripts/move_focused_window 2
