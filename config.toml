@@ -2,7 +2,7 @@
 i3 = "~/.config/i3/config"
 xresources = "~/.Xresources"
 termite = "~/.config/termite/config"
-undeadlemon = "~/.config/undeadlemon.toml"
+lemonconfig = "~/.config/undeadlemon/config.toml"
 
 [dotfiles]
 zshrc = "~/.zshrc"
@@ -11,6 +11,7 @@ nvim = "~/.config/nvim/init.vim"
 compton = "~/.config/compton.conf"
 libfm = "~/.config/libfm/libfm.conf"
 neofetch = "~/.config/neofetch/config"
+lemonimgs = "~/.config/undeadlemon/imgs"
 
 scripts = "~/Scripts"
 pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
