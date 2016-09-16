@@ -13,7 +13,7 @@ switch_focused_workspace = "$HOME/Scripts/switch_focused_workspace"
 [general]
 height = 30
 workspace_icons = ""
-power_icons = ""
+power_icon = ""
 font = "{{font}}-12"
 icon_font = "{{iconfont}}-15"
 
