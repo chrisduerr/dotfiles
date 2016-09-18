@@ -19,7 +19,7 @@ oomox-numix-undead = "~/.themes/oomox-numix-undead"
 
 [variables]
 font = "Fira Sans"
-monofont = "Fira Mono"
+monofont = "Iosevka Term"
 iconfont = "FontAwesome"
 color00 = "#121212"
 color01 = "#ac4142"
