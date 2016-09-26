@@ -119,3 +119,6 @@ colorscheme undead
 
 " Set cursor shape
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" Save as sudo
+cnoremap w!! w !sudo tee %
