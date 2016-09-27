@@ -4,6 +4,7 @@ Not all of this is useful for every install but some things just get missed too 
 
 ## Table of Content
 **[1.0 DNSCrypt](#dnscrypt)**
+**[2.0 DHCPCD Static IP](#dhcpcd-static-ip)**
 
 #### DNSCrypt
 Setting up encrypted and authenticated DNS traffic.
@@ -19,4 +20,8 @@ Setting up encrypted and authenticated DNS traffic.
  - Install `dnscrypt-proxy`
  - Open `/usr/lib/systemd/system/dnscrypt-proxy.service` and add your resolver and user
  - Set content of `/etc/resolv.conf` to `nameserver 127.0.0.1`
+ - Add `nohook resolv.conf` to `/etc/dhcpcd.conf`
  - `systemctl enable dnscrypt-proxy.service`
+
+ #### DHCPCD Static IP
+ TODO
