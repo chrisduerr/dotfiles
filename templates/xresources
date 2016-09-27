@@ -4,7 +4,7 @@ rofi.location: 0
 rofi.lines: 20
 rofi.bw: 0
 rofi.font: {{font}} 18
-rofi.padding: 400
+rofi.padding: 345
 rofi.separator-style: none
 rofi.opacity: 95
 rofi.hide-scrollbar: true
