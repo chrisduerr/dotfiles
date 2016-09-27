@@ -7,10 +7,12 @@ Not all of this is useful for every install but some things just get missed too 
 
 #### DNSCrypt
 Setting up encrypted and authenticated DNS traffic.
+
 | Test        | Test                                         |
 |-------------|----------------------------------------------|
 | DNS Servers | https://www.opennicproject.org               |
 | Archwiki    | https://wiki.archlinux.org/index.php/DNSCrypt|
+
 ###### TL;DR (Archlinux):
  - Select a DNS Server that supports DNSCrypt from http://servers.opennicproject.org
  - Select a Resolver from https://github.com/jedisct1/dnscrypt-proxy/blob/master/dnscrypt-resolvers.csv
