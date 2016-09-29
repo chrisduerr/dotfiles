@@ -31,9 +31,6 @@ fade-exclude = [
     "name %= '*-LMNBAR'"
 ];
 
-# Disable for fullscreen
-unredir-if-possible = true;
-
 # Other
 backend = "glx";
 vsync = "opengl-swc";
