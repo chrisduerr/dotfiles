@@ -30,5 +30,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Launch i3-gaps
+# Launch i3-gaps and ssh-agent
+eval $(ssh-agent)
 exec i3

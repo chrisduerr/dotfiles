@@ -7,6 +7,7 @@ lemonconfig = "~/.config/undeadlemon/config.toml"
 [dotfiles]
 zshrc = "~/.zshrc"
 xinitrc = "~/.xinitrc"
+sshconfig = "~/.ssh/config"
 nvim = "~/.config/nvim/init.vim"
 compton = "~/.config/compton.conf"
 libfm = "~/.config/libfm/libfm.conf"

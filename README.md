@@ -20,3 +20,6 @@ Dotfiles for the following software:
 
 Screenshot:
 ![alt tag](http://i.imgur.com/IfOjZUR.png)
+=======
+# bar-helpers
+A few different tools written in Rust used for supplementing lemonbar.
