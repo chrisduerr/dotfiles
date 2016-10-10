@@ -1,6 +1,6 @@
 [colors]
 foreground = {{color15}}
-background = {{termitebg}}
+background = {{color00}}
 
 # Colors Dark -> Light
 # Shades
