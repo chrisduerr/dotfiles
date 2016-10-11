@@ -1,7 +1,7 @@
 # dotfiles
 My Linux config files.
 
-Using dotfiler (https://gitlab.com/undeadleech/dotfiler) to automatically manage dotfiles.
+Using dotfiler (https://gitlab.com/chrisduerr/dotfiler) to automatically manage dotfiles.
 
 Dotfiles for the following software:
  - i3-gaps
