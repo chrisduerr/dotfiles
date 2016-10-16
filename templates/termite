@@ -36,3 +36,7 @@ color14 = {{color14}}
 [options]
 font = {{iconfont}} Regular 12
 font = {{monofont}} Medium 12
+fullscreen = false
+audible_bell = false
+cursor_shape = underline
+scrollback_lines = 100000
