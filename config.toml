@@ -18,6 +18,9 @@ scripts = "~/Scripts"
 pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
 oomox-numix-undead = "~/.themes/oomox-numix-undead"
 
+[sqldbs]
+stylish = "~/.mozilla/firefox/yi22gkil.dev-edition-default/stylish.sqlite"
+
 [variables]
 font = "Fira Sans"
 monofont = "Fira Mono"
