@@ -8,9 +8,6 @@
 export LC_ALL=C
 export LANG=C
 
-# Info Options {{{
-
-
 # Info
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
@@ -203,9 +200,9 @@ block_width=10
 block_height=2
 
 
-# }}}
+#
 
-# Text Colors {{{
+# Text Colors
 
 
 # Text Colors
@@ -216,9 +213,9 @@ block_height=2
 colors=(7 7 7 7 7 15)
 
 
-# }}}
+#
 
-# Text Options {{{
+# Text Options
 
 
 # Toggle line wrapping
@@ -244,9 +241,9 @@ underline_char="="
 prompt_height=1
 
 
-# }}}
+#
 
-# Progress Bars {{{
+# Progress Bars
 
 
 # Progress bar character
@@ -279,9 +276,9 @@ battery_display="off"
 disk_display="off"
 
 
-# }}}
+#
 
-# Image Options {{{
+# Image Options
 
 
 # Image Source
@@ -326,9 +323,9 @@ yoffset=0
 xoffset=0
 
 
-# }}}
+#
 
-# Ascii Options {{{
+# Ascii Options
 
 
 # Default ascii image to use
@@ -353,9 +350,9 @@ ascii_colors=(7 8)
 # --ascii_logo_size small, normal
 ascii_logo_size="normal"
 
-# }}}
+#
 
-# Scrot Options {{{
+# Scrot Options
 
 
 # Whether or not to always take a screenshot
@@ -377,17 +374,17 @@ scrot_dir="$HOME/Pictures/linuxporn/"
 scrot_name="neofetch-$(date +%F-%T).png"
 
 
-# }}}
+#
 
-# Stdout options {{{
+# Stdout options
 
 # Separator for stdout mode
 # --stdout_separator string
 stdout_separator="  "
 
-# }}}
+#
 
-# Config Options {{{
+# Config Options
 
 
 # Enable/Disable config file
@@ -399,4 +396,4 @@ config="on"
 config_file="${XDG_CONFIG_HOME:-${HOME}/.config}/neofetch/config"
 
 
-# }}}
+#
