@@ -19,7 +19,7 @@ Dotfiles for the following software:
  - termite
 
 Screenshot:
-![alt tag](http://i.imgur.com/IfOjZUR.png)
+![alt tag](http://i.imgur.com/8CA77ca.png)
 =======
 # bar-helpers
 A few different tools written in Rust used for supplementing lemonbar.
