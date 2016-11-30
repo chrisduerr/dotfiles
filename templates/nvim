@@ -1,38 +1,102 @@
 " Plugins
-call plug#begin("~/.config/nvim/plugins")
+set runtimepath+=~/.config/nvim/plugins/repos/github.com/Shougo/dein.vim
+call dein#begin("~/.config/nvim/plugins")
+call dein#add('Shougo/dein.vim')
 
 " Appearance
     " Vim-Airline
-    Plug 'vim-airline/vim-airline'
+    call dein#add('vim-airline/vim-airline')
     " Vim-Airline Theme
-    Plug 'UndeadLeech/vim-undead'
+    call dein#add('UndeadLeech/vim-undead')
     " Fancy Startscreen
-    Plug 'mhinz/vim-startify'
+    call dein#add('mhinz/vim-startify')
     " Color highlighting
-    Plug 'ap/vim-css-color'
+    call dein#add('ap/vim-css-color')
 
 " Programming
     " Auto Completion Engine
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
+    call dein#add('Valloric/YouCompleteMe', { 'build': './install.py --racer-completer' })
     " Syntax Checking
-    Plug 'scrooloose/syntastic'
+    call dein#add('scrooloose/syntastic')
     " Rust
-    Plug 'rust-lang/rust.vim'
+    call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
     " Git Diff
-    Plug 'airblade/vim-gitgutter'
+    call dein#add('airblade/vim-gitgutter')
+    " CSS
+	call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
+    " HTML
+    call dein#add('Valloric/MatchTagAlways', {'on_ft': ['css']})
+    " Markdown
+    call dein#add('suan/vim-instant-markdown', {'on_ft': ['markdown']})
+    " Python
+    call dein#add('hdima/python-syntax', {'on_ft': ['python']})
+    " Comment/Uncomment text
+    call dein#add('tpope/vim-commentary')
 
 " Usability
+    " Avoid error saving files with long path
+    call dein#add('pixelastic/vim-undodir-tree')
+    " Automatically toggles relative line numbers
+    call dein#add('jeffkreeftmeijer/vim-numbertoggle')
+    " reopen files at last edit position
+    call dein#add('dietsche/vim-lastplace')
+    " clear search highlight upon cursor move
+    call dein#add('pgdouyon/vim-evanesco')
     " Auto pair brackets
-    Plug 'jiangmiao/auto-pairs'
+    call dein#add('jiangmiao/auto-pairs')
     " Mark Trailing Whitespaces
-    Plug 'ntpeters/vim-better-whitespace'
+    call dein#add('ntpeters/vim-better-whitespace')
+    " Sane defaults for vim
+    call dein#add('tpope/vim-sensible')
 
-cal plug#end()
+call dein#end()
 
-syntax on
 filetype plugin indent on
+syntax enable
+
+" Automagically install dein.vim
+if dein#check_install()
+	call dein#install()
+endif
+
 let mapleader=' '
 set encoding=utf-8
+scriptencoding utf-8
+
+" Case-insensitive pathname tab completion
+set wildignorecase
+
+" Persistent undo
+set undodir=~/.config/nvim/.undo//
+set backupdir=~/.config/nvim/.backup//
+set directory=~/.config/nvim/.swp//
+set undofile
+
+" Better searching
+set ignorecase smartcase incsearch showmatch hlsearch
+nnoremap <C-l> :noh<cr><C-l>
+
+" Show relative line numbers and never let cursor touch top/bottom
+set relativenumber scrolloff=5
+
+" Save root files
+cnoremap w!! w !sudo tee %
+
+" Set cursor shape
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" Set colorscheme
+colorscheme undead
+
+" Indentation
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
+
+" Max line length indicator
+set wrap display=lastline colorcolumn=100
+
+" Language-specific
+au FileType css  set ts=2 sw=2 sts=2
+au FileType html set ts=2 sw=2 sts=2
 
 " Plugin Configs
     " Vim-Airline
@@ -60,6 +124,7 @@ set encoding=utf-8
 
     " YCM
     let g:ycm_rust_src_path = '/usr/src/rust/src'
+	let g:ycm_server_python_interpreter = '/usr/bin/python'
 
     " Syntastic
     let g:syntastic_rust_clippy_post_args = ['--release', '--', '-Dclippy', '-Wclippy_pedantic']
@@ -101,24 +166,3 @@ set encoding=utf-8
         \ '                             .                      .             +',
         \ '           .     +              .'
         \ ]
-
-" Remaps
-    " Clear search
-    nnoremap <C-l> :noh<cr><C-l>
-    " Sudo write
-    cnoremap w!! w !sudo tee %
-
-" indentation
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
-
-" Whatever
-set relativenumber scrolloff=5
-
-" Set colorscheme
-colorscheme undead
-
-" Set cursor shape
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-" Save as sudo
-cnoremap w!! w !sudo tee %

@@ -52,9 +52,6 @@ POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="007"
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
 
-# Plugins
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
@@ -100,6 +97,6 @@ man() {
 
 alias sudo="sudo "
 alias sshul="ssh -p 6666 undeadleech@undeadleech.com"
-alias leechnot="python2 ~/Scripts/leechnot.py"
-alias sct='systemctl'
+alias sct="systemctl"
 alias vim="nvim"
+alias gp="git push origin master && git push github master"
