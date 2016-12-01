@@ -100,3 +100,8 @@ alias sshul="ssh -p 6666 undeadleech@undeadleech.com"
 alias sct="systemctl"
 alias vim="nvim"
 alias gp="git push origin master && git push github master"
+
+# Syntaxc highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Automatic suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
