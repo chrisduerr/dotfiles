@@ -15,8 +15,6 @@ pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
 scripts = "~/Scripts"
 lemonimgs = "~/.config/undeadlemon/imgs"
 
-test = "~/test"
-
 [sqldbs]
 stylish = "~/.mozilla/firefox/yi22gkil.dev-edition-default/stylish.sqlite"
 
