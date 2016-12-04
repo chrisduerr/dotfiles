@@ -121,7 +121,7 @@ bindsym $mod+Return $exec termite
 bindsym $mod+d $exec rofi -show run
 
 # Window Presets
-new_window pixel 1
+new_window pixel 3
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable

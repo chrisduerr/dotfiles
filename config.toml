@@ -14,7 +14,7 @@ pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
 
 scripts = "~/Scripts"
 lemonimgs = "~/.config/undeadlemon/imgs"
-oomox-numix-undead = "~/.themes/oomox-numix-undead"
+arc-undead = "~/.themes/Arc-Undead"
 
 test = "~/test"
 
