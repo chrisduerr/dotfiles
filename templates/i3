@@ -140,6 +140,6 @@ for_window [title="volume_slider"] floating enable, border none
 # Start Stuff
 $exec compton --config $HOME/.config/compton.conf -b    # composite manager
 $exec $HOME/Scripts/bar_control                         # start Lemonbar Rust
-$exec nitrogen --restore                                # set Wallpaper
+$exec $HOME/.fehbg                                      # set Wallpaper
 $exec keepass                                           # password manager
 $exec numlockx                                          # enable numlock
