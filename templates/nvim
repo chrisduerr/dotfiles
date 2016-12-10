@@ -15,11 +15,12 @@ call dein#add('Shougo/dein.vim')
 
 " Programming
     " Auto Completion Engine
-    call dein#add('Valloric/YouCompleteMe', { 'build': './install.py --racer-completer' })
+    call dein#add('Shougo/deoplete.nvim')
     " Syntax Checking
     call dein#add('scrooloose/syntastic')
     " Rust
     call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
+    call dein#add('racer-rust/vim-racer')
     " Git Diff
     call dein#add('airblade/vim-gitgutter')
     " CSS
@@ -32,6 +33,9 @@ call dein#add('Shougo/dein.vim')
     call dein#add('hdima/python-syntax', {'on_ft': ['python']})
     " Comment/Uncomment text
     call dein#add('tpope/vim-commentary')
+    " Snippets
+    call dein#add('Shougo/neosnippet')
+    call dein#add('Shougo/neosnippet-snippets')
 
 " Usability
     " Avoid error saving files with long path
@@ -48,15 +52,17 @@ call dein#add('Shougo/dein.vim')
     call dein#add('ntpeters/vim-better-whitespace')
     " Sane defaults for vim
     call dein#add('tpope/vim-sensible')
+    " Autocompletion with tab
+    call dein#add('ervandew/supertab')
 
 call dein#end()
 
 filetype plugin indent on
 syntax enable
 
-" Automagically install dein.vim
+" Automagically install new dein.vim plugins
 if dein#check_install()
-	call dein#install()
+    call dein#install()
 endif
 
 let mapleader=' '
@@ -94,6 +100,9 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
 " Max line length indicator
 set wrap display=lastline colorcolumn=100
 
+" Don't abandon buffers
+set hidden
+
 " Language-specific
 au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
@@ -122,10 +131,6 @@ au FileType html set ts=2 sw=2 sts=2
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
 
-    " YCM
-    let g:ycm_rust_src_path = '/usr/src/rust/src'
-    let g:ycm_server_python_interpreter = '/usr/bin/python'
-
     " Syntastic
     let g:syntastic_rust_clippy_post_args = ['--release', '--', '-Dclippy', '-Wclippy_pedantic']
     set statusline+=%#warningmsg#
@@ -139,6 +144,26 @@ au FileType html set ts=2 sw=2 sts=2
 
     " rust.vim
     let g:rustfmt_autosave = 1
+
+    " vim-racer
+    let g:racer_experiomental_completer = 1
+
+    " deoplete
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_smart_case = 1
+
+    " SuperTab
+    let g:SuperTabDefaultCompletionType = "<c-n>"
+
+    " Neosnippet
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " For conceal markers.
+    if has('conceal')
+      set conceallevel=2 concealcursor=niv
+    endif
 
     " Startify
     let g:startify_list_order = [
