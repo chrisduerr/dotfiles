@@ -23,7 +23,7 @@ call dein#add('Shougo/dein.vim')
     " Git Diff
     call dein#add('airblade/vim-gitgutter')
     " CSS
-	call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
+    call dein#add('hail2u/vim-css3-syntax', {'on_ft': ['css']})
     " HTML
     call dein#add('Valloric/MatchTagAlways', {'on_ft': ['css']})
     " Markdown
