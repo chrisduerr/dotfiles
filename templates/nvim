@@ -124,7 +124,7 @@ au FileType html set ts=2 sw=2 sts=2
 
     " YCM
     let g:ycm_rust_src_path = '/usr/src/rust/src'
-	let g:ycm_server_python_interpreter = '/usr/bin/python'
+    let g:ycm_server_python_interpreter = '/usr/bin/python'
 
     " Syntastic
     let g:syntastic_rust_clippy_post_args = ['--release', '--', '-Dclippy', '-Wclippy_pedantic']
