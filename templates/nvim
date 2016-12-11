@@ -82,7 +82,7 @@ set undofile
 
 " Better searching
 set ignorecase smartcase incsearch showmatch hlsearch
-nnoremap <C-l> :noh<cr><C-l>
+nnoremap <C-l> :noh<CR><C-l>
 
 " Show relative line numbers and never let cursor touch top/bottom
 set relativenumber scrolloff=5
@@ -108,6 +108,7 @@ set hidden
 " Language-specific
 au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
+au FileType rust nnoremap <C-b> :w<CR>:Neomake! cargo<CR>
 
 " Plugin Configs
     " Vim-Airline
