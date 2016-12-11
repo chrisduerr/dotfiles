@@ -16,8 +16,6 @@ call dein#add('Shougo/dein.vim')
 " Programming
     " Auto Completion Engine
     call dein#add('Shougo/deoplete.nvim')
-    " Syntax Checking
-    call dein#add('scrooloose/syntastic')
     " Rust
     call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
     call dein#add('racer-rust/vim-racer')
@@ -36,6 +34,8 @@ call dein#add('Shougo/dein.vim')
     " Snippets
     call dein#add('Shougo/neosnippet')
     call dein#add('Shougo/neosnippet-snippets')
+    " Project Builder
+    call dein#add('neomake/neomake')
 
 " Usability
     " Avoid error saving files with long path
@@ -132,17 +132,6 @@ au FileType html set ts=2 sw=2 sts=2
 
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
-
-    " Syntastic
-    let g:syntastic_rust_clippy_post_args = ['--release', '--', '-Dclippy', '-Wclippy_pedantic']
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
 
     " rust.vim
     let g:rustfmt_autosave = 1
