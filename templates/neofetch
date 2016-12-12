@@ -193,11 +193,11 @@ color_blocks="on"
 
 # Color block width
 # --color_block_width num
-block_width=10
+block_width=4
 
 # Color block height
 # --block_height num
-block_height=2
+block_height=1
 
 
 #
