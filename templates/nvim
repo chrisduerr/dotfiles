@@ -52,8 +52,6 @@ call dein#add('Shougo/dein.vim')
     call dein#add('ntpeters/vim-better-whitespace')
     " Sane defaults for vim
     call dein#add('tpope/vim-sensible')
-    " Autocompletion with tab
-    call dein#add('ervandew/supertab')
     " NERD Tree Filebrowser
     call dein#add('scrooloose/nerdtree')
 
@@ -82,7 +80,7 @@ set undofile
 
 " Better searching
 set ignorecase smartcase incsearch showmatch hlsearch
-nnoremap <C-l> :noh<CR><C-l>
+nnoremap <C-L> :noh<CR><C-L>
 
 " Show relative line numbers and never let cursor touch top/bottom
 set relativenumber scrolloff=5
@@ -110,6 +108,24 @@ au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
 au FileType rust nnoremap <C-b> :w<CR>:Neomake! cargo<CR>
 
+" Setup TAB to work for neosnippet and deoplete
+function! TabKeyFunc() abort
+    if neosnippet#expandable_or_jumpable()
+        return "\<Plug>(neosnippet_expand_or_jump)"
+    elseif pumvisible()
+        return "\<C-N>"
+    else
+        return "\<TAB>"
+    endif
+endfunction
+imap <expr><TAB> TabKeyFunc()
+
+" Use tab for indenting
+xnoremap <TAB> >gv|
+xnoremap <S-TAB> <gv
+nnoremap <TAB> >>_
+nnoremap <S-TAB> <<_
+
 " Plugin Configs
     " Vim-Airline
     function! AirlineInit()
@@ -134,25 +150,17 @@ au FileType rust nnoremap <C-b> :w<CR>:Neomake! cargo<CR>
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
 
-    " rust.vim
+    " Rust.vim
     let g:rustfmt_autosave = 1
 
-    " vim-racer
+    " Vim-racer
     let g:racer_experiomental_completer = 1
 
-    " deoplete
+    " Deoplete
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
 
-    " SuperTab
-    let g:SuperTabDefaultCompletionType = "<c-n>"
-
     " Neosnippet
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-    " For conceal markers.
     if has('conceal')
       set conceallevel=2 concealcursor=niv
     endif
