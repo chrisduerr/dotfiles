@@ -97,9 +97,6 @@ colorscheme undead
 " Indentation
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
 
-" Max line length indicator
-set wrap display=lastline colorcolumn=100
-
 " Don't abandon buffers
 set hidden
 
