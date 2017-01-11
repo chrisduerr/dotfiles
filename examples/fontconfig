@@ -13,9 +13,6 @@
 49-sansserif.conf
 50-user.conf
 51-local.conf
-57-dejavu-sans-mono.conf
-57-dejavu-sans.conf
-57-dejavu-serif.conf
 60-latin.conf
 65-fonts-persian.conf
 65-nonlatin.conf
@@ -23,3 +20,6 @@
 70-no-bitmaps.conf
 80-delicious.conf
 90-synthetic.conf
+
+Good read about fontconfig:
+https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671
