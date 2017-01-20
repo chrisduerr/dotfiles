@@ -85,6 +85,10 @@ nnoremap <C-L> :noh<CR><C-L>
 " Show relative line numbers and never let cursor touch top/bottom
 set relativenumber scrolloff=5
 
+" Buffer navigation
+nnoremap <C-RIGHT> :bn<cr>
+nnoremap <C-LEFT> :bp<cr>
+
 " Save root files
 cnoremap w!! w !sudo tee %
 
