@@ -54,6 +54,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('tpope/vim-sensible')
     " NERD Tree Filebrowser
     call dein#add('scrooloose/nerdtree')
+    " Display open buffers
+    call dein#add('bling/vim-bufferline')
 
 call dein#end()
 
@@ -86,8 +88,8 @@ nnoremap <C-L> :noh<CR><C-L>
 set relativenumber scrolloff=5
 
 " Buffer navigation
-nnoremap <C-RIGHT> :bn<cr>
-nnoremap <C-LEFT> :bp<cr>
+nnoremap <C-RIGHT> :bn<CR>
+nnoremap <C-LEFT> :bp<CR>
 
 " Save root files
 cnoremap w!! w !sudo tee %
@@ -148,6 +150,8 @@ nnoremap <S-TAB> <<_
     let g:airline_right_sep = ''
     let g:airline_right_alt_sep = ''
 
+    let g:airline#extensions#bufferline#overwrite_variables = 0
+
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
 
@@ -165,6 +169,13 @@ nnoremap <S-TAB> <<_
     if has('conceal')
       set conceallevel=2 concealcursor=niv
     endif
+
+    " Bufferline
+    let g:bufferline_show_bufnr = 0
+    let g:bufferline_active_buffer_left = ''
+    let g:bufferline_active_buffer_right = ''
+    let g:bufferline_active_highlight = 'BufferLineSel'
+    let g:bufferline_inactive_highlight = 'BufferLine'
 
     " NERDTree
     let g:NERDTreeDirArrowExpandable = ''
