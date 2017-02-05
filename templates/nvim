@@ -56,6 +56,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('scrooloose/nerdtree')
     " Display open buffers
     call dein#add('bling/vim-bufferline')
+    " Easier navigation
+    call dein#add('easymotion/vim-easymotion')
 
 call dein#end()
 
@@ -180,6 +182,10 @@ nnoremap <S-TAB> <<_
     " NERDTree
     let g:NERDTreeDirArrowExpandable = ''
     let g:NERDTreeDirArrowCollapsible = ''
+
+    " EasyMotion
+    " Mapping to <Leader> might result in issues
+    map <Leader> <Plug>(easymotion-prefix)
 
     " Startify
     let g:startify_list_order = [
