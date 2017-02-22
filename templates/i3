@@ -28,9 +28,9 @@ gaps outer $default_gaps_outer
 font pango:{{monofont}} 11, {{iconfont}} 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
-client.focused          $gray1   $gray0      $gray3  $gray1     $gray1
-client.unfocused        $gray1   $gray0      $gray3  $gray1     $gray1
-client.focused_inactive $gray1   $gray0      $gray3  $gray1     $gray1
+client.focused          $gray1   $gray0      $gray3  $gray0     $gray0
+client.unfocused        $gray1   $gray0      $gray3  $gray0     $gray0
+client.focused_inactive $gray1   $gray0      $gray3  $gray0     $gray0
 client.urgent           $red     $gray0      $gray3  $red       $red
 client.background       $gray1
 
@@ -121,7 +121,7 @@ bindsym $mod+Return $exec termite
 bindsym $mod+d $exec rofi -show run
 
 # Window Presets
-new_window pixel 3
+new_window none
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -133,9 +133,10 @@ for_window [window_type="menu"] floating enable
 
 for_window [class="(?i)pcmanfm"] floating enable
 for_window [class="(?i)keepass"] move scratchpad
+for_window [class="(?i)termite"] border pixel 10
 
-for_window [title="shutdown_menu"] floating enable, border none
-for_window [title="volume_slider"] floating enable, border none
+for_window [title="shutdown_menu"] floating enable
+for_window [title="volume_slider"] floating enable
 
 # Start Stuff
 $exec compton --config $HOME/.config/compton.conf -b    # composite manager
