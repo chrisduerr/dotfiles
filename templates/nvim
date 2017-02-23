@@ -136,8 +136,6 @@ nnoremap <S-TAB> <<_
     function! AirlineInit()
         let g:airline_section_z = airline#section#create(['%l/%L %c'])
         let g:airline_section_b = airline#section#create(['branch'])
-        " Disable for now to remove annoying orange blob at the end 24/7
-        let g:airline_section_warning = ''
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
     let g:airline_theme = 'undead'
