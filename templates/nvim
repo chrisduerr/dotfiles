@@ -94,7 +94,7 @@ nnoremap <C-RIGHT> :bn<CR>
 nnoremap <C-LEFT> :bp<CR>
 
 " Save root files
-cnoremap w!! w !sudo tee %
+cnoremap w!! w !sudo tee % > /dev/null
 
 " Set cursor shape
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
