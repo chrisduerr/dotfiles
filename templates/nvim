@@ -52,8 +52,6 @@ call dein#add('Shougo/dein.vim')
     call dein#add('ntpeters/vim-better-whitespace')
     " Sane defaults for vim
     call dein#add('tpope/vim-sensible')
-    " NERD Tree Filebrowser
-    call dein#add('scrooloose/nerdtree')
     " Display open buffers
     call dein#add('bling/vim-bufferline')
     " Easier navigation
@@ -176,10 +174,6 @@ nnoremap <S-TAB> <<_
     let g:bufferline_active_buffer_right = ''
     let g:bufferline_active_highlight = 'BufferLineSel'
     let g:bufferline_inactive_highlight = 'BufferLine'
-
-    " NERDTree
-    let g:NERDTreeDirArrowExpandable = ''
-    let g:NERDTreeDirArrowCollapsible = ''
 
     " EasyMotion
     " Mapping to <Leader> might result in issues
