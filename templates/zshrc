@@ -73,7 +73,8 @@ export VISUAL="nvim"
 
 # Rust stuff
 export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/home/undeadleech/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
+export RLS_ROOT=$HOME/.cargo/rls/target/release/rls
+export LD_LIBRARY_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
 
 # Set histfile
 export HISTFILE=$HOME/.zsh_history
