@@ -157,7 +157,7 @@ nnoremap <S-TAB> <<_
     let g:rustfmt_autosave = 1
 
     " Vim-racer
-    let g:racer_experiomental_completer = 1
+    let g:racer_experimental_completer = 1
 
     " Deoplete
     let g:deoplete#enable_at_startup = 1
