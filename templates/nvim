@@ -14,8 +14,6 @@ call dein#add('Shougo/dein.vim')
     call dein#add('ap/vim-css-color')
 
 " Programming
-    " Auto Completion Engine
-    call dein#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
     " Rust
     call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
     call dein#add('racer-rust/vim-racer')
@@ -39,6 +37,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('neomake/neomake')
     " Display Function Signatures
     call dein#add('junegunn/fzf')
+    " Auto Completion Engine
+    call dein#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
 
 " Usability
     " Avoid error saving files with long path
@@ -173,7 +173,7 @@ nnoremap <S-TAB> <<_
 
     " LanguageClient
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/opt/rls/Cargo.toml'],
+    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/undeadleech/.cargo/rls/Cargo.toml'],
     \ }
 
     " Bufferline
