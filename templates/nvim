@@ -15,10 +15,11 @@ call dein#add('Shougo/dein.vim')
 
 " Programming
     " Auto Completion Engine
-    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
     " Rust
     call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
     call dein#add('racer-rust/vim-racer')
+    call dein#add('autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'})
     " Git Diff
     call dein#add('airblade/vim-gitgutter')
     " CSS
@@ -36,6 +37,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('Shougo/neosnippet-snippets')
     " Project Builder
     call dein#add('neomake/neomake')
+    " Display Function Signatures
+    call dein#add('junegunn/fzf')
 
 " Usability
     " Avoid error saving files with long path
@@ -167,6 +170,11 @@ nnoremap <S-TAB> <<_
     if has('conceal')
       set conceallevel=2 concealcursor=niv
     endif
+
+    " LanguageClient
+    let g:LanguageClient_serverCommands = {
+    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/opt/rls/Cargo.toml'],
+    \ }
 
     " Bufferline
     let g:bufferline_show_bufnr = 0
