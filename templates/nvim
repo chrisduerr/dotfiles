@@ -33,10 +33,8 @@ call dein#add('Shougo/dein.vim')
     " Snippets
     call dein#add('Shougo/neosnippet')
     call dein#add('Shougo/neosnippet-snippets')
-    " Project Builder
-    call dein#add('neomake/neomake')
     " Display Function Signatures
-    call dein#add('junegunn/fzf')
+    call dein#add('Shougo/echodoc.vim')
     " Auto Completion Engine
     call dein#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
 
@@ -59,6 +57,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('bling/vim-bufferline')
     " Easier navigation
     call dein#add('easymotion/vim-easymotion')
+    " Fuzzy Finder And Stuff
+    call dein#add('Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'})
 
 call dein#end()
 
@@ -106,13 +106,16 @@ colorscheme undead
 " Indentation
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
 
+" Hide -- INSERT -- in cmdline
+set noshowmode
+
 " Don't abandon buffers
 set hidden
 
 " Language-specific
 au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
-au FileType rust nnoremap <C-b> :w<CR>:Neomake! cargo<CR>
+au FileType rust :LanguageClientStart
 
 " Setup TAB to work for neosnippet and deoplete
 function! TabKeyFunc() abort
@@ -125,6 +128,9 @@ function! TabKeyFunc() abort
     endif
 endfunction
 imap <expr><TAB> TabKeyFunc()
+
+" Hide 'match 1 of 8' messages
+set shortmess=filnxtToOIc
 
 " Use tab for indenting
 xnoremap <TAB> >gv|
@@ -156,6 +162,9 @@ nnoremap <S-TAB> <<_
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
 
+    " Echodoc
+    let g:echodoc_enable_at_startup = 1
+
     " Rust.vim
     let g:rustfmt_autosave = 1
 
@@ -171,7 +180,23 @@ nnoremap <S-TAB> <<_
       set conceallevel=2 concealcursor=niv
     endif
 
+    " Denite
+    call denite#custom#map('insert', '<Down>',
+                         \ '<denite:move_to_next_line>', 'noremap')
+    call denite#custom#map('insert', '<Up>',
+                         \ '<denite:move_to_previous_line>', 'noremap')
+    call denite#custom#option('default', 'prompt', '')
+    call denite#custom#option('default', 'auto_resize', 'true')
+    call denite#custom#option('default', 'statusline', 0)
+    call denite#custom#option('default', 'highlight_matched_char', 'IncSearch')
+    call denite#custom#option('default', 'highlight_matched_range', 'Normal')
+    call denite#custom#option('default', 'highlight_mode_insert', 'NormalBold')
+
     " LanguageClient
+    nnoremap <silent> <Leader><C-d> :Denite references<CR>
+    nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
+    nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/undeadleech/.cargo/rls/Cargo.toml'],
     \ }

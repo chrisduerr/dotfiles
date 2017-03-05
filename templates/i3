@@ -110,8 +110,6 @@ bindsym $mod+Shift+5 $exec $HOME/Scripts/move_focused_window 5
 bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
 
-bindsym $mod+n $exec pcmanfm
-
 # Bind fullscreen screenshot and region screenshoot
 bindsym Print $exec maim '/home/undeadleech/Pictures/tmp.png'
 bindsym --release $mod+Print $exec maim -s -b 1 '/home/undeadleech/Pictures/tmp.png'
