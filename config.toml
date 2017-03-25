@@ -1,22 +1,17 @@
-[templates]
-zshrc = "~/.zshrc"
-xinitrc = "~/.xinitrc"
-i3 = "~/.config/i3/config"
-sshconfig = "~/.ssh/config"
-xresources = "~/.Xresources"
-nvim = "~/.config/nvim/init.vim"
-compton = "~/.config/compton.conf"
-termite = "~/.config/termite/config"
-libfm = "~/.config/libfm/libfm.conf"
-neofetch = "~/.config/neofetch/config"
-lemonconfig = "~/.config/undeadlemon/config.toml"
-pcmanfm = "~/.config/pcmanfm/default/pcmanfm.conf"
-
-scripts = "~/Scripts"
-lemonimgs = "~/.config/undeadlemon/imgs"
-
-[sqldbs]
-stylish = "~/.mozilla/firefox/yi22gkil.dev-edition-default/stylish.sqlite"
+dotfiles = [
+    { template = "zshrc", target = "~/.zshrc" },
+    { template = "xinitrc", target = "~/.xinitrc" },
+    { template = "i3", target = "~/.config/i3/config" },
+    { template = "ssh", target = "~/.ssh/config" },
+    { template = "Xresources", target = "~/.Xresources" },
+    { template = "n.vim", target = "~/.config/nvim/init.vim" },
+    { template = "compton", target = "~/.config/compton.conf" },
+    { template = "termite", target = "~/.config/termite/config" },
+    { template = "lemonconfig", target = "~/.config/undeadlemon/config.toml" },
+    { template = "Scripts", target = "~/Scripts" },
+    { template = "lemonimgs", target = "~/.config/undeadlemon/imgs" },
+    { template = "stylish", target = "~/.mozilla/firefox/yi22gkil.dev-edition-default/stylish.sqlite" }
+]
 
 [variables]
 font = "Fira Sans"

@@ -1,0 +1,143 @@
+# vim:filetype=i3
+# i3 config file
+# Inspired by: https://github.com/Airblader/dotfiles-manjaro/blob/master/.i3/config
+set $mod Mod4
+
+set $exec exec --no-startup-id
+
+set $red #702020
+set $yellow #f4bf75
+set $gray0 #1b1b1b
+set $gray1 #262626
+set $gray2 #616161
+set $gray3 #9e9e9e
+
+set $default_gaps_inner 20
+set $default_gaps_outer 0
+
+workspace_auto_back_and_forth no
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+
+floating_minimum_size -1 x -1
+floating_maximum_size -1 x -1
+
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+font pango:Fira Mono 11, FontAwesome 11
+
+#                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
+client.focused          $gray1   $gray0      $gray3  $gray0     $gray0
+client.unfocused        $gray1   $gray0      $gray3  $gray0     $gray0
+client.focused_inactive $gray1   $gray0      $gray3  $gray0     $gray0
+client.urgent           $red     $gray0      $gray3  $red       $red
+client.background       $gray1
+
+
+### Bindsyms
+# i3 Controls
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Scratchpad
+bindsym $mod+w scratchpad show
+
+# Floating Windows
+floating_modifier $mod
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+s sticky toggle
+
+# Tiling Windows
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout toggle split
+
+# General Window Manipulation
+# bindsym $mod+a focus parent
+bindsym $mod+q kill
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Workspaces
+$exec $HOME/Scripts/change_workspaces 1
+
+bindsym $mod+1 $exec $HOME/Scripts/switch_focused_workspace 1
+bindsym $mod+2 $exec $HOME/Scripts/switch_focused_workspace 2
+bindsym $mod+3 $exec $HOME/Scripts/switch_focused_workspace 3
+bindsym $mod+4 $exec $HOME/Scripts/switch_focused_workspace 4
+bindsym $mod+5 $exec $HOME/Scripts/switch_focused_workspace 5
+
+bindsym $mod+Ctrl+1 $exec $HOME/Scripts/change_workspaces 1
+bindsym $mod+Ctrl+2 $exec $HOME/Scripts/change_workspaces 2
+bindsym $mod+Ctrl+3 $exec $HOME/Scripts/change_workspaces 3
+bindsym $mod+Ctrl+4 $exec $HOME/Scripts/change_workspaces 4
+bindsym $mod+Ctrl+5 $exec $HOME/Scripts/change_workspaces 5
+
+bindsym $mod+Shift+1 $exec $HOME/Scripts/move_focused_window 1
+bindsym $mod+Shift+2 $exec $HOME/Scripts/move_focused_window 2
+bindsym $mod+Shift+3 $exec $HOME/Scripts/move_focused_window 3
+bindsym $mod+Shift+4 $exec $HOME/Scripts/move_focused_window 4
+bindsym $mod+Shift+5 $exec $HOME/Scripts/move_focused_window 5
+
+# Applications / Tools
+# Bind corsair k70 volume keys
+bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
+bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
+
+# Bind fullscreen screenshot and region screenshoot
+bindsym Print $exec maim '/home/undeadleech/Pictures/tmp.png'
+bindsym --release $mod+Print $exec maim -s -b 1 '/home/undeadleech/Pictures/tmp.png'
+
+bindsym $mod+Return $exec termite
+
+bindsym $mod+d $exec rofi -show run
+
+# Window Presets
+new_window none
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="(?i)pcmanfm"] floating enable
+for_window [class="(?i)keepass"] move scratchpad
+for_window [class="(?i)termite"] border pixel 10
+
+for_window [title="shutdown_menu"] floating enable
+for_window [title="volume_slider"] floating enable
+
+# Start Stuff
+$exec compton --config $HOME/.config/compton.conf -b    # composite manager
+$exec $HOME/Scripts/bar_control                         # start Lemonbar Rust
+$exec $HOME/.fehbg                                      # set Wallpaper
+$exec keepass                                           # password manager

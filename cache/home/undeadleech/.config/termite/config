@@ -1,0 +1,68 @@
+[colors]
+foreground = #9e9e9e
+background = #1b1b1b
+
+# Colors Dark -> Light
+# Shades
+color0  = #1b1b1b
+color8  = #262626
+color7  = #616161
+color15 = #9e9e9e
+
+# Reds
+color1  = #ac4142
+color9  = #702020
+
+# Greens
+color2  = #90a959
+color10 = #1b5e20
+
+# Yellows
+color3  = #f4bf75
+color11 = #f9a825
+
+# Blues
+color4  = #6a9fb5
+color12 = #0d47a1
+
+# Purples
+color5  = #aa759f
+color13 = #a4148c
+
+# Cyans
+color6  = #75b5aa
+color14 = #006064
+
+# Grays
+color232 = #121212
+color233 = #1b1b1b
+color234 = #262626
+color235 = #303030
+color236 = #3a3a3a
+color237 = #444444
+color238 = #4c4c4c
+color239 = #565656
+color240 = #616161
+color241 = #6a6a6a
+color242 = #747474
+color243 = #7e7e7e
+color244 = #888888
+color245 = #929292
+color246 = #9e9e9e
+color247 = #a6a6a6
+color248 = #b0b0b0
+color249 = #bababa
+color250 = #c4c4c4
+color251 = #cecece
+color252 = #d8d8d8
+color253 = #e2e2e2
+color254 = #ececec
+color255 = #f6f6f6
+
+[options]
+font = FontAwesome Regular 12
+font = Fira Mono Medium 12
+fullscreen = false
+audible_bell = false
+cursor_shape = underline
+scrollback_lines = 100000

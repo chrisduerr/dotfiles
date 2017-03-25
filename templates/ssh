@@ -1,0 +1,2 @@
+# Automatically add ssh keys to ssh-agent
+AddKeysToAgent yes

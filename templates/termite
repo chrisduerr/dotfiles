@@ -1,67 +1,67 @@
 [colors]
-foreground = {{color15}}
-background = {{color00}}
+foreground = {{ color15 }}
+background = {{ color00 }}
 
 # Colors Dark -> Light
 # Shades
-color0  = {{color00}}
-color8  = {{color08}}
-color7  = {{color07}}
-color15 = {{color15}}
+color0  = {{ color00 }}
+color8  = {{ color08 }}
+color7  = {{ color07 }}
+color15 = {{ color15 }}
 
 # Reds
-color1  = {{color01}}
-color9  = {{color09}}
+color1  = {{ color01 }}
+color9  = {{ color09 }}
 
 # Greens
-color2  = {{color02}}
-color10 = {{color10}}
+color2  = {{ color02 }}
+color10 = {{ color10 }}
 
 # Yellows
-color3  = {{color03}}
-color11 = {{color11}}
+color3  = {{ color03 }}
+color11 = {{ color11 }}
 
 # Blues
-color4  = {{color04}}
-color12 = {{color12}}
+color4  = {{ color04 }}
+color12 = {{ color12 }}
 
 # Purples
-color5  = {{color05}}
-color13 = {{color13}}
+color5  = {{ color05 }}
+color13 = {{ color13 }}
 
 # Cyans
-color6  = {{color06}}
-color14 = {{color14}}
+color6  = {{ color06 }}
+color14 = {{ color14 }}
 
 # Grays
-color232 = {{color232}}
-color233 = {{color00}}
-color234 = {{color08}}
-color235 = {{color235}}
-color236 = {{color236}}
-color237 = {{color237}}
-color238 = {{color238}}
-color239 = {{color239}}
-color240 = {{color07}}
-color241 = {{color241}}
-color242 = {{color242}}
-color243 = {{color243}}
-color244 = {{color244}}
-color245 = {{color245}}
-color246 = {{color15}}
-color247 = {{color247}}
-color248 = {{color248}}
-color249 = {{color249}}
-color250 = {{color250}}
-color251 = {{color251}}
-color252 = {{color252}}
-color253 = {{color253}}
-color254 = {{color254}}
-color255 = {{color255}}
+color232 = {{ color232 }}
+color233 = {{ color00 }}
+color234 = {{ color08 }}
+color235 = {{ color235 }}
+color236 = {{ color236 }}
+color237 = {{ color237 }}
+color238 = {{ color238 }}
+color239 = {{ color239 }}
+color240 = {{ color07 }}
+color241 = {{ color241 }}
+color242 = {{ color242 }}
+color243 = {{ color243 }}
+color244 = {{ color244 }}
+color245 = {{ color245 }}
+color246 = {{ color15 }}
+color247 = {{ color247 }}
+color248 = {{ color248 }}
+color249 = {{ color249 }}
+color250 = {{ color250 }}
+color251 = {{ color251 }}
+color252 = {{ color252 }}
+color253 = {{ color253 }}
+color254 = {{ color254 }}
+color255 = {{ color255 }}
 
 [options]
-font = {{iconfont}} Regular 12
-font = {{monofont}} Medium 12
+font = {{ iconfont }} Regular 12
+font = {{ monofont }} Medium 12
 fullscreen = false
 audible_bell = false
 cursor_shape = underline

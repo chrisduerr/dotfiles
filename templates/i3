@@ -5,12 +5,12 @@ set $mod Mod4
 
 set $exec exec --no-startup-id
 
-set $red {{color09}}
-set $yellow {{color03}}
-set $gray0 {{color00}}
-set $gray1 {{color08}}
-set $gray2 {{color07}}
-set $gray3 {{color15}}
+set $red {{ color09 }}
+set $yellow {{ color03 }}
+set $gray0 {{ color00 }}
+set $gray1 {{ color08 }}
+set $gray2 {{ color07 }}
+set $gray3 {{ color15 }}
 
 set $default_gaps_inner 20
 set $default_gaps_outer 0
@@ -25,7 +25,7 @@ floating_maximum_size -1 x -1
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
-font pango:{{monofont}} 11, {{iconfont}} 11
+font pango:{{ monofont }} 11, {{ iconfont }} 11
 
 #                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
 client.focused          $gray1   $gray0      $gray3  $gray0     $gray0
@@ -141,4 +141,3 @@ $exec compton --config $HOME/.config/compton.conf -b    # composite manager
 $exec $HOME/Scripts/bar_control                         # start Lemonbar Rust
 $exec $HOME/.fehbg                                      # set Wallpaper
 $exec keepass                                           # password manager
-$exec numlockx                                          # enable numlock
