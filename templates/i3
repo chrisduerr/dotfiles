@@ -111,8 +111,8 @@ bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
 
 # Bind fullscreen screenshot and region screenshoot
-bindsym Print $exec maim '/home/undeadleech/Pictures/tmp.png'
-bindsym --release $mod+Print $exec maim -s -b 1 '/home/undeadleech/Pictures/tmp.png'
+bindsym Print $exec maim -u '/home/undeadleech/Pictures/tmp.png'
+bindsym --release $mod+Print $exec maim -u -s -b 1 '/home/undeadleech/Pictures/tmp.png'
 
 bindsym $mod+Return $exec termite
 
