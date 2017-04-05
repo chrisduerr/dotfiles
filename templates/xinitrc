@@ -22,12 +22,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# Activate numlock
-for tty in /dev/tty{1..6}
-do
-    /usr/bin/setleds -D +num < "$tty";
-done
-
 # Launch i3-gaps and ssh-agent
 eval $(ssh-agent)
 exec i3

@@ -10,7 +10,7 @@ dotfiles = [
     { template = "lemonconfig", target = "~/.config/undeadlemon/config.toml" },
     { template = "Scripts", target = "~/Scripts" },
     { template = "lemonimgs", target = "~/.config/undeadlemon/imgs" },
-    { template = "stylish", target = "~/.mozilla/firefox/yi22gkil.dev-edition-default/stylish.sqlite" }
+    { template = "stylish", target = "~/.mozilla/firefox/26f6op7l.default/stylish.sqlite" }
 ]
 
 [variables]
