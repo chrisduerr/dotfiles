@@ -148,6 +148,10 @@ xnoremap <S-TAB> <gv
 nnoremap <TAB> >>_
 nnoremap <S-TAB> <<_
 
+" Page Up/Down single line
+nnoremap <PageUp> <C-y>
+nnoremap <PageDown> <C-e>
+
 " Plugin Configs
     " Vim-Airline
     function! AirlineInit()
@@ -213,7 +217,7 @@ nnoremap <S-TAB> <<_
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['cargo', 'run', '--release', '--manifest-path=/home/undeadleech/.cargo/rls/Cargo.toml'],
+    \ 'rust': ['~/.cargo/bin/rls'],
     \ }
 
     " Bufferline

@@ -11,11 +11,12 @@ volume = "$HOME/Scripts/volume_slider"
 workspace = "$HOME/Scripts/switch_focused_workspace"
 
 [general]
-height = 30
+height = 33
 workspace_icons = ""
 power_icon = ""
 font = "{{ font }}-12"
 icon_font = "{{ iconfont }}-15"
+underline_height = 2
 
 [placeholders]
 general = "          "

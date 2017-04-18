@@ -11,9 +11,9 @@ rofi.hide-scrollbar: true
 rofi.fullscreen: true
 
 !                    bg       fg      altbg    hlbg     hlfg
-rofi.color-normal: #1b1b1b, #616161, #1b1b1b, #262626, #702020
-rofi.color-urgent: #1b1b1b, #616161, #1b1b1b, #262626, #702020
-rofi.color-active: #1b1b1b, #616161, #1b1b1b, #262626, #702020
+rofi.color-normal: #1b1b1b, #616161, #1b1b1b, #262626, #752a2a
+rofi.color-urgent: #1b1b1b, #616161, #1b1b1b, #262626, #752a2a
+rofi.color-active: #1b1b1b, #616161, #1b1b1b, #262626, #752a2a
 rofi.color-window: #1b1b1b, #616161
 !---------------------------------------------------------------
 
@@ -29,24 +29,24 @@ rofi.color-window: #1b1b1b, #616161
 
 ! Red
 *color1: #ac4142
-*color9: #702020
+*color9: #752a2a
 
 ! Green
 *color2: #90a959
-*color10: #1b5e20
+*color10: #5d742a
 
 ! Yellow
 *color3: #f4bf75
-*color11: #f9a825
+*color11: #754e2a
 
 ! Blue
 *color4: #6a9fb5
-*color12: #0d47a1
+*color12: #2a5e74
 
 ! Purple
 *color5: #aa759f
-*color13: #a4148c
+*color13: #703664
 
 ! Cyan
 *color6: #75b5aa
-*color14: #006064
+*color14: #297366

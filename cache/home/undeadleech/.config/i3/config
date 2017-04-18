@@ -5,7 +5,7 @@ set $mod Mod4
 
 set $exec exec --no-startup-id
 
-set $red #702020
+set $red #752a2a
 set $yellow #f4bf75
 set $gray0 #1b1b1b
 set $gray1 #262626

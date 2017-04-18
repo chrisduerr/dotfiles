@@ -73,7 +73,7 @@ export VISUAL="nvim"
 
 # Rust stuff
 export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
-export RLS_ROOT=$HOME/.cargo/rls
+export RLS_ROOT=$HOME/.cargo/bin/rls
 export LD_LIBRARY_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
 export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
