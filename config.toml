@@ -29,11 +29,11 @@ target = "~/Scripts"
 template = "lemonimgs"
 target = "~/.config/undeadlemon/imgs"
 [[dotfiles]]
-template = "/home/undeadleech/Programming/Linux/dotfiles/templates/stylish.sqlite"
-target = "/home/undeadleech/.mozilla/firefox/zh5a2m5v.dev-edition-default/stylish.sqlite"
-[[dotfiles]]
 template = "/home/undeadleech/Programming/Linux/dotfiles/templates/lemonconfig"
 target = "/home/undeadleech/.config/undeadlemon/config.toml"
+[[dotfiles]]
+template = "/home/undeadleech/Programming/Linux/dotfiles/templates/stylish.sqlite"
+target = "/home/undeadleech/.mozilla/firefox/zh5a2m5v.dev-edition-default/stylish.sqlite"
 
 [variables]
 color00 = "#1b1b1b"

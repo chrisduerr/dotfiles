@@ -217,7 +217,7 @@ nnoremap <PageDown> <C-e>
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rls'],
+    \ 'rust': ['/home/undeadleech/.cargo/bin/rls'],
     \ }
 
     " Bufferline
