@@ -153,7 +153,7 @@ nnoremap <PageUp> <C-y>
 nnoremap <PageDown> <C-e>
 
 " Yank to system clipboard
-xnoremap <C-c> "+y<CR>
+set clipboard+=unnamedplus
 
 " Plugin Configs
     " Vim-Airline
