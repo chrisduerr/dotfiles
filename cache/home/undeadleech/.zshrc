@@ -105,7 +105,7 @@ man() {
 
 alias sudo="sudo "
 alias vim="nvim"
-alias gp="git push origin master && git push github master"
+alias gp="git remote | xargs -L1 git push --all"
 
 # Automatic suggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
