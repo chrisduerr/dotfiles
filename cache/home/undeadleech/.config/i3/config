@@ -40,9 +40,6 @@ client.background       $gray1
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-# Scratchpad
-bindsym $mod+w scratchpad show
-
 # Floating Windows
 floating_modifier $mod
 bindsym $mod+Shift+space floating toggle
@@ -130,7 +127,6 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 for_window [class="(?i)pcmanfm"] floating enable
-for_window [class="(?i)keepass"] move scratchpad
 for_window [class="(?i)termite"] border pixel 10
 
 for_window [title="shutdown_menu"] floating enable
@@ -140,4 +136,3 @@ for_window [title="volume_slider"] floating enable
 $exec compton --config $HOME/.config/compton.conf -b    # composite manager
 $exec $HOME/Scripts/bar_control                         # start Lemonbar Rust
 $exec $HOME/.fehbg                                      # set Wallpaper
-$exec keepass                                           # password manager
