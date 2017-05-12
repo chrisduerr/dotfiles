@@ -6,7 +6,6 @@ fg_sec = "{{ color07 }}"
 hl_col = "{{ color09 }}"
 
 [exec]
-power = "$HOME/Scripts/shutdown_menu"
 volume = "$HOME/Scripts/volume_slider"
 workspace = "$HOME/Scripts/switch_focused_workspace"
 
