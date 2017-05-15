@@ -155,6 +155,9 @@ nnoremap <PageDown> <C-e>
 " Yank to system clipboard
 set clipboard+=unnamedplus
 
+" Use ESC to leave terminal insert mode
+tnoremap <ESC> <C-\><C-n>
+
 " Plugin Configs
     " Vim-Airline
     function! AirlineInit()
