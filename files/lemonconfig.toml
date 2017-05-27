@@ -1,0 +1,26 @@
+[colors]
+bg_col = "#1b1b1b"
+bg_sec = "#262626"
+fg_col = "#9e9e9e"
+fg_sec = "#616161"
+hl_col = "#752a2a"
+
+[exec]
+volume = "$HOME/Scripts/volume_slider"
+workspace = "$HOME/Scripts/switch_focused_workspace"
+
+[general]
+height = 33
+workspace_icons = ""
+power_icon = ""
+font = "Fira Sans-12"
+icon_font = "FontAwesome-15"
+underline_height = 2
+
+[placeholders]
+general = "          "
+power = "    "
+workspace = "     "
+clock = "          "
+notification = "     "
+volume = "     "
