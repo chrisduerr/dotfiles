@@ -1,4 +1,4 @@
-## Using a static IP and noarp to boost boot time
+## Use a static IP and noarp to boost boot time
 
 |          |                                                                                    |
 |----------|------------------------------------------------------------------------------------|

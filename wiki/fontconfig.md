@@ -1,4 +1,4 @@
-## Fixing fonts without infinality
+## Fix fonts without infinality
 
 Creating the following symlinks will do the job for almost every distro using X. This will create reasonable defaults for font rendering.
 
