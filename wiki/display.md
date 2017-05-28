@@ -20,7 +20,7 @@ Section "Monitor"
 Endsection
 
 Section "Monitor"
-        Identifier      "DVI-D-2"
+        Identifier      "DP-1"
         Option          "Primary"       "true"
         Option          "PreferredMode" "2560x1440"
         Option          "Position"      "1920 0"
