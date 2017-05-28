@@ -5,7 +5,6 @@
 | ArchWiki | https://wiki.archlinux.org/index.php/Dhcpcd#Speed_up_DHCP_by_disabling_ARP_probing |
 | ArchWiki | https://wiki.archlinux.org/index.php/Dhcpcd#Static_profile                         |
 
-Example configuration:
 ```
 /etc/dhcpcd.conf
 
@@ -23,5 +22,5 @@ static domain_name_servers=192.168.178.1 82.211.31.248
 | `192.168.178.1`  | Router IP     |
 | `82.211.31.248`  | DNS Server IP |
 
- ###### What does `noarp` do?
+ ##### What does `noarp` do?
  Arp checks if the assigned IP address is really not taken. This is usually not needed in home networks and can speed up dhcpcd by up to 5 seconds.
