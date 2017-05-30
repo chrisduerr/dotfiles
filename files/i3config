@@ -12,8 +12,9 @@ set $gray1 #262626
 set $gray2 #616161
 set $gray3 #9e9e9e
 
-set $default_gaps_inner 20
-set $default_gaps_outer 0
+gaps inner 20
+gaps outer 0
+smart_gaps on
 
 workspace_auto_back_and_forth no
 force_display_urgency_hint 0 ms
@@ -21,9 +22,6 @@ focus_on_window_activation urgent
 
 floating_minimum_size -1 x -1
 floating_maximum_size -1 x -1
-
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
 
 font pango:Fira Mono 11, FontAwesome 11
 
