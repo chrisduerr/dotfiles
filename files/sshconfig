@@ -1,2 +1,15 @@
 # Automatically add ssh keys to ssh-agent
 AddKeysToAgent yes
+
+# Set SSH keys for specific services
+Host christianduerr.com
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/digitalocean
+
+Host github.com
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/vcs
+
+Host gitlab.com
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/vcs

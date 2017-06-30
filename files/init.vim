@@ -8,8 +8,6 @@ call dein#add('Shougo/dein.vim')
     call dein#add('vim-airline/vim-airline')
     " Vim-Airline Theme
     call dein#add('chrisduerr/vim-undead')
-    " Fancy Startscreen
-    call dein#add('mhinz/vim-startify')
 
 " Programming
     " Rust
@@ -148,15 +146,8 @@ xnoremap <S-TAB> <gv
 nnoremap <TAB> >>_
 nnoremap <S-TAB> <<_
 
-" Page Up/Down single line
-nnoremap <PageUp> <C-y>
-nnoremap <PageDown> <C-e>
-
 " Yank to system clipboard
 set clipboard+=unnamedplus
-
-" Use ESC to leave terminal insert mode
-tnoremap <ESC> <C-\><C-n>
 
 " Plugin Configs
     " Vim-Airline
@@ -236,30 +227,3 @@ tnoremap <ESC> <C-\><C-n>
     " EasyMotion
     " Mapping to <Leader> might result in issues
     map <Leader> <Plug>(easymotion-prefix)
-
-    " Startify
-    let g:startify_list_order = [
-        \ ['   Files:'], 'files',
-        \ ['   This Directory:'], 'dir',
-        \ ['   Sessions:'], 'sessions',
-        \ ['   Bookmarks:'], 'bookmarks',
-        \ ['   Commands:'], 'commands',
-        \ ]
-    let g:startify_custom_header = [
-        \ '                    (_)        .       .                                     .',
-        \ '     .        ____.--^.',
-        \ '      .      /:  /    |                               +           .         .',
-        \ "            /:  `--=--'   .                                                .",
-        \ '           /: __[\==`-.___          *           .',
-        \ '          /__|\ _~~~~~~   ~~--..__            .             .',
-        \ '          \   \|::::|-----.....___|~--.                                 .',
-        \ '           \ _\_~~~~~-----:|:::______//---...___',
-        \ '       .   [\  \  __  --     \       ~  \_      ~~~===------==-...____',
-        \ '           [============================================================-',
-        \ "           /         __/__   --  /__    --       /____....----''''~~~~      .",
-        \ "     *    /  /   ==           ____....=---='''~~~~ .",
-        \ "         /____....--=-''':~~~~                      .                .",
-        \ '                        .                                   .           .',
-        \ '                             .                      .             +',
-        \ '           .     +              .'
-        \ ]
