@@ -14,5 +14,4 @@ Dotfiles for the following software:
  - ssh
 
 Screenshot:
-![Screenshot](http:/imgur.com/8CA77ca.png)
-
+![Screenshot](https://i.imgur.com/8CA77ca.png)
