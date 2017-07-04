@@ -15,3 +15,4 @@ Dotfiles for the following software:
 
 Screenshot:
 ![Screenshot](http:/imgur.com/8CA77ca.png)
+
