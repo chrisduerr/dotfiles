@@ -131,6 +131,7 @@ for_window [title="shutdown_menu"] floating enable
 for_window [title="volume_slider"] floating enable
 
 # Start Stuff
-$exec compton --config $HOME/.config/compton.conf -b    # composite manager
-$exec $HOME/Scripts/bar_control                         # start Lemonbar Rust
-$exec $HOME/.fehbg                                      # set Wallpaper
+$exec compton --config $HOME/.config/compton.conf -b                # composite manager
+$exec $HOME/Scripts/bar_control                                     # start Lemonbar Rust
+$exec $HOME/.fehbg                                                  # set Wallpaper
+$exec xrandr --output DisplayPort-0 --mode 2560x1440 --rate 144     # Set DP-0 refresh rate
