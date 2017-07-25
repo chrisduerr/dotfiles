@@ -8,18 +8,14 @@ call dein#add('Shougo/dein.vim')
     call dein#add('vim-airline/vim-airline')
     " Vim-Airline Theme
     call dein#add('chrisduerr/vim-undead')
+    " Display open buffers
+    call dein#add('bling/vim-bufferline')
 
 " Programming
     " Rust
-    call dein#add('racer-rust/vim-racer')
-    call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']})
     call dein#add('autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'})
     " Git Diff
     call dein#add('airblade/vim-gitgutter')
-    " HTML
-    call dein#add('Valloric/MatchTagAlways', {'on_ft': ['css']})
-    " Markdown
-    call dein#add('suan/vim-instant-markdown', {'on_ft': ['markdown']})
     " Comment/Uncomment text
     call dein#add('tpope/vim-commentary')
     " Snippets
@@ -33,10 +29,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('sheerun/vim-polyglot')
 
 " Usability
-    " Avoid error saving files with long path
+    " Avoid error saving files with path longer than 255 characters
     call dein#add('pixelastic/vim-undodir-tree')
-    " Automatically toggles relative line numbers
-    call dein#add('jeffkreeftmeijer/vim-numbertoggle')
     " reopen files at last edit position
     call dein#add('dietsche/vim-lastplace')
     " Auto pair brackets
@@ -45,11 +39,9 @@ call dein#add('Shougo/dein.vim')
     call dein#add('ntpeters/vim-better-whitespace')
     " Sane defaults for vim
     call dein#add('tpope/vim-sensible')
-    " Display open buffers
-    call dein#add('bling/vim-bufferline')
-    " Easier navigation
+    " Easier navigation, I don't wanna learn vim
     call dein#add('easymotion/vim-easymotion')
-    " Fuzzy Finder And Stuff
+    " Fuzzy Finder And Stuff, used for LanguageClient
     call dein#add('Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'})
 
 call dein#end()
@@ -111,6 +103,13 @@ set completeopt-=preview
 au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
 au FileType rust :LanguageClientStart
+
+" Run RustFmt on file save
+au BufWritePost,FileWritePost *.rs silent! call RustFmt()
+function! RustFmt()
+    exec "!cargo fmt -- --write-mode=overwrite %"
+    edit
+endfunction
 
 " Setup TAB to work for neosnippet and deoplete
 function! TabKeyFunc() abort
@@ -176,20 +175,9 @@ set clipboard+=unnamedplus
     " Echodoc
     let g:echodoc_enable_at_startup = 1
 
-    " Rust.vim
-    let g:rustfmt_autosave = 1
-
-    " Polyglot
-    let g:polyglot_disabled = ['rust']
-
-    " Vim-racer
-    let g:racer_experimental_completer = 1
-
     " Deoplete
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
-    let g:deoplete#ignore_sources = {}
-    let g:deoplete#ignore_sources._ = ['LanguageClient']
 
     " Neosnippet
     if has('conceal')
