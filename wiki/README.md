@@ -7,3 +7,4 @@
     - [DHCPCD](dhcpcd.md)
     - [Silent Boot](silent-boot.md)
     - [Filesystem Mounts](filesystem-mounts.md)
+    - [Staggered spin-up](staggered-spinup.md)
