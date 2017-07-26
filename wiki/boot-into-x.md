@@ -13,7 +13,7 @@ ExecStart=-/usr/bin/agetty --autologin undeadleech --noclear %I $TERM
 This will login without waiting for systemd services that might pollute the logi prompt with boot-up messages. If you do not wish to login to X automatically, removing `Type=simple` will wait for a clear console. You will also need to replace `undeadleech` with the user that you want to login with.
 
 
-## Automatically Start X
+## Automatically start Xorg
 
 ```
 ~/.zprofile
