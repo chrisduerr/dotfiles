@@ -67,3 +67,4 @@ symlink ./files/xinitrc ~/.xinitrc
 echo "Installing zsh…"
 dependency "oh-my-zsh-git zsh-autosuggestions"
 symlink ./files/zshrc ~/.zshrc
+symlink ./files/zprofile ~/.zprofile
