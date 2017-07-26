@@ -179,11 +179,6 @@ set clipboard+=unnamedplus
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
 
-    " Neosnippet
-    if has('conceal')
-      set conceallevel=2 concealcursor=niv
-    endif
-
     " Denite
     call denite#custom#map('insert', '<Down>',
                          \ '<denite:move_to_next_line>', 'noremap')

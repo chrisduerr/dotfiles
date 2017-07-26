@@ -35,3 +35,5 @@ Section "ServerLayout"
         Option          "BlankTime"     "0"
 EndSection
 ```
+
+`Option "DPMS" "false"` and the `SeverLayout` section will make sure that the screen doesn't go black after a certain amount of time.
