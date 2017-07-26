@@ -1,6 +1,4 @@
-## Configure monitor layout and disable DPMS
-
-https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling#Setting_up_DPMS_in_X
+## Monitor layout and disabling DPMS
 
 ```
 /etc/X11/xorg.conf.d/10-monitor.conf
@@ -37,3 +35,8 @@ EndSection
 ```
 
 `Option "DPMS" "false"` and the `SeverLayout` section will make sure that the screen doesn't go black after a certain amount of time.
+
+### Sources
+- https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling#Setting_up_DPMS_in_X
+
+[Table of Contents](README.md)

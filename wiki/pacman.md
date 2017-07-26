@@ -5,3 +5,5 @@ Uncomment `#Color` in the `# Misc options` section for a colorful pacman experie
 
 ##### Waka waka waka waka:
 Uncomment `#ILoveCandy` in the `# Misc options` section.
+
+[Table of Contents](README.md)
