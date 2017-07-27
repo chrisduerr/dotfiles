@@ -8,4 +8,5 @@
     - [Silent Boot](silent-boot.md)
     - [Filesystem Mounts](filesystem-mounts.md)
     - [Staggered spin-up](staggered-spinup.md)
+    - [Volatile Journald](volatile-journald.md)
 - [Boot straight into Xorg](boot-into-x.md)
