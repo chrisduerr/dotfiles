@@ -1,4 +1,4 @@
-## Firefox  |about:config | tweaks
+## Firefox `about:config` tweaks
 
 ### General
 |                              |                                   |       |
