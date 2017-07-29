@@ -10,3 +10,5 @@
     - [Staggered spin-up](staggered-spinup.md)
     - [Volatile Journald](volatile-journald.md)
 - [Boot straight into Xorg](boot-into-x.md)
+- [Keyboard Layout](keyboard.md)
+- [Firefox](firefox.md)
