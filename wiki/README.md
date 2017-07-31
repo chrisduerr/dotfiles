@@ -12,3 +12,4 @@
 - [Boot straight into Xorg](boot-into-x.md)
 - [Keyboard Layout](keyboard.md)
 - [Firefox](firefox.md)
+- [Disable PC Speaker](nobeep.md)
