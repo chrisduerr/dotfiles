@@ -60,7 +60,7 @@ symlink ./files/sshconfig ~/.ssh/config
 
 # Xinitrc
 echo "Installing xinit…"
-dependency "xorg-xinit"
+dependency "xorg-xinit xorg-server"
 symlink ./files/xinitrc ~/.xinitrc
 
 # Zsh
