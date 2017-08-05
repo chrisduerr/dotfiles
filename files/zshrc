@@ -1,14 +1,77 @@
-# Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
-# Enbale 256 color mode
-export TERM=konsole-256color
+# COMPLETION
+autoload -U compinit && compinit                           # Autoload and start autocompletion
 
+# Complete case-insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select                         # Highlight menu when cycling through
+setopt MENU_COMPLETE                                       # Instantly complete first menu item
 
-#####################
-##### POWERLINE #####
-#####################
+# HISTORY
+HISTFILE=$HOME/.zsh_history                                # Set the path of the history file
+SAVEHIST=100000                                            # Set size of history file
+HISTSIZE=100000                                            # Set size of local history
+setopt APPEND_HISTORY                                      # Allow multiple sessions with one history
+setopt SHARE_HISTORY                                       # Update history live
+setopt HIST_REDUCE_BLANKS                                  # Remove unnecessary blanks from history
+setopt HIST_IGNORE_DUPS                                    # Ignore duplicates in history
+setopt HIST_VERIFY                                         # Perform history expansion before add
+setopt INC_APPEND_HISTORY                                  # Add to history upon entering command
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# GLOBBING
+setopt NO_CASE_GLOB                                        # Expand case-insensitive
+
+# MISC
+setopt AUTO_CD                                             # Without any command, execute `cd`
+
+# KEYS
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '\e[A' up-line-or-beginning-search                 # [Up]         history search with input
+bindkey '\e[B' down-line-or-beginning-search               # [Down]       history search with input
+
+bindkey "^[[1;5C" forward-word                             # [Ctrl-Right] move forward one word
+bindkey '^[[1;5D' backward-word                            # [Ctrl-Left]  move backward one word
+
+# LS/COMPLETION COLORS
+export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:*:*:*' menu yes select
+
+# ENV
+export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$HOME/Scripts:$PATH
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# RUST ENV
+export RLS_ROOT=$HOME/.cargo/bin/rls
+export LD_LIBRARY_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
+export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+
+# Colorized Manpages
+man() {
+    env \
+        LESS_TERMCAP_md=$'\e[32m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[100;37m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[34m' \
+            man "$@"
+}
+
+# ALIAS
+alias vim="nvim"
+alias sudo="sudo "
+alias ls="ls --color"
+alias grep="grep --color"
+alias gp="git remote | xargs -L1 git push --all"
+
+# AUTOSUGGESTIONS
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# PROMPT
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_HIDE_BRANCH_ICON=true
@@ -49,65 +112,5 @@ POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="007"
 POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND="008"
 POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND="007"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
-
-source $ZSH/oh-my-zsh.sh
-
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
-fi
-
-####################
-##### ENVSTUFF #####
-####################
-
-# The one and only
-export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$HOME/Scripts:$PATH
-
-# Use vim for ssh instead of nvim
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-export VISUAL="nvim"
-
-# Rust stuff
-export RLS_ROOT=$HOME/.cargo/bin/rls
-export LD_LIBRARY_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
-export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-
-# Set histfile
-export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=100000
-
-# Set cd and ls folder colors
-export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:*:*:*' menu yes select
-
-# Colorized Manpages
-man() {
-    env \
-        LESS_TERMCAP_md=$'\e[32m' \
-        LESS_TERMCAP_me=$'\e[0m' \
-        LESS_TERMCAP_se=$'\e[0m' \
-        LESS_TERMCAP_so=$'\e[100;37m' \
-        LESS_TERMCAP_ue=$'\e[0m' \
-        LESS_TERMCAP_us=$'\e[34m' \
-            man "$@"
-}
-
-
-######################
-##### ALIASSTUFF #####
-######################
-
-alias sudo="sudo "
-alias vim="nvim"
-alias gp="git remote | xargs -L1 git push --all"
-
-# Automatic suggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+autoload -U colors && colors
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
