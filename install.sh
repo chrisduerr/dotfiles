@@ -27,6 +27,7 @@ symlink ./files/compton.conf ~/.config/compton.conf
 # Neovim
 echo "Installing neovim…"
 dependency "python python-neovim neovim"
+mkdir -p ~/.config/nvim/.backup
 symlink ./files/init.vim ~/.config/nvim/init.vim
 
 # Scripts
@@ -36,6 +37,7 @@ symlink ./files/Scripts ~/Scripts
 # Termite
 echo "Installing termite…"
 dependency "termite otf-fira-mono ttf-font-awesome"
+mkdir -p ~/.config/termite
 symlink ./files/termiteconfig ~/.config/termite/config
 
 # Xresources
@@ -46,16 +48,19 @@ symlink ./files/Xresources ~/.Xresources
 # i3-gaps
 echo "Installing i3…"
 dependency "i3-gaps-git otf-fira-mono ttf-font-awesome maim slop compton feh lemonbar-xft-git"
+mkdir -p ~/.config/i3
 symlink ./files/i3config ~/.config/i3/config
 
 # UndeadLemon
 echo "Installing UndeadLemon…"
 dependency "lemonbar-xft-git"
+mkdir -p ~/.config/undeadlemon
 symlink ./files/lemonconfig.toml ~/.config/undeadlemon/config.toml
 
 # SSH
 echo "Installing ssh…"
 dependency "openssh"
+mkdir -p ~/.ssh
 symlink ./files/sshconfig ~/.ssh/config
 
 # Xinitrc
