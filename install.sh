@@ -73,3 +73,9 @@ echo "Installing zsh…"
 dependency "zsh zsh-autosuggestions zsh-theme-powerlevel9k"
 symlink ./files/zshrc ~/.zshrc
 symlink ./files/zprofile ~/.zprofile
+
+# Weechat
+echo "Installing weechat…"
+dependency "weechat"
+mkdir -p ~/.weechat
+symlink ./files/weechat.conf ~/.weechat/weechat.conf
