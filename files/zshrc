@@ -1,5 +1,5 @@
-# Load env variables
-source ~/.config/zsh/env.zsh
+# Load prompt
+source ~/.config/zsh/powerlevel9k.zsh
 
 # Load shell aliases
 source ~/.config/zsh/alias.zsh
