@@ -19,6 +19,9 @@ function symlink {
     fi
 }
 
+# Just making sure
+mkdir -p ~/.config
+
 # Compton
 echo "Installing compton…"
 dependency "compton"
@@ -72,6 +75,7 @@ symlink ./files/xinitrc ~/.xinitrc
 echo "Installing zsh…"
 dependency "zsh zsh-autosuggestions zsh-theme-powerlevel9k"
 symlink ./files/zshrc ~/.zshrc
+symlink ./files/zsh ~/.config/zsh
 symlink ./files/zprofile ~/.zprofile
 
 # Weechat

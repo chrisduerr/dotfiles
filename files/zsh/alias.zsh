@@ -1,0 +1,5 @@
+alias vim="nvim"
+alias sudo="sudo "
+alias ls="ls --color"
+alias grep="grep --color"
+alias gp="git remote | xargs -L1 git push --all"
