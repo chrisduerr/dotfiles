@@ -13,3 +13,4 @@
 - [Keyboard Layout](keyboard.md)
 - [Firefox](firefox.md)
 - [Disable PC Speaker](nobeep.md)
+- [Paccache Hook](paccache.md)
