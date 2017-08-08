@@ -41,6 +41,8 @@ zstyle ':completion:*:*:*:*:*' menu yes select
 
 # ENV
 export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$HOME/Scripts:$PATH
+declare -U path                                            # Prevent duplicates in $PATH
+
 export EDITOR="nvim"
 export VISUAL="nvim"
 
