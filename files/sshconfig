@@ -13,3 +13,7 @@ Host github.com
 Host gitlab.com
     IdentitiesOnly yes
     IdentityFile ~/.ssh/vcs
+
+Host aur.archlinux.org
+    IdentityFile ~/.ssh/aur
+    User undeadleech
