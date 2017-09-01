@@ -1,7 +1,7 @@
-bindkey '\e[A' up-line-or-beginning-search                  # [Up]
-bindkey '\e[B' down-line-or-beginning-search                # [Down]
+bindkey '^N' up-line-or-beginning-search                    # [Ctrl-N]
+bindkey '^T' down-line-or-beginning-search                  # [Ctrl-T]
 
-bindkey "^[[1;5C" forward-word                              # [Ctrl-Right]
-bindkey '^[[1;5D' backward-word                             # [Ctrl-Left]
+bindkey "^S" forward-word                                   # [Ctrl-Right] FIXME
+bindkey "^H" backward-word                                  # [Ctrl-Left]
 
 bindkey "${terminfo[kdch1]}" delete-char                    # [Del]

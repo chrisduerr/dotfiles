@@ -33,14 +33,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('pixelastic/vim-undodir-tree')
     " reopen files at last edit position
     call dein#add('dietsche/vim-lastplace')
-    " Auto pair brackets
-    call dein#add('Raimondi/delimitMate')
     " Mark Trailing Whitespaces
     call dein#add('ntpeters/vim-better-whitespace')
-    " Sane defaults for vim
-    call dein#add('tpope/vim-sensible')
-    " Easier navigation, I don't wanna learn vim
-    call dein#add('easymotion/vim-easymotion')
     " Fuzzy Finder And Stuff, used for LanguageClient
     call dein#add('Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'})
 
@@ -75,8 +69,8 @@ nnoremap <C-L> :noh<CR><C-L>
 set relativenumber scrolloff=5
 
 " Buffer navigation
-nnoremap <C-RIGHT> :bn<CR>
-nnoremap <C-LEFT> :bp<CR>
+nnoremap <C-s> :bn<CR>
+nnoremap <C-h> :bp<CR>
 
 " Save root files
 cnoremap w!! w !sudo tee % > /dev/null <CR>
@@ -145,6 +139,32 @@ xnoremap <S-TAB> <gv
 nnoremap <TAB> >>_
 nnoremap <S-TAB> <<_
 
+" Let me introduce myself, I'm THAT guy
+nnoremap t j
+nnoremap n k
+nnoremap s l
+vnoremap t j
+vnoremap n k
+vnoremap s l
+
+" Scroll up and down one line
+nnoremap <C-n> <C-y>k
+nnoremap <C-t> <C-e>j
+
+" Unmap arrow keys
+inoremap <Left> ggdG<CR>
+nnoremap <Left> ggdG<CR>
+vnoremap <Left> ggdG<CR>
+inoremap <Right> ggdG<CR>
+nnoremap <Right> ggdG<CR>
+vnoremap <Right> ggdG<CR>
+inoremap <Up> ggdG<CR>
+nnoremap <Up> ggdG<CR>
+vnoremap <Up> ggdG<CR>
+inoremap <Down> ggdG<CR>
+nnoremap <Down> ggdG<CR>
+vnoremap <Down> ggdG<CR>
+
 " Yank to system clipboard
 set clipboard+=unnamedplus
 
@@ -196,6 +216,7 @@ set clipboard+=unnamedplus
     nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['/home/undeadleech/.cargo/bin/rls'],
     \ }
@@ -206,7 +227,3 @@ set clipboard+=unnamedplus
     let g:bufferline_active_buffer_right = ''
     let g:bufferline_active_highlight = 'BufferLineSel'
     let g:bufferline_inactive_highlight = 'BufferLine'
-
-    " EasyMotion
-    " Mapping to <Leader> might result in issues
-    map <Leader> <Plug>(easymotion-prefix)

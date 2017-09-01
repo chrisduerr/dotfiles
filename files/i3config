@@ -41,14 +41,9 @@ bindsym $mod+Shift+r restart
 floating_modifier $mod
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-bindsym $mod+Shift+s sticky toggle
 
-# Tiling Windows
-bindsym $mod+h split h
-bindsym $mod+v split v
-
-bindsym $mod+t layout tabbed
-bindsym $mod+s layout toggle split
+# Toggle horizontal/vertical split
+bindsym $mod+v split toggle
 
 # General Window Manipulation
 # bindsym $mod+a focus parent
@@ -56,22 +51,22 @@ bindsym $mod+q kill
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+t focus down
+bindsym $mod+n focus up
+bindsym $mod+s focus right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+t move down
+bindsym $mod+Shift+n move up
+bindsym $mod+Shift+s move right
 
 bindsym $mod+r mode "resize"
 mode "resize" {
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym t resize grow height 10 px or 10 ppt
+        bindsym n resize shrink height 10 px or 10 ppt
+        bindsym s resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -133,3 +128,4 @@ for_window [title="volume_slider"] floating enable
 $exec compton --config $HOME/.config/compton.conf -b                # composite manager
 $exec $HOME/Scripts/bar_control                                     # start Lemonbar Rust
 $exec $HOME/.fehbg                                                  # set Wallpaper
+$exec stty -ixon                                                    # Disable Ctrl-S Terminal lock
