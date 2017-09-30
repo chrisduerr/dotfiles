@@ -9,6 +9,7 @@
 | Disable reader               | reader.parse-on-load.enabled      | false |
 | Disable "Search with …"      | browser.urlbar.oneOffSearches     | false |
 | Disable fullscreen autohide  | browser.fullscreen.autohide       | false |
+| Disable DRM popup            | browser.eme.ui.enabled            | false |
 
 ### Privacy
 |                            |                                                 |       |
