@@ -43,7 +43,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Toggle horizontal/vertical split
-bindsym $mod+v split toggle
+bindsym $mod+t split toggle
 
 # General Window Manipulation
 # bindsym $mod+a focus parent
@@ -52,14 +52,14 @@ bindsym $mod+q kill
 bindsym $mod+f fullscreen
 
 bindsym $mod+h focus left
-bindsym $mod+t focus down
-bindsym $mod+n focus up
-bindsym $mod+s focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+t move down
-bindsym $mod+Shift+n move up
-bindsym $mod+Shift+s move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -74,25 +74,25 @@ mode "resize" {
 }
 
 # Workspaces
-$exec $HOME/Scripts/change_workspaces 1
+$exec $HOME/scripts/change_workspaces 1
 
-bindsym $mod+1 $exec $HOME/Scripts/switch_focused_workspace 1
-bindsym $mod+2 $exec $HOME/Scripts/switch_focused_workspace 2
-bindsym $mod+3 $exec $HOME/Scripts/switch_focused_workspace 3
-bindsym $mod+4 $exec $HOME/Scripts/switch_focused_workspace 4
-bindsym $mod+5 $exec $HOME/Scripts/switch_focused_workspace 5
+bindsym $mod+1 $exec $HOME/scripts/switch_focused_workspace 1
+bindsym $mod+2 $exec $HOME/scripts/switch_focused_workspace 2
+bindsym $mod+3 $exec $HOME/scripts/switch_focused_workspace 3
+bindsym $mod+4 $exec $HOME/scripts/switch_focused_workspace 4
+bindsym $mod+5 $exec $HOME/scripts/switch_focused_workspace 5
 
-bindsym $mod+Ctrl+1 $exec $HOME/Scripts/change_workspaces 1
-bindsym $mod+Ctrl+2 $exec $HOME/Scripts/change_workspaces 2
-bindsym $mod+Ctrl+3 $exec $HOME/Scripts/change_workspaces 3
-bindsym $mod+Ctrl+4 $exec $HOME/Scripts/change_workspaces 4
-bindsym $mod+Ctrl+5 $exec $HOME/Scripts/change_workspaces 5
+bindsym $mod+Ctrl+1 $exec $HOME/scripts/change_workspaces 1
+bindsym $mod+Ctrl+2 $exec $HOME/scripts/change_workspaces 2
+bindsym $mod+Ctrl+3 $exec $HOME/scripts/change_workspaces 3
+bindsym $mod+Ctrl+4 $exec $HOME/scripts/change_workspaces 4
+bindsym $mod+Ctrl+5 $exec $HOME/scripts/change_workspaces 5
 
-bindsym $mod+Shift+1 $exec $HOME/Scripts/move_focused_window 1
-bindsym $mod+Shift+2 $exec $HOME/Scripts/move_focused_window 2
-bindsym $mod+Shift+3 $exec $HOME/Scripts/move_focused_window 3
-bindsym $mod+Shift+4 $exec $HOME/Scripts/move_focused_window 4
-bindsym $mod+Shift+5 $exec $HOME/Scripts/move_focused_window 5
+bindsym $mod+Shift+1 $exec $HOME/scripts/move_focused_window 1
+bindsym $mod+Shift+2 $exec $HOME/scripts/move_focused_window 2
+bindsym $mod+Shift+3 $exec $HOME/scripts/move_focused_window 3
+bindsym $mod+Shift+4 $exec $HOME/scripts/move_focused_window 4
+bindsym $mod+Shift+5 $exec $HOME/scripts/move_focused_window 5
 
 # Applications / Tools
 # Bind corsair k70 volume keys
@@ -100,8 +100,8 @@ bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
 
 # Bind fullscreen screenshot and region screenshoot
-bindsym --release Print $exec maim -m 10 -u -s -b 1 '/home/undeadleech/Pictures/tmp.png'
-bindsym --release $mod+Print $exec $HOME/Scripts/screenrecord.sh
+bindsym --release Print $exec maim -m 10 -u -s -b 1 '/home/undeadleech/pictures/tmp.png'
+bindsym --release $mod+Print $exec $HOME/scripts/screenrecord.sh
 
 bindsym $mod+Return $exec termite
 
@@ -118,14 +118,10 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-for_window [class="(?i)pcmanfm"] floating enable
-for_window [class="(?i)termite"] border pixel 10
-
-for_window [title="shutdown_menu"] floating enable
 for_window [title="volume_slider"] floating enable
 
 # Start Stuff
 $exec compton --config $HOME/.config/compton.conf -b                # composite manager
-$exec $HOME/Scripts/bar_control                                     # start Lemonbar Rust
+$exec $HOME/scripts/bar_control                                     # start Lemonbar Rust
 $exec $HOME/.fehbg                                                  # set Wallpaper
 $exec stty -ixon                                                    # Disable Ctrl-S Terminal lock

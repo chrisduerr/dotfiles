@@ -69,8 +69,12 @@ nnoremap <C-L> :noh<CR><C-L>
 set relativenumber scrolloff=5
 
 " Buffer navigation
-nnoremap <C-s> :bn<CR>
-nnoremap <C-h> :bp<CR>
+autocmd VimEnter * unmap <Leader>hp
+autocmd VimEnter * unmap <Leader>hr
+autocmd VimEnter * unmap <Leader>hs
+autocmd VimEnter * unmap <Leader>hu
+nnoremap <silent> <Leader>l :bn<CR>
+nnoremap <silent> <Leader>h :bp<CR>
 
 " Save root files
 cnoremap w!! w !sudo tee % > /dev/null <CR>
@@ -133,37 +137,14 @@ imap <expr><ENTER> EnterKeyFunc()
 " Hide 'match 1 of 8' messages
 set shortmess=filnxtToOIc
 
+" Disable Ex-Mode because the binding sucks on dvorak
+nnoremap Q <NOP>
+
 " Use tab for indenting
 xnoremap <TAB> >gv|
 xnoremap <S-TAB> <gv
 nnoremap <TAB> >>_
 nnoremap <S-TAB> <<_
-
-" Let me introduce myself, I'm THAT guy
-nnoremap t j
-nnoremap n k
-nnoremap s l
-vnoremap t j
-vnoremap n k
-vnoremap s l
-
-" Scroll up and down one line
-nnoremap <C-n> <C-y>k
-nnoremap <C-t> <C-e>j
-
-" Unmap arrow keys
-inoremap <Left> ggdG<CR>
-nnoremap <Left> ggdG<CR>
-vnoremap <Left> ggdG<CR>
-inoremap <Right> ggdG<CR>
-nnoremap <Right> ggdG<CR>
-vnoremap <Right> ggdG<CR>
-inoremap <Up> ggdG<CR>
-nnoremap <Up> ggdG<CR>
-vnoremap <Up> ggdG<CR>
-inoremap <Down> ggdG<CR>
-nnoremap <Down> ggdG<CR>
-vnoremap <Down> ggdG<CR>
 
 " Yank to system clipboard
 set clipboard+=unnamedplus
@@ -213,7 +194,6 @@ set clipboard+=unnamedplus
 
     " LanguageClient
     nnoremap <silent> <Leader><C-d> :Denite references<CR>
-    nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>

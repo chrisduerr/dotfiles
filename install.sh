@@ -35,7 +35,7 @@ symlink ./files/init.vim ~/.config/nvim/init.vim
 
 # Scripts
 echo "Installing scripts…"
-symlink ./files/Scripts ~/Scripts
+symlink ./files/scripts ~/scripts
 
 # Termite
 echo "Installing termite…"
@@ -50,7 +50,7 @@ symlink ./files/Xresources ~/.Xresources
 
 # i3-gaps
 echo "Installing i3…"
-dependency "i3-gaps-git otf-fira-mono ttf-font-awesome maim slop compton feh lemonbar-xft-git"
+dependency "i3-gaps otf-fira-mono ttf-font-awesome maim slop compton feh lemonbar-xft-git"
 mkdir -p ~/.config/i3
 symlink ./files/i3config ~/.config/i3/config
 
@@ -83,3 +83,7 @@ echo "Installing weechat…"
 dependency "weechat"
 mkdir -p ~/.weechat
 symlink ./files/weechat.conf ~/.weechat/weechat.conf
+
+# XDG Directory names
+echo "Setting up XDG directory names…"
+symlink ./files/xdg.dirs ~/.config/user-dirs.dirs

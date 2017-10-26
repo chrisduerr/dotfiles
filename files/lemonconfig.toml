@@ -6,8 +6,8 @@ fg_sec = "#616161"
 hl_col = "#752a2a"
 
 [exec]
-volume = "$HOME/Scripts/volume_slider"
-workspace = "$HOME/Scripts/switch_focused_workspace"
+volume = "$HOME/scripts/volume_slider"
+workspace = "$HOME/scripts/switch_focused_workspace"
 
 [general]
 height = 33
