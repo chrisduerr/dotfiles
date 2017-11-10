@@ -121,7 +121,10 @@ for_window [window_type="menu"] floating enable
 for_window [title="volume_slider"] floating enable
 
 # Start Stuff
+$exec xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120     # Testing for now
 $exec compton --config $HOME/.config/compton.conf -b                # composite manager
-$exec $HOME/scripts/bar_control                                     # start Lemonbar Rust
+$exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DisplayPort-0 1
+$exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DVI-0 2
+$exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DVI-1 3
 $exec $HOME/.fehbg                                                  # set Wallpaper
 $exec stty -ixon                                                    # Disable Ctrl-S Terminal lock

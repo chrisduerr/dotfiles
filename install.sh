@@ -50,15 +50,9 @@ symlink ./files/Xresources ~/.Xresources
 
 # i3-gaps
 echo "Installing i3…"
-dependency "i3-gaps otf-fira-mono ttf-font-awesome maim slop compton feh lemonbar-xft-git"
+dependency "i3-gaps otf-fira-mono ttf-font-awesome maim slop compton feh"
 mkdir -p ~/.config/i3
 symlink ./files/i3config ~/.config/i3/config
-
-# UndeadLemon
-echo "Installing UndeadLemon…"
-dependency "lemonbar-xft-git"
-mkdir -p ~/.config/undeadlemon
-symlink ./files/lemonconfig.toml ~/.config/undeadlemon/config.toml
 
 # SSH
 echo "Installing ssh…"
@@ -82,8 +76,14 @@ symlink ./files/zprofile ~/.zprofile
 echo "Installing weechat…"
 dependency "weechat"
 mkdir -p ~/.weechat
-symlink ./files/weechat.conf ~/.weechat/weechat.conf
+symlink ./files/weechat/weechat.conf ~/.weechat/weechat.conf
+symlink ./files/weechat/buflist.conf ~/.weechat/buflist.conf
+symlink ./files/weechat/python ~/.weechat/python
 
 # XDG Directory names
 echo "Setting up XDG directory names…"
 symlink ./files/xdg.dirs ~/.config/user-dirs.dirs
+
+# GTK3 CSS overrides
+echo "Installing GTK3 CSS overrides…"
+symlink ./files/gtk3.css ~/.config/gtk-3.0/gtk.css
