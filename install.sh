@@ -74,10 +74,11 @@ symlink ./files/zprofile ~/.zprofile
 
 # Weechat
 echo "Installing weechat…"
-dependency "weechat"
+dependency "weechat-python3-git"
 mkdir -p ~/.weechat
 symlink ./files/weechat/weechat.conf ~/.weechat/weechat.conf
 symlink ./files/weechat/buflist.conf ~/.weechat/buflist.conf
+symlink ./files/weechat/irc.conf ~/.weechat/irc.conf
 symlink ./files/weechat/python ~/.weechat/python
 
 # XDG Directory names
