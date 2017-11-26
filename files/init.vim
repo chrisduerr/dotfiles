@@ -102,13 +102,6 @@ au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
 au FileType rust :LanguageClientStart
 
-" Run RustFmt on file save
-au BufWritePost,FileWritePost *.rs silent! call RustFmt()
-function! RustFmt()
-    exec "!cargo fmt -- --write-mode=overwrite %"
-    edit
-endfunction
-
 " Setup TAB to work for neosnippet and deoplete
 function! TabKeyFunc() abort
     if neosnippet#jumpable()
@@ -198,7 +191,7 @@ set clipboard+=unnamedplus
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['/home/undeadleech/.cargo/bin/rls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 
     " Bufferline

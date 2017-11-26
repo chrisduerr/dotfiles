@@ -1,0 +1,28 @@
+#!/bin/bash
+
+BASE=""
+BASE_DEVEL=""
+CUSTOM=""
+
+PACKAGES=$(pacman -Qettq)
+for PACKAGE in $PACKAGES; do
+    GROUP=$(pacman -Qi $PACKAGE | grep "Groups" | sed 's/.* \(.*\)/\1/')
+    if [[ $GROUP == "base" ]]; then
+        BASE="$BASE\n$PACKAGE"
+    elif [[ $GROUP == "base-devel" ]]; then
+        BASE_DEVEL="$BASE_DEVEL\n$PACKAGE"
+    else
+        CUSTOM="$CUSTOM\n$PACKAGE"
+    fi
+done
+
+echo "> BASE:"
+echo -e $BASE | tail -n +2
+echo
+
+echo "> BASE_DEVEL:"
+echo -e $BASE_DEVEL | tail -n +2
+echo
+
+echo "> CUSTOM:"
+echo -e $CUSTOM | tail -n +2
