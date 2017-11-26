@@ -67,7 +67,7 @@ symlink ./files/xinitrc ~/.xinitrc
 
 # Zsh
 echo "Installing zsh…"
-dependency "zsh zsh-autosuggestions zsh-theme-powerlevel9k"
+dependency "zsh zsh-autosuggestions"
 symlink ./files/zshrc ~/.zshrc
 symlink ./files/zsh ~/.config/zsh
 symlink ./files/zprofile ~/.zprofile

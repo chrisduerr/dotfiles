@@ -15,7 +15,7 @@ Target = *
 [Action]
 Description = Cleaning package cache…
 When = PostTransaction
-Exec = /usr/bin/paccache -rk2 && /usr/bin/paccache -ruk0
+Exec = /usr/bin/sh -c "paccache -rk2 && paccache -ruk0"
 ```
 
 ## Sources:

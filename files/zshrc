@@ -1,5 +1,5 @@
 # Load prompt
-source ~/.config/zsh/powerlevel9k.zsh
+source ~/.config/zsh/ps1.zsh
 
 # Load shell aliases
 source ~/.config/zsh/alias.zsh
@@ -12,9 +12,6 @@ source ~/.config/zsh/setopt.zsh
 
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Powerlevel9K
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 
 # Completion and ls colors
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -30,3 +27,6 @@ autoload -U down-line-or-beginning-search
 
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+
+# Set TTY for GPG for each instance
+export GPG_TTY=$(tty)
