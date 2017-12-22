@@ -102,6 +102,9 @@ au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
 au FileType rust :LanguageClientStart
 
+" Reset cursor after quitting vim
+au VimLeave * set guicursor=a:hor100
+
 " Setup TAB to work for neosnippet and deoplete
 function! TabKeyFunc() abort
     if neosnippet#jumpable()

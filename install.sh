@@ -37,11 +37,11 @@ symlink ./files/init.vim ~/.config/nvim/init.vim
 echo "Installing scripts…"
 symlink ./files/scripts ~/scripts
 
-# Termite
-echo "Installing termite…"
-dependency "termite otf-fira-mono ttf-font-awesome"
-mkdir -p ~/.config/termite
-symlink ./files/termiteconfig ~/.config/termite/config
+# Alacritty
+echo "Installing alacritty…"
+dependency "alacritty-git otf-fira-mono ttf-font-awesome"
+mkdir -p ~/.config/alacritty
+symlink ./files/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # Xresources
 echo "Installing xresources…"
