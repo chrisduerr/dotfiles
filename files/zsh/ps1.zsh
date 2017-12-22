@@ -99,7 +99,7 @@ vcs() {
 
 # Check if rust format is required
 rust_format() {
-    if [[ -f "./Cargo.toml" ]] && [[ $(cargo fmt -- --write-mode diff 2>&1 | wc -c) != "0" ]]; then
+    if [[ "$PS1_RUST_FORMAT" != "false" ]] && [[ -f "./Cargo.toml" ]] && [[ $(cargo fmt -- --write-mode diff 2>&1 | wc -c) != "0" ]]; then
         set_color 0 9
         RUST_FORMAT="$(echo $CURRENT_COL  FMT $(col_reset))"
     else

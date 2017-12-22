@@ -64,9 +64,9 @@ bindsym $mod+Shift+l move right
 bindsym $mod+r mode "resize"
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym t resize grow height 10 px or 10 ppt
-        bindsym n resize shrink height 10 px or 10 ppt
-        bindsym s resize grow width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -103,7 +103,7 @@ bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
 bindsym --release Print $exec maim -m 10 -u -s -b 1 '/home/undeadleech/pictures/tmp.png'
 bindsym --release $mod+Print $exec $HOME/scripts/screenrecord.sh
 
-bindsym $mod+Return $exec termite
+bindsym $mod+Return $exec alacritty
 
 bindsym $mod+d $exec rofi -show run
 
