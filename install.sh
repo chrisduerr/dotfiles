@@ -85,6 +85,10 @@ symlink ./files/weechat/python ~/.weechat/python
 echo "Setting up XDG directory names…"
 symlink ./files/xdg.dirs ~/.config/user-dirs.dirs
 
-# GTK3 CSS overrides
-echo "Installing GTK3 CSS overrides…"
-symlink ./files/gtk3.css ~/.config/gtk-3.0/gtk.css
+# Themes for cursors and icons
+echo "Installing cursors and icons…"
+dependency "paper-icon-theme"
+mkdir -p ~/.config/gtk-3.0
+mkdir -p ~/.config/default
+symlink ./files/gtk3-settings.ini ~/.config/gtk-3.0/settings.ini
+symlink ./files/icons-index.theme ~/.config/default/index.theme
