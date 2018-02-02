@@ -8,8 +8,6 @@ call dein#add('Shougo/dein.vim')
     call dein#add('vim-airline/vim-airline')
     " Vim-Airline Theme
     call dein#add('chrisduerr/vim-undead')
-    " Display open buffers
-    call dein#add('bling/vim-bufferline')
 
 " Programming
     " Rust
@@ -148,8 +146,10 @@ set clipboard+=unnamedplus
 " Plugin Configs
     " Vim-Airline
     function! AirlineInit()
+        let g:airline_section_b = airline#section#create([''])
+        let g:airline_section_c = airline#section#create([''])
+        let g:airline_section_y = airline#section#create([''])
         let g:airline_section_z = airline#section#create(['%l/%L %c'])
-        let g:airline_section_b = airline#section#create(['branch'])
     endfunction
     autocmd User AirlineAfterInit call AirlineInit()
     let g:airline_theme = 'undead'
@@ -164,7 +164,13 @@ set clipboard+=unnamedplus
     let g:airline_right_sep = ''
     let g:airline_right_alt_sep = ''
 
-    let g:airline#extensions#bufferline#overwrite_variables = 0
+    " Airline tabline
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_alt_sep = ''
+    let g:airline#extensions#tabline#right_alt_sep = ''
+    let g:airline#extensions#tabline#buffers_label = '%f'
+    let g:airline#extensions#tabline#show_close_button = 0
+    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
@@ -196,10 +202,3 @@ set clipboard+=unnamedplus
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
-
-    " Bufferline
-    let g:bufferline_show_bufnr = 0
-    let g:bufferline_active_buffer_left = ''
-    let g:bufferline_active_buffer_right = ''
-    let g:bufferline_active_highlight = 'BufferLineSel'
-    let g:bufferline_inactive_highlight = 'BufferLine'
