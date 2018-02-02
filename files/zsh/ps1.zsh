@@ -97,16 +97,6 @@ vcs() {
     VCS="$(echo $CURRENT_COL $branch$push $(col_reset))"
 }
 
-# Check if rust format is required
-rust_format() {
-    if [[ "$PS1_RUST_FORMAT" != "false" ]] && [[ -f "./Cargo.toml" ]] && [[ $(cargo fmt -- --write-mode diff 2>&1 | wc -c) != "0" ]]; then
-        set_color 0 9
-        RUST_FORMAT="$(echo $CURRENT_COL  FMT $(col_reset))"
-    else
-        RUST_FORMAT=""
-    fi
-}
-
 # Current user
 current_user() {
     set_color 0 9
@@ -122,15 +112,13 @@ function precmd {
     current_user
     current_path
     vcs
-    rust_format
 
-    PS1="$CURRENT_USER$CURRENT_PATH$VCS$RUST_FORMAT "
+    PS1="$CURRENT_USER$CURRENT_PATH$VCS "
 
     # Unset all variables
     unset CURRENT_USER
     unset CURRENT_PATH
     unset VCS
-    unset RUST_FORMAT
     unset CURRENT_COL
     unset CURRENT_BG
 }
