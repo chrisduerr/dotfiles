@@ -11,7 +11,7 @@ call dein#add('Shougo/dein.vim')
 
 " Programming
     " Rust
-    call dein#add('autozimu/LanguageClient-neovim', {'do': ':UpdateRemotePlugins'})
+    call dein#add('autozimu/LanguageClient-neovim', {'rev': 'next', 'build': 'make release'})
     " Git Diff
     call dein#add('airblade/vim-gitgutter')
     " Comment/Uncomment text
