@@ -1,7 +1,7 @@
 window:
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
 
 draw_bold_text_with_bright_colors: false
 

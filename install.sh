@@ -43,11 +43,6 @@ dependency "alacritty-git otf-fira-mono ttf-font-awesome"
 mkdir -p ~/.config/alacritty
 symlink ./files/alacritty.yml ~/.config/alacritty/alacritty.yml
 
-# Xresources
-echo "Installing xresources…"
-dependency "otf-fira-mono"
-symlink ./files/Xresources ~/.Xresources
-
 # i3-gaps
 echo "Installing i3…"
 dependency "i3-gaps otf-fira-mono ttf-font-awesome maim slop compton feh"

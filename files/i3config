@@ -12,8 +12,7 @@ set $gray1 #262626
 set $gray2 #616161
 set $gray3 #9e9e9e
 
-gaps inner 20
-gaps outer 0
+gaps inner 15
 
 workspace_auto_back_and_forth no
 force_display_urgency_hint 0 ms
@@ -61,17 +60,11 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+r mode "resize"
-mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+# Resizing
+bindsym $mod+Ctrl+h resize grow left 5 px
+bindsym $mod+Ctrl+j resize grow down  5 px
+bindsym $mod+Ctrl+k resize grow up    5 px
+bindsym $mod+Ctrl+l resize grow right 5 px
 
 # Workspaces
 $exec $HOME/scripts/change_workspaces 1
@@ -105,7 +98,7 @@ bindsym --release $mod+Print $exec $HOME/scripts/screenrecord.sh
 
 bindsym $mod+Return $exec alacritty
 
-bindsym $mod+d $exec rofi -show run
+bindsym $mod+b $exec firefox-nightly
 
 # Window Presets
 new_window none
