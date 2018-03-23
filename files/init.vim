@@ -68,7 +68,6 @@ set relativenumber scrolloff=5
 
 " Buffer navigation
 autocmd VimEnter * unmap <Leader>hp
-autocmd VimEnter * unmap <Leader>hr
 autocmd VimEnter * unmap <Leader>hs
 autocmd VimEnter * unmap <Leader>hu
 nnoremap <silent> <Leader>l :bn<CR>
@@ -76,9 +75,6 @@ nnoremap <silent> <Leader>h :bp<CR>
 
 " Save root files
 cnoremap w!! w !sudo tee % > /dev/null <CR>
-
-" Set cursor shape
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Set colorscheme
 colorscheme undead
@@ -95,10 +91,12 @@ set hidden
 " Don't open preview window after completion
 set completeopt-=preview
 
+" Recognize '_' as word separator
+set iskeyword-=_
+
 " Language-specific
 au FileType css  set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
-au FileType rust :LanguageClientStart
 
 " Reset cursor after quitting vim
 au VimLeave * set guicursor=a:hor100
@@ -195,10 +193,12 @@ set clipboard+=unnamedplus
     call denite#custom#option('default', 'highlight_mode_insert', 'NormalBold')
 
     " LanguageClient
-    nnoremap <silent> <Leader><C-d> :Denite references<CR>
-    nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
-    nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
-    nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
+    let g:LanguageClient_autoStart = 1
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
+    nnoremap <silent> <Leader>D :Denite references<CR>
+    nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
+    nnoremap <silent> <Leader>H :call LanguageClient_textDocument_hover()<CR>
