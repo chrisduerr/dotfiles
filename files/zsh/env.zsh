@@ -5,8 +5,8 @@ export VISUAL="nvim"
 
 # History
 export HISTFILE=$HOME/.zsh_history
-export SAVEHIST=100000
-export HISTSIZE=100000
+export SAVEHIST=1000000
+export HISTSIZE=1000000
 
 # ls/completion colors
 export LS_COLORS='ow=36:di=34:fi=32:ex=31:ln=35:'

@@ -30,3 +30,6 @@ zle -N down-line-or-beginning-search
 
 # Set TTY for GPG for each instance
 export GPG_TTY=$(tty)
+
+# Prevent Ctr-S from locking up the terminal
+$exec stty -ixon
