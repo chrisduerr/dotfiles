@@ -1,7 +1,7 @@
 window:
   padding:
-    x: 5
-    y: 5
+    x: 3
+    y: 3
 
 draw_bold_text_with_bright_colors: false
 
@@ -9,7 +9,7 @@ visual_bell:
   duration: 0
 
 font:
-  size: 12.0
+  size: 10.0
   normal:
     family: Fira Mono
     style: Medium
@@ -52,8 +52,10 @@ selection:
 cursor_style: Underline
 
 key_bindings:
-  - { key: V,        mods: Control|Shift,    action: Paste               }
   - { key: C,        mods: Control|Shift,    action: Copy                }
+  - { key: Copy,                             action: Copy                }
+  - { key: V,        mods: Control|Shift,    action: Paste               }
+  - { key: Paste,                            action: Paste               }
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
