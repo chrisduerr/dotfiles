@@ -67,9 +67,9 @@ nnoremap <C-L> :noh<CR><C-L>
 set relativenumber scrolloff=5
 
 " Buffer navigation
-autocmd VimEnter * unmap <Leader>hp
-autocmd VimEnter * unmap <Leader>hs
-autocmd VimEnter * unmap <Leader>hu
+map <Nop>a <Plug>GitGutterUndoHunk
+map <Nop>b <Plug>GitGutterStageHunk
+map <Nop>c <Plug>GitGutterPreviewHunk
 nnoremap <silent> <Leader>l :bn<CR>
 nnoremap <silent> <Leader>h :bp<CR>
 
@@ -90,9 +90,6 @@ set hidden
 
 " Don't open preview window after completion
 set completeopt-=preview
-
-" Recognize '_' as word separator
-set iskeyword-=_
 
 " Language-specific
 au FileType css  set ts=2 sw=2 sts=2
