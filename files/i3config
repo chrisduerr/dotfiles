@@ -1,37 +1,9 @@
 # vim:filetype=i3
-# i3 config file
-# Inspired by: https://github.com/Airblader/dotfiles-manjaro/blob/master/.i3/config
+# Undead's i3 config file
 set $mod Mod4
 
 set $exec exec --no-startup-id
 
-set $red #752a2a
-set $yellow #f4bf75
-set $gray0 #1b1b1b
-set $gray1 #262626
-set $gray2 #616161
-set $gray3 #9e9e9e
-
-gaps inner 15
-
-workspace_auto_back_and_forth no
-force_display_urgency_hint 0 ms
-focus_on_window_activation urgent
-
-floating_minimum_size -1 x -1
-floating_maximum_size -1 x -1
-
-font pango:Fira Mono 11, FontAwesome 11
-
-#                       BORDER   BACKGROUND  TEXT    INDICATOR  CHILD_BORDER
-client.focused          $gray1   $gray0      $gray3  $gray0     $gray0
-client.unfocused        $gray1   $gray0      $gray3  $gray0     $gray0
-client.focused_inactive $gray1   $gray0      $gray3  $gray0     $gray0
-client.urgent           $red     $gray0      $gray3  $red       $red
-client.background       $gray1
-
-
-### Bindsyms
 # i3 Controls
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -87,35 +59,44 @@ bindsym $mod+Shift+3 $exec $HOME/scripts/move_focused_window 3
 bindsym $mod+Shift+4 $exec $HOME/scripts/move_focused_window 4
 bindsym $mod+Shift+5 $exec $HOME/scripts/move_focused_window 5
 
-# Applications / Tools
-# Bind corsair k70 volume keys
-bindsym XF86AudioRaiseVolume $exec amixer set Master 1%+
-bindsym XF86AudioLowerVolume $exec amixer set Master 1%-
-
-# Bind fullscreen screenshot and region screenshoot
+# Bind screenshot and screenrecord
 bindsym --release Print $exec maim -m 10 -u -s -b 1 '/home/undeadleech/pictures/tmp.png'
 bindsym --release $mod+Print $exec $HOME/scripts/screenrecord.sh
 
+# Terminal
 bindsym $mod+Return $exec alacritty
 
+# Browser
 bindsym $mod+b $exec firefox-nightly
 
-# Window Presets
-new_window none
-
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
+# Floating Presets
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
-
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
-# Start Stuff
+# Gaps
+gaps inner 15
+
+# Borders
+default_border none
+default_floating_border none
+
+# Misc
+workspace_auto_back_and_forth no
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+floating_minimum_size 200 x 100
+
+# Start applications
 $exec xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120     # Testing for now
-$exec compton --config $HOME/.config/compton.conf -b                # composite manager
+$exec allow_rgb10_configs=false compton --config $HOME/.config/compton.conf -b                # composite manager
+$exec xbanish                                                       # Autohide mouse cursor
+$exec $HOME/.fehbg                                                  # set Wallpaper
+
+# Bar
 $exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DisplayPort-0 1
 $exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DVI-0 2
 $exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DVI-1 3
-$exec $HOME/.fehbg                                                  # set Wallpaper
-$exec stty -ixon                                                    # Disable Ctrl-S Terminal lock
