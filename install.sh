@@ -84,6 +84,6 @@ symlink ./files/xdg.dirs ~/.config/user-dirs.dirs
 echo "Installing cursors and icons…"
 dependency "paper-icon-theme"
 mkdir -p ~/.config/gtk-3.0
-mkdir -p ~/.config/default
+mkdir -p ~/.icons/default
 symlink ./files/gtk3-settings.ini ~/.config/gtk-3.0/settings.ini
-symlink ./files/icons-index.theme ~/.config/default/index.theme
+symlink ./files/icons-index.theme ~/.icons/default/index.theme
