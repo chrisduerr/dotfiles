@@ -23,5 +23,5 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # Launch i3-gaps and ssh-agent
-eval $(ssh-agent)
+eval $(ssh-agent -t 3600)
 exec i3
