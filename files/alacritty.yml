@@ -1,4 +1,5 @@
 window:
+  dynamic_padding: true
   padding:
     x: 3
     y: 3
@@ -46,18 +47,21 @@ colors:
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
+mouse:
+  url:
+    launcher: firefox
+
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
-cursor_style: Underline
+cursor:
+  style: Underline
 
 key_bindings:
   - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Copy,                             action: Copy                }
   - { key: V,        mods: Control|Shift,    action: Paste               }
   - { key: Paste,                            action: Paste               }
-  - { key: Q,        mods: Command, action: Quit                         }
-  - { key: W,        mods: Command, action: Quit                         }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key0,     mods: Control, action: ResetFontSize                }
   - { key: Equals,   mods: Control, action: IncreaseFontSize             }

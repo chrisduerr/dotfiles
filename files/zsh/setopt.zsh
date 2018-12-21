@@ -8,6 +8,7 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
+setopt HIST_SAVE_BY_COPY
 
 # Globbing
 setopt NO_CASE_GLOB

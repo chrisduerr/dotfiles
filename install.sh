@@ -33,9 +33,9 @@ dependency "python python-neovim neovim"
 mkdir -p ~/.config/nvim/.backup
 symlink ./files/init.vim ~/.config/nvim/init.vim
 
-# Scripts
-echo "Installing scripts…"
-symlink ./files/scripts ~/scripts
+# Binaries
+echo "Installing binaries…"
+symlink ./files/bin ~/bin
 
 # Alacritty
 echo "Installing alacritty…"
@@ -80,10 +80,7 @@ symlink ./files/weechat/python ~/.weechat/python
 echo "Setting up XDG directory names…"
 symlink ./files/xdg.dirs ~/.config/user-dirs.dirs
 
-# Themes for cursors and icons
-echo "Installing cursors and icons…"
-dependency "paper-icon-theme"
+# Theme for GTK
+echo "Installing GTK theme…"
 mkdir -p ~/.config/gtk-3.0
-mkdir -p ~/.icons/default
 symlink ./files/gtk3-settings.ini ~/.config/gtk-3.0/settings.ini
-symlink ./files/icons-index.theme ~/.icons/default/index.theme
