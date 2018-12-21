@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function dependency {
-    pacaur -Qi $1 &> /dev/null && return
+    pacman -Qi $1 &> /dev/null && return
     read -p "Depenencies required: Do you want to install '$1'? [y/N] " choice
     if [[ "${choice^^}" == Y ]]; then
-        pacaur -S $1
+        pacman -S $1
     fi
 }
 
