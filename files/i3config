@@ -39,35 +39,35 @@ bindsym $mod+Ctrl+k resize grow up    5 px
 bindsym $mod+Ctrl+l resize grow right 5 px
 
 # Workspaces
-$exec $HOME/scripts/change_workspaces 1
+$exec $HOME/bin/change_workspaces 1
 
-bindsym $mod+1 $exec $HOME/scripts/switch_focused_workspace 1
-bindsym $mod+2 $exec $HOME/scripts/switch_focused_workspace 2
-bindsym $mod+3 $exec $HOME/scripts/switch_focused_workspace 3
-bindsym $mod+4 $exec $HOME/scripts/switch_focused_workspace 4
-bindsym $mod+5 $exec $HOME/scripts/switch_focused_workspace 5
+bindsym $mod+1 $exec $HOME/bin/switch_focused_workspace 1
+bindsym $mod+2 $exec $HOME/bin/switch_focused_workspace 2
+bindsym $mod+3 $exec $HOME/bin/switch_focused_workspace 3
+bindsym $mod+4 $exec $HOME/bin/switch_focused_workspace 4
+bindsym $mod+5 $exec $HOME/bin/switch_focused_workspace 5
 
-bindsym $mod+Ctrl+1 $exec $HOME/scripts/change_workspaces 1
-bindsym $mod+Ctrl+2 $exec $HOME/scripts/change_workspaces 2
-bindsym $mod+Ctrl+3 $exec $HOME/scripts/change_workspaces 3
-bindsym $mod+Ctrl+4 $exec $HOME/scripts/change_workspaces 4
-bindsym $mod+Ctrl+5 $exec $HOME/scripts/change_workspaces 5
+bindsym $mod+Ctrl+1 $exec $HOME/bin/change_workspaces 1
+bindsym $mod+Ctrl+2 $exec $HOME/bin/change_workspaces 2
+bindsym $mod+Ctrl+3 $exec $HOME/bin/change_workspaces 3
+bindsym $mod+Ctrl+4 $exec $HOME/bin/change_workspaces 4
+bindsym $mod+Ctrl+5 $exec $HOME/bin/change_workspaces 5
 
-bindsym $mod+Shift+1 $exec $HOME/scripts/move_focused_window 1
-bindsym $mod+Shift+2 $exec $HOME/scripts/move_focused_window 2
-bindsym $mod+Shift+3 $exec $HOME/scripts/move_focused_window 3
-bindsym $mod+Shift+4 $exec $HOME/scripts/move_focused_window 4
-bindsym $mod+Shift+5 $exec $HOME/scripts/move_focused_window 5
+bindsym $mod+Shift+1 $exec $HOME/bin/move_focused_window 1
+bindsym $mod+Shift+2 $exec $HOME/bin/move_focused_window 2
+bindsym $mod+Shift+3 $exec $HOME/bin/move_focused_window 3
+bindsym $mod+Shift+4 $exec $HOME/bin/move_focused_window 4
+bindsym $mod+Shift+5 $exec $HOME/bin/move_focused_window 5
 
 # Bind screenshot and screenrecord
 bindsym --release Print $exec maim -m 10 -u -s -b 1 '/home/undeadleech/pictures/tmp.png'
-bindsym --release $mod+Print $exec $HOME/scripts/screenrecord.sh
+bindsym --release $mod+Print $exec $HOME/bin/screenrecord.sh
 
 # Terminal
 bindsym $mod+Return $exec alacritty
 
 # Browser
-bindsym $mod+b $exec firefox-nightly
+bindsym $mod+b $exec firefox
 
 # Floating Presets
 for_window [window_role="task_dialog"] floating enable
@@ -92,8 +92,7 @@ floating_minimum_size 200 x 100
 
 # Start applications
 $exec xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120     # Testing for now
-$exec allow_rgb10_configs=false compton --config $HOME/.config/compton.conf -b                # composite manager
-$exec xbanish                                                       # Autohide mouse cursor
+$exec unclutter --timeout 1                                         # Autohide mouse cursor
 $exec $HOME/.fehbg                                                  # set Wallpaper
 
 # Bar
