@@ -1,6 +1,6 @@
 ## Pacman++
 
-These are a few pacman options worth checking in `/etc/pacman.conf`:
+These are a few pacman options worth checking out in `/etc/pacman.conf`:
 
 ##### Colored output:
 Uncomment `#Color` in the `# Misc options` section for a colorful pacman experience.
