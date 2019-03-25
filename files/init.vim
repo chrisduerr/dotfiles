@@ -138,6 +138,9 @@ nnoremap <S-TAB> <<_
 " Yank to system clipboard
 set clipboard+=unnamedplus
 
+" Preview regex changes
+set inccommand=nosplit
+
 " Plugin Configs
     " Vim-Airline
     function! AirlineInit()

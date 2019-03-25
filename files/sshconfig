@@ -17,3 +17,7 @@ Host gitlab.com
 Host aur.archlinux.org
     IdentityFile ~/.ssh/aur
     User undeadleech
+
+Host freenas
+    IdentityFile ~/.ssh/freenas
+    User undeadleech
