@@ -12,6 +12,7 @@ source ~/.config/zsh/setopt.zsh
 
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 
 # Completion and ls colors
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
