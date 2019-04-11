@@ -194,6 +194,7 @@ set inccommand=nosplit
 
     " LanguageClient
     let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_useVirtualText = 0
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
