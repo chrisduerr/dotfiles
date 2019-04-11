@@ -18,6 +18,6 @@ Host aur.archlinux.org
     IdentityFile ~/.ssh/aur
     User undeadleech
 
-Host freenas
-    IdentityFile ~/.ssh/freenas
+Host backup
+    IdentityFile ~/.ssh/backup
     User undeadleech

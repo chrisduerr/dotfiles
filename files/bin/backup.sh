@@ -10,12 +10,11 @@ exclude="--exclude /programming/rust/**/target \
          --exclude /.cache \
          --exclude /.config/nvim/plugins \
          --exclude /.rustup \
-         --exclude /.cargo \
-         --exclude /Games"
+         --exclude /.cargo"
 
 # Setup mount
 mkdir -p /mnt/backup
-mount -t nfs freenas:/mnt/sas-pool-0/backup /mnt/backup
+mount -t nfs backup:/nfsbackup /mnt/backup
 
 # Rsync files
 sudo -u undeadleech rsync -avhP --delete /home/undeadleech/ /mnt/backup/archhq $exclude
