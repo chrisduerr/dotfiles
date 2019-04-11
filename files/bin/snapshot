@@ -1,0 +1,37 @@
+#!/bin/bash
+
+snapshot_path="/snapshots/root"
+
+# Create snapshot directory if it does not exist yet
+if [ ! -d "$snapshot_path" ]; then
+    mkdir -p "$snapshot_path"
+fi
+
+# Delete existing subvolume if it exists
+day="$(date +%w)"
+daily_path="$snapshot_path/daily-$day"
+if [ -d "$daily_path" ]; then
+    btrfs subvolume delete "$daily_path"
+fi
+
+# Create daily readonly snapshot subvolume
+btrfs subvolume snapshot -r / "$daily_path"
+
+# Create weekly snapshots
+week="$((($(date +%-d)-1)/7+1))"
+weekly_path="$snapshot_path/weekly-$week"
+if [ "$day" == "0" ]; then
+    cp "$daily_path" "$weekly_path"
+fi
+
+# Create monthly snapshots
+month="$(date +%m)"
+monthly_path="$snapshot_path/monthly-$month"
+if [ "$day" == "0" ] && [ "$week" == "0" ]; then
+    cp "$weekly_path" "$monthly_path"
+fi
+
+# Create yearly snapshots
+if [ "$day" == "0" ] && [ "$week" == "0" ] && [ "$month" == "00" ]; then
+    cp "$monthly_path" "$snapshot_path/yearly-$(date +%Y)"
+fi
