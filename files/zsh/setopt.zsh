@@ -15,3 +15,6 @@ setopt NO_CASE_GLOB
 
 # Misc
 setopt AUTO_CD
+
+# Allow using comments in interactive shell
+setopt interactivecomments

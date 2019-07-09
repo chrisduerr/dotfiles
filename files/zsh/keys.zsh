@@ -1,7 +1,10 @@
-bindkey '^N' up-line-or-beginning-search                    # [Ctrl-N]
-bindkey '^T' down-line-or-beginning-search                  # [Ctrl-T]
+# Vi Mode
+export KEYTIMEOUT=1
+bindkey -v
 
-bindkey "^S" forward-word                                   # [Ctrl-Right]
-bindkey "^H" backward-word                                  # [Ctrl-Left]
+# Fish autosuggestions
+bindkey '^K' up-line-or-beginning-search
+bindkey '^J' down-line-or-beginning-search
 
-bindkey "${terminfo[kdch1]}" delete-char                    # [Del]
+# Delet key
+bindkey "${terminfo[kdch1]}" delete-char

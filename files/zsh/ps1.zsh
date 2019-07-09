@@ -1,12 +1,8 @@
-# Reset the terminal color
-col_reset() {
-    echo "%{\033[0m%}"
-}
-
 # Set a color, if it already exists add a separator
-set_color() {
-    local fg="$1"
-    local bg="$2"
+colored() {
+    local text="$1"
+    local fg="$2"
+    local bg="$3"
 
     # CTERM -> ANSII FG
     local fg=$(($fg + 30))
@@ -20,16 +16,8 @@ set_color() {
         local bg=$(($bg + 52))
     fi
 
-    # Create full ANSII format
-    local col="%{\033[0;${fg};${bg}m%}"
-
-    # Check if there needs to be a separator
-    if [[ "$bg" == "$CURRENT_BG" ]]; then
-        local col="$col|"
-    fi
-
-    CURRENT_COL="$col"
-    CURRENT_BG="$bg"
+    # Create full ANSII format with color reset
+    echo "%{\033[0;${fg};${bg}m%}$1%{\033[0m%}"
 }
 
 # Current directory structure
@@ -68,8 +56,7 @@ current_path() {
     local joined_array=$(join_by "/" "${short_array[@]}")
     local output_path="$output_path$joined_array"
 
-    set_color 7 8
-    CURRENT_PATH="$(echo $CURRENT_COL $output_path $(col_reset))"
+    echo $(colored " $output_path " 7 8)
 }
 
 # Current version control status
@@ -82,43 +69,42 @@ vcs() {
     # Set branch name
     local branch=$(git symbolic-ref --short HEAD 2> /dev/null)
 
-    # Get color based on directory status
-    if [[ -n $(git status --porcelain) ]]; then
-        set_color 0 9 # Changed -> Red
-    else
-        set_color 0 10 # Unchanged -> Green
-    fi
-
     # Check if there is new stuff to commit
     if [[ -n $(git rev-list "$branch"@{upstream}..HEAD 2> /dev/null) ]]; then
         local push=" ↑"
     fi
 
-    VCS="$(echo $CURRENT_COL $branch$push $(col_reset))"
+    # Get color based on directory status
+    if [[ -n $(git status --porcelain) ]]; then
+        echo $(colored " $branch$push " 0 9)
+    else
+        echo $(colored " $branch$push " 0 10)
+    fi
 }
 
 # Current user
 current_user() {
-    set_color 0 9
-    if [[ "$USER" == "root" ]]; then
-        CURRENT_USER="$(echo $CURRENT_COL R! $(col_reset))"
+    # Set background based on vi mode
+    if [[ "$KEYMAP" == "vicmd" ]]; then
+        local bg=1
     else
-        CURRENT_USER="$(echo $CURRENT_COL UL $(col_reset))"
+        local bg=9
+    fi
+
+    if [[ "$USER" == "root" ]]; then
+        echo $(colored ' R! ' 0 $bg)
+    else
+        echo $(colored ' UL ' 0 $bg)
     fi
 }
 
 function precmd {
-    # Export variables
-    current_user
-    current_path
-    vcs
-
-    PS1="$CURRENT_USER$CURRENT_PATH$VCS "
-
-    # Unset all variables
-    unset CURRENT_USER
-    unset CURRENT_PATH
-    unset VCS
-    unset CURRENT_COL
-    unset CURRENT_BG
+    PS1="$(current_user)$(current_path)$(vcs) "
 }
+
+function zle-line-init zle-keymap-select {
+    precmd
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
