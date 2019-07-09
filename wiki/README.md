@@ -13,6 +13,7 @@
 - [Keyboard Layout](keyboard.md)
 - [Firefox](firefox.md)
 - [Disable PC Speaker](nobeep.md)
+- [Disable HDMI Audio](disable-hdmi-audio.md)
 - [Paccache Hook](paccache.md)
 - [Systemd Shutdown Jobs](systemd-shutdown.md)
 - [Automated Btrfs Snapshots](systemd-autosnapshot.md)
