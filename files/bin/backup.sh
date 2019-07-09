@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 exclude="--exclude /programming/rust/**/target \
          --exclude /programming/rust/vtebench \
@@ -14,7 +14,7 @@ exclude="--exclude /programming/rust/**/target \
 
 # Setup mount
 mkdir -p /mnt/backup
-mount -t nfs backup:/nfsbackup /mnt/backup
+mount -t nfs backup:/nfsbackup /mnt/backup -o retry=0
 
 # Rsync files
 sudo -u undeadleech rsync -avhP --delete /home/undeadleech/ /mnt/backup/archhq $exclude
