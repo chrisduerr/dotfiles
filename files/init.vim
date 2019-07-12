@@ -35,6 +35,8 @@ call dein#add('Shougo/dein.vim')
     call dein#add('ntpeters/vim-better-whitespace')
     " Fuzzy Finder And Stuff, used for LanguageClient
     call dein#add('Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'})
+    " Surroundings
+    call dein#add('tpope/vim-surround')
 
 call dein#end()
 
@@ -60,7 +62,7 @@ set directory=~/.config/nvim/.swp//
 set undofile
 
 " Better searching
-set ignorecase smartcase incsearch showmatch hlsearch
+set ignorecase smartcase incsearch hlsearch
 nnoremap <C-L> :noh<CR><C-L>
 
 " Show relative line numbers and never let cursor touch top/bottom
@@ -113,7 +115,6 @@ imap <expr><TAB> TabKeyFunc()
 " Setup ENTER to prevent new line when completing
 function! EnterKeyFunc() abort
     if neosnippet#expandable()
-        echomsg 'HERE'
         return "\<Plug>(neosnippet_expand)"
     elseif pumvisible()
         return deoplete#close_popup()
