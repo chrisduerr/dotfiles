@@ -97,6 +97,4 @@ $exec unclutter --timeout 1                                         # autohide m
 $exec $HOME/.fehbg                                                  # set Wallpaper
 
 # Bar
-$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin DP-1 1
-$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin DVI-D-1 2
-$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin DVI-D-2 3
+$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin LVDS-1 1 1
