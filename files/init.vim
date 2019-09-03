@@ -17,8 +17,8 @@ call dein#add('Shougo/dein.vim')
     " Comment/Uncomment text
     call dein#add('tpope/vim-commentary')
     " Snippets
-    call dein#add('Shougo/neosnippet')
-    call dein#add('Shougo/neosnippet-snippets')
+    call dein#add('SirVer/ultisnips')
+    call dein#add('honza/vim-snippets')
     " Display Function Signatures
     call dein#add('Shougo/echodoc.vim')
     " Auto Completion Engine
@@ -100,30 +100,6 @@ au FileType html set ts=2 sw=2 sts=2
 " Reset cursor after quitting vim
 au VimLeave * set guicursor=a:hor100
 
-" Setup TAB to work for neosnippet and deoplete
-function! TabKeyFunc() abort
-    if neosnippet#jumpable()
-        return "\<Plug>(neosnippet_jump)"
-    elseif pumvisible()
-        return "\<C-N>"
-    else
-        return "\<TAB>"
-    endif
-endfunction
-imap <expr><TAB> TabKeyFunc()
-
-" Setup ENTER to prevent new line when completing
-function! EnterKeyFunc() abort
-    if neosnippet#expandable()
-        return "\<Plug>(neosnippet_expand)"
-    elseif pumvisible()
-        return deoplete#close_popup()
-    else
-        return "\<ENTER>"
-    endif
-endfunction
-imap <expr><ENTER> EnterKeyFunc()
-
 " Hide 'match 1 of 8' messages
 set shortmess=filnxtToOIc
 
@@ -192,6 +168,11 @@ set inccommand=nosplit
     call denite#custom#option('default', 'highlight_matched_char', 'IncSearch')
     call denite#custom#option('default', 'highlight_matched_range', 'Normal')
     call denite#custom#option('default', 'highlight_mode_insert', 'NormalBold')
+
+    " UltiSnips
+    let g:UltiSnipsExpandTrigger="<c-y>"
+    let g:UltiSnipsJumpForwardTrigger="<c-n>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
     " LanguageClient
     let g:LanguageClient_autoStart = 1
