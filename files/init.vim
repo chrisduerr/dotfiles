@@ -1,52 +1,38 @@
 " Plugins
-set runtimepath+=~/.config/nvim/plugins/repos/github.com/Shougo/dein.vim
-call dein#begin("~/.config/nvim/plugins")
-call dein#add('Shougo/dein.vim')
+call plug#begin("~/.config/nvim/plugins")
 
 " Appearance
     " Vim-Airline
-    call dein#add('vim-airline/vim-airline')
+    Plug 'vim-airline/vim-airline'
     " Vim-Airline Theme
-    call dein#add('chrisduerr/vim-undead')
+    Plug 'chrisduerr/vim-undead'
 
 " Programming
     " Rust
-    call dein#add('autozimu/LanguageClient-neovim', {'rev': 'next', 'build': 'make release'})
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'make release'}
     " Git Diff
-    call dein#add('airblade/vim-gitgutter')
+    Plug 'airblade/vim-gitgutter'
     " Comment/Uncomment text
-    call dein#add('tpope/vim-commentary')
+    Plug 'tpope/vim-commentary'
     " Snippets
-    call dein#add('SirVer/ultisnips')
-    call dein#add('honza/vim-snippets')
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
     " Display Function Signatures
-    call dein#add('Shougo/echodoc.vim')
+    Plug 'Shougo/echodoc.vim'
     " Auto Completion Engine
-    call dein#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " Syntax Highlighting for a ton of languages
-    call dein#add('sheerun/vim-polyglot')
+    Plug 'sheerun/vim-polyglot'
 
 " Usability
-    " Avoid error saving files with path longer than 255 characters
-    call dein#add('pixelastic/vim-undodir-tree')
-    " reopen files at last edit position
-    call dein#add('dietsche/vim-lastplace')
     " Mark Trailing Whitespaces
-    call dein#add('ntpeters/vim-better-whitespace')
+    Plug 'ntpeters/vim-better-whitespace'
     " Fuzzy Finder And Stuff, used for LanguageClient
-    call dein#add('Shougo/denite.nvim', {'do': ':UpdateRemotePlugins'})
+    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'}
     " Surroundings
-    call dein#add('tpope/vim-surround')
+    Plug 'tpope/vim-surround'
 
-call dein#end()
-
-filetype plugin indent on
-syntax enable
-
-" Automagically install new dein.vim plugins
-if dein#check_install()
-    call dein#install()
-endif
+call plug#end()
 
 let mapleader=' '
 set encoding=utf-8
@@ -69,9 +55,9 @@ nnoremap <C-L> :noh<CR><C-L>
 set relativenumber scrolloff=5
 
 " Buffer navigation
-map <Nop>a <Plug>GitGutterUndoHunk
-map <Nop>b <Plug>GitGutterStageHunk
-map <Nop>c <Plug>GitGutterPreviewHunk
+map <Nop>a @<Plug>(GitGutterUndoHunk)
+map <Nop>b @<Plug>(GitGutterStageHunk)
+map <Nop>c @<Plug>(GitGutterPreviewHunk)
 nnoremap <silent> <Leader>l :bn<CR>
 nnoremap <silent> <Leader>h :bp<CR>
 
@@ -118,6 +104,12 @@ set clipboard+=unnamedplus
 " Preview regex changes
 set inccommand=nosplit
 
+" Reopen files at last edit position
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\   exe "normal! `\"" |
+\ endif
+
 " Plugin Configs
     " Vim-Airline
     function! AirlineInit()
@@ -154,8 +146,10 @@ set inccommand=nosplit
     let g:echodoc_enable_at_startup = 1
 
     " Deoplete
-    let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
+
+    " Deoplete lazily loading
+    autocmd InsertEnter * call deoplete#enable()
 
     " Denite
     call denite#custom#map('insert', '<Down>',
@@ -178,7 +172,7 @@ set inccommand=nosplit
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_useVirtualText = 0
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['/home/undeadleech/programming/rust/rust-analyzer/target/release/ra_lsp_server'],
     \ }
     nnoremap <silent> <Leader>D :Denite references<CR>
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
