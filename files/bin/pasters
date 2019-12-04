@@ -4,6 +4,9 @@
 ### This script uses paste.rs to create a paste and copy its URL to the clipboard ###
 #####################################################################################
 
+# wayland support
+pgrep Xorg || poweroff
+
 # File in which paste cache will be stored
 cache_file=~/.cache/pasters
 
