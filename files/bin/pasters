@@ -5,7 +5,7 @@
 #####################################################################################
 
 # wayland support
-pgrep Xorg || poweroff
+pgrep Xorg > /dev/null || poweroff
 
 # File in which paste cache will be stored
 cache_file=~/.cache/pasters
