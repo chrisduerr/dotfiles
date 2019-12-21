@@ -91,12 +91,12 @@ focus_on_window_activation urgent
 floating_minimum_size 200 x 100
 
 # Start applications
-$exec xrandr --output DisplayPort-0 --mode 2560x1440 --rate 144     # Testing for now
-$exec compton --config $HOME/.config/compton.conf -b                # composite manager
-$exec unclutter --timeout 1                                         # Autohide mouse cursor
+$exec xrandr --output DP-1 --mode 2560x1440 --rate 144              # monitor refresh rate
+$exec picom -b                                                      # compositor
+$exec unclutter --timeout 1                                         # autohide mouse cursor
 $exec $HOME/.fehbg                                                  # set Wallpaper
 
 # Bar
-$exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DisplayPort-0 1
-$exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DVI-D-0 2
-$exec cd $HOME/programming/rust/leechbar-bin && cargo run --release DVI-D-1 3
+$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin DP-1 1
+$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin DVI-D-1 2
+$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin DVI-D-2 3
