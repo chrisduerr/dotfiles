@@ -8,6 +8,7 @@ Section "InputClass"
     Driver "libinput"
     MatchIsPointer "yes"
     Option "AccelProfile" "flat"
+    Option "AccelSpeed" "0"
 EndSection
 ```
 
