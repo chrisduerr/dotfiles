@@ -4,33 +4,37 @@ call plug#begin("~/.config/nvim/plugins")
 " Appearance
     " Vim-Airline
     Plug 'vim-airline/vim-airline'
-    " Vim-Airline Theme
+    " Vim-Airline theme
     Plug 'chrisduerr/vim-undead'
 
 " Programming
     " Rust
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'make release'}
-    " Git Diff
+    " Git diff
     Plug 'airblade/vim-gitgutter'
-    " Comment/Uncomment text
+    " Comment/uncomment text
     Plug 'tpope/vim-commentary'
     " Snippets
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    " Display Function Signatures
+    " Display function signatures
     Plug 'Shougo/echodoc.vim'
-    " Auto Completion Engine
+    " Auto completion engine
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " Syntax Highlighting for a ton of languages
+    " Syntax highlighting for a ton of languages
     Plug 'sheerun/vim-polyglot'
 
 " Usability
-    " Mark Trailing Whitespaces
+    " Mark trailing whitespaces
     Plug 'ntpeters/vim-better-whitespace'
-    " Fuzzy Finder And Stuff, used for LanguageClient
+    " Fuzzy finder and stuff, used for LanguageClient
     Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'}
     " Surroundings
     Plug 'tpope/vim-surround'
+    " Repeat plugin actions with '.'
+    Plug 'tpope/vim-repeat'
+    " Undo history visualizer
+    Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -170,9 +174,9 @@ autocmd BufReadPost *
 
     " LanguageClient
     let g:LanguageClient_autoStart = 1
-    let g:LanguageClient_useVirtualText = 0
+    let g:LanguageClient_useVirtualText = "No"
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['/home/undeadleech/programming/rust/rust-analyzer/target/release/ra_lsp_server'],
+    \ 'rust': ['/home/undeadleech/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ }
     nnoremap <silent> <Leader>D :Denite references<CR>
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
