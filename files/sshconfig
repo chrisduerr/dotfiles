@@ -14,22 +14,18 @@ Host gitlab.com
     IdentitiesOnly yes
     IdentityFile ~/.ssh/vcs
 
+Host gitlab.freedesktop.org
+    IdentitiesOnly yes
+    IdentityFile ~/.ssh/freedesktop
+
 Host aur.archlinux.org
     IdentityFile ~/.ssh/aur
     User undeadleech
 
-Host backup
-    IdentityFile ~/.ssh/backup
-    User undeadleech
-
-Host alacritty-bsd
-    IdentityFile ~/.ssh/alacritty-bsd
-    User undeadleech
-
-Host monitoring
-    IdentityFile ~/.ssh/monitoring
-    User monitoring
-
 Host proxmox
     IdentityFile ~/.ssh/proxmox
+    User root
+
+Host backup
+    IdentityFile ~/.ssh/backup
     User root
