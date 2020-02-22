@@ -17,7 +17,7 @@ mkdir -p /mnt/backup
 mount -t nfs backup:/nfsbackup /mnt/backup -o retry=0 -o timeo=1
 
 # Rsync files
-sudo -u undeadleech rsync -avhP --delete /home/undeadleech/ /mnt/backup/archhq $exclude
+sudo -u undeadleech rsync -Phav --delete /home/undeadleech/ /mnt/backup/archhq $exclude
 
 # Destroy mount
 umount /mnt/backup
