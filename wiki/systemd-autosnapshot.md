@@ -14,7 +14,7 @@ Description=Daily Btrfs Snapshot
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/snapshot /snapshots/daily 7
+ExecStart=/usr/bin/snapshot /snapshots/0_daily 7
 
 [Install]
 WantedBy=multi-user.target

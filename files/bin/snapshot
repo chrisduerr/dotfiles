@@ -19,6 +19,6 @@ for snapshot in "${snapshot_path}_"*; do
         btrfs subvolume delete "$snapshot"
         snapshots=$(( "$snapshots" - 1 ))
     else
-        exit
+        exit 0
     fi
 done
