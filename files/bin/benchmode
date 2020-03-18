@@ -34,10 +34,7 @@ if [[ "$command" == "disable" ]]; then
     echo "2" | sudo tee /proc/sys/kernel/randomize_va_space > /dev/null
 
     # Set CPU governor to powersave mode
-    echo "powersave" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
-
-    # Enable turbo mode
-    echo "0" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo > /dev/null
+    echo "schedutil" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
 
     echo -e "\e[31mDisabled\e[0m benchmark mode"
 elif [[ "$command" == "enable" ]]; then
@@ -52,9 +49,6 @@ elif [[ "$command" == "enable" ]]; then
 
     # Set CPU governor to performance mode
     echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
-
-    # Disable turbo mode
-    echo "1" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo > /dev/null
 
     echo -e "\e[32mEnabled\e[0m benchmark mode"
 elif [[ "$1" == "status" ]]; then
