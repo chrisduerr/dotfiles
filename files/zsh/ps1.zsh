@@ -4,20 +4,8 @@ colored() {
     local fg="$2"
     local bg="$3"
 
-    # CTERM -> ANSII FG
-    local fg=$(($fg + 30))
-    if [[ "$fg" -gt 37 ]]; then
-        local fg=$(($fg + 52))
-    fi
-
-    # CTERM -> ANSII BG
-    local bg=$(($bg + 40))
-    if [[ "$bg" -gt 47 ]]; then
-        local bg=$(($bg + 52))
-    fi
-
     # Create full ANSII format with color reset
-    echo "%{\033[0;${fg};${bg}m%}$1%{\033[0m%}"
+    echo "%{\e[38;5;${fg};48;5;${bg}m%}$1%{\e[0m%}"
 }
 
 # Current directory structure
