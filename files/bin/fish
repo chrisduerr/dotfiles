@@ -1,0 +1,31 @@
+#!/bin/bash
+
+fish_len=7
+cols=$(tput cols)
+
+echo -ne "\e[?25l\e[?7l"
+
+for c in $(seq $cols -1 $((fish_len * -1 + 2))); do
+    if [[ $((c % 2)) == 0 ]]; then
+        fish="<°)))彡 "
+    else
+        fish="<°)))ミ "
+    fi
+
+    chop_tail=$((cols - c + 1))
+    if [[ $chop_tail -gt 0 ]]; then
+        fish=${fish:0:$chop_tail}
+    fi
+
+    chop_head=$((c * -1 + 1))
+    if [[ $chop_head -gt 0 ]]; then
+        fish=${fish:$chop_head}
+        c=0
+    fi
+
+    echo -ne "\e[${c}G$fish"
+
+    sleep .05
+done
+
+echo -e "\e[?25h\e[?7h"
