@@ -25,5 +25,26 @@ if [[ $(($height % 2)) != 0 ]]; then
     height=$(($height - 1))
 fi
 
-# Record the video as mp4
-ffmpeg -y -f x11grab -s ${width}x${height} -re -i :0.0+$xoffset,$yoffset -crf 30 -c:v libx264 -pix_fmt yuv420p -preset fast -an $output.mp4
+# Record lossless x264
+ffmpeg \
+    -f x11grab \
+    -framerate 60 \
+    -s ${width}x${height} \
+    -i :0.0+$xoffset,$yoffset \
+    -c:v libx264rgb \
+    -crf 0 \
+    -preset ultrafast \
+    -an \
+    -y \
+    ${output}_lossless.mp4
+
+# Compress to decrease filesize
+ffmpeg \
+    -i ${output}_lossless.mkv \
+    -crf 20 \
+    -c:v libx264 \
+    -pix_fmt yuv420p \
+    -preset veryslow \
+    -movflags +faststart \
+    -y \
+    ${output}.mp4
