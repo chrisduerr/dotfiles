@@ -38,13 +38,16 @@ ffmpeg \
     -y \
     ${output}_lossless.mp4
 
-# Compress to decrease filesize
+# Compress x264 to decrease filesize
 ffmpeg \
-    -i ${output}_lossless.mkv \
-    -crf 20 \
+    -i ${output}_lossless.mp4 \
+    -crf 15 \
     -c:v libx264 \
     -pix_fmt yuv420p \
     -preset veryslow \
     -movflags +faststart \
     -y \
     ${output}.mp4
+
+# Remove massive lossless file
+rm ${output}_lossless.mp4
