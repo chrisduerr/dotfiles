@@ -150,9 +150,9 @@ autocmd BufReadPost *
     let g:echodoc_enable_at_startup = 1
 
     " Deoplete
-    let g:deoplete#enable_smart_case = 1
+    call deoplete#custom#option('num_processes', 12)
 
-    " Deoplete lazily loading
+    " Deoplete lazy loading
     autocmd InsertEnter * call deoplete#enable()
 
     " Denite
@@ -176,7 +176,7 @@ autocmd BufReadPost *
     let g:LanguageClient_autoStart = 1
     let g:LanguageClient_useVirtualText = "No"
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['/home/undeadleech/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ }
     nnoremap <silent> <Leader>D :Denite references<CR>
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
