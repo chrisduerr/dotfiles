@@ -63,3 +63,9 @@ ln --force ./files/xdg.dirs ~/.config/user-dirs.dirs
 echo "Setting up GTK theme…"
 mkdir -p ~/.config/gtk-3.0
 ln --force ./files/gtk3-settings.ini ~/.config/gtk-3.0/settings.ini
+
+echo "Setting up automatic backups…"
+dependency "rsync nfs-utils"
+sudo ln --force ./files/systemd/backup.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now backup.service

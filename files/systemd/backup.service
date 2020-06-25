@@ -1,0 +1,11 @@
+[Unit]
+Description=Backup home directory
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+TimeoutStopSec=infinity
+ExecStop=/bin/bash /home/undeadleech/bin/backup.sh
+
+[Install]
+WantedBy=multi-user.target

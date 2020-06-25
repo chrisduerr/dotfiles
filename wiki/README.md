@@ -14,6 +14,5 @@
 - [Firefox](firefox.md)
 - [Disable PC Speaker](nobeep.md)
 - [Paccache Hook](paccache.md)
-- [Systemd Shutdown Jobs](systemd-shutdown.md)
 - [Automated Btrfs Snapshots](systemd-autosnapshot.md)
 - [Pulseaudio](pulseaudio.md)
