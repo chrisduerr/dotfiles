@@ -64,8 +64,9 @@ echo "Setting up GTK theme…"
 mkdir -p ~/.config/gtk-3.0
 ln --force ./files/gtk3-settings.ini ~/.config/gtk-3.0/settings.ini
 
-echo "Setting up automatic backups…"
+echo "Setting up systemd services…"
 dependency "rsync nfs-utils"
-sudo ln --force ./files/systemd/backup.service /etc/systemd/system/
+sudo ln --force ./files/systemd/* /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now backup.service
+sudo systemctl enable --now rgbfusion.service

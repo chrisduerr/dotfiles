@@ -1,0 +1,10 @@
+[Unit]
+Description=Set motherboard LEDs
+
+[Service]
+Type=oneshot
+ExecStart=/home/undeadleech/bin/rgbfusion --zone IO --effect Static --color 0xff0000
+ExecStart=/home/undeadleech/bin/rgbfusion --zone LED1 --effect Static --color 0xff0000 --max-brightness 64
+
+[Install]
+WantedBy=multi-user.target
