@@ -2,9 +2,9 @@
 
 function dependency {
     pacman -Qi $1 &> /dev/null && return
-    read -p "Depenencies required: Do you want to install '$1'? [y/N] " choice
-    if [[ "${choice^^}" == Y ]]; then
-        pacman -S --needed $1
+    read -p "Depenencies required: Do you want to install '$1'? [Y/n] " choice
+    if [[ "${choice^^}" != N ]]; then
+        sudo pacman -S --needed $1
     fi
 }
 
