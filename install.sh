@@ -11,9 +11,10 @@ function dependency {
 # Just making sure
 mkdir -p ~/.config
 
-echo "Installing compton…"
-dependency "compton"
-ln --force ./files/compton.conf ~/.config/compton.conf
+echo "Installing picom…"
+dependency "picom"
+mkdir -p ~/.config/picom
+ln --force ./files/picom.conf ~/.config/picom/picom.conf
 
 echo "Installing neovim…"
 dependency "python python-neovim neovim"
