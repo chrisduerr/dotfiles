@@ -1,0 +1,2 @@
+load-module module-remap-sink master=alsa_output.usb-Generic_USB_Audio-00.analog-stereo sink_name=mono sink_properties="device.description='Mono'" channels=2 channel_map=mono,mono
+set-default-sink mono

@@ -52,6 +52,11 @@ ln --force ./files/weechat/buflist.conf ~/.weechat/buflist.conf
 ln --force ./files/weechat/irc.conf ~/.weechat/irc.conf
 ln -sr --force ./files/weechat/python ~/.weechat/
 
+echo "Installing Pulseaudio…"
+dependency "pulseaudio"
+mkdir -p ~/.config/pulse
+ln --force ./files/pulseaudio.pa ~/.config/pulse/default.pa
+
 echo "Setting up Alacritty…"
 dependency "ttf-fira-mono"
 mkdir -p ~/.config/alacritty
