@@ -29,3 +29,7 @@ Host proxmox
 Host backup
     IdentityFile ~/.ssh/backup
     User root
+
+Host *.sr.ht
+    IdentityFile ~/.ssh/sourcehut
+    User builds
