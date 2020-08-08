@@ -74,4 +74,3 @@ dependency "rsync nfs-utils"
 sudo ln --force ./files/systemd/* /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now backup.service
-sudo systemctl enable --now rgbfusion.service
