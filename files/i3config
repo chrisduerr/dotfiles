@@ -91,10 +91,10 @@ focus_on_window_activation urgent
 floating_minimum_size 100 x 50
 
 # Start applications
-$exec xrandr --output DP-1 --mode 2560x1440 --rate 144              # monitor refresh rate
 $exec picom -b                                                      # compositor
 $exec unclutter --timeout 1                                         # autohide mouse cursor
 $exec $HOME/.fehbg                                                  # set Wallpaper
 
 # Bar
-$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin LVDS-1 1 1
+$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin LVDS-1 2 0
+$exec cd $HOME/programming/rust/leechbar-bin && ./target/release/leechbar-bin HDMI-1 2 1
