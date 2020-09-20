@@ -1,0 +1,9 @@
+[Unit]
+Description=Automatic poweroff when all users log out
+
+[Service]
+Type=simple
+ExecStart=/home/undeadleech/bin/autopoweroff 600 3
+
+[Install]
+WantedBy=multi-user.target

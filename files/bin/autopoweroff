@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Automatically shot down if no more users are logged in.
+
+if [ $# -ne 2 ]; then
+    echo "USAGE: autopoweroff <CHECK_INTERVAL> <NUM_CHECKS>"
+    exit 1
+fi
+
+check_interval=$1
+num_checks=$2
+
+while true; do
+    for check in $(seq $num_checks); do
+        sleep $check_interval
+
+        # Restart outer loop if there is any user logged in.
+        num_users=$(users | wc -l)
+        if [ $num_users -ne 0 ]; then
+            echo "$num_users user(s) currently logged in"
+            continue 2
+        fi
+
+        echo "No users logged in for $check/$num_checks consecutive checks"
+    done
+
+    break
+done
+
+systemctl poweroff
