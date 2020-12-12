@@ -4,8 +4,6 @@ window:
     x: 3
     y: 3
 
-draw_bold_text_with_bright_colors: false
-
 font:
   size: 10.0
   normal:
@@ -13,29 +11,41 @@ font:
     style: Medium
 
 colors:
+  selection:
+    text: CellForeground
+    background: "0x444444"
+
+  search:
+    matches:
+      foreground: "0x181818"
+      background: "0xac4242"
+    bar:
+      foreground: "0xaaaaaa"
+      background: "0x282828"
+
   primary:
-    background: '0x1b1b1b'
-    foreground: '0x9e9e9e'
+    foreground: "0xaaaaaa"
+    background: "0x181818"
 
   normal:
-    black:   '0x1b1b1b'
-    red:     '0xac4142'
-    green:   '0x90a959'
-    yellow:  '0xf4bf75'
-    blue:    '0x6a9fb5'
-    magenta: '0xaa759f'
-    cyan:    '0x75b5aa'
-    white:   '0x616161'
+    black:   "0x181818"
+    red:     "0xac4242"
+    green:   "0x90a959"
+    yellow:  "0xf4bf75"
+    blue:    "0x6a9fb5"
+    magenta: "0xaa759f"
+    cyan:    "0x75b5aa"
+    white:   "0x666666"
 
   bright:
-    black:   '0x262626'
-    red:     '0x752a2a'
-    green:   '0x5d742a'
-    yellow:  '0x754e2a'
-    blue:    '0x2a4e74'
-    magenta: '0x703664'
-    cyan:    '0x297366'
-    white:   '0x9e9e9e'
+    black:   "0x282828"
+    red:     "0x752a2a"
+    green:   "0x5d742a"
+    yellow:  "0x754e2a"
+    blue:    "0x2a4e74"
+    magenta: "0x703664"
+    cyan:    "0x297366"
+    white:   "0xaaaaaa"
 
 mouse:
   url:
@@ -43,3 +53,13 @@ mouse:
 
 cursor:
   style: Underline
+  vi_mode_style: Block
+
+key_bindings:
+  - { key: Escape, mods: Control,                 action: ToggleViMode      }
+  - { key: 5,      mods: Shift,         mode: Vi, action: Last              }
+  - { key: 6,      mods: Shift,         mode: Vi, action: Bracket           }
+  - { key: 7,      mods: Shift,         mode: Vi, action: FirstOccupied     }
+  - { key: 53,     mods: Shift,         mode: Vi, action: SearchBackward    }
+  - { key: N,      mods: Control,       mode: Vi, action: SearchEnd         }
+  - { key: N,      mods: Control|Shift, mode: Vi, action: SearchStart       }
