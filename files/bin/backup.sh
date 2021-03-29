@@ -10,7 +10,8 @@ exclude="--exclude /programming/rust/**/target \
          --exclude /.cache \
          --exclude /.config/nvim/plugins \
          --exclude /.rustup \
-         --exclude /.cargo"
+         --exclude /.cargo \
+         --exclude /.local"
 
 # Setup mount
 mkdir -p /mnt/backup
