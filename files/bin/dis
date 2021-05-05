@@ -1,0 +1,61 @@
+#!/bin/bash
+
+##################################
+# Disassemble executable symbols #
+##################################
+
+# Print help.
+if [[ "$1" == -* ]] | [[ "$#" -gt 2 ]]; then
+    echo "USAGE: dis <EXECUTABLE> [SYMBOL]"
+    exit 1
+fi
+
+exe=$1
+symbol=$2
+
+# Search for the mangled symbol name.
+if [[ "$symbol" != "_"* ]]; then
+    # Find all available symbols.
+    options=$(nm --demangle "$exe" | grep "$symbol")
+
+    if [[ -z "$options" ]]; then
+        # Exit with no results.
+        echo "Symbol not found: '$symbol'"
+        exit 2
+    elif [[ $(echo "$options" | wc -l) -eq 1 ]]; then
+        # Do not query with only a single match.
+        result=$options
+    else
+        # Print demangled symbol options.
+        index=0
+        while IFS= read -r option; do
+            echo "[$index] $option"
+            index=$((index + 1))
+        done <<< "$options"
+
+        # Read user's demangled symbol choice.
+        while [[ -z "$result" ]]; do
+            echo -n "Index [Default: 0] > "
+            read selection
+
+            # Default to option 0.
+            if [[ -z "$selection" ]]; then
+                selection="0"
+            fi
+
+            # If a number was specified, get the resulting line.
+            if [[ "$selection" =~ ^[0-9]+$ ]]; then
+                result=$(echo "$options" | sed -n "$((selection + 1))p" 2> /dev/null)
+            fi
+        done
+    fi
+
+    # Get the mangled symbol name.
+    radix=$(echo "$result" | sed 's/\([^ ]*\).*/\1/')
+    symbol=$(nm "$exe" | grep "$radix" | sed 's/[^ ]* [^ ]* \(.*\)/\1/')
+
+    echo "Mangled symbol: '$symbol'"
+fi
+
+# Output the assembly for the symbol.
+lldb --batch -o "disassemble -mn $symbol" "$exe"
