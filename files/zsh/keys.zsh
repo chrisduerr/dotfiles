@@ -2,8 +2,8 @@
 bindkey "${terminfo[kdch1]}" delete-char
 
 # Fish autosuggestions
-bindkey '^N' up-line-or-beginning-search
-bindkey '^P' down-line-or-beginning-search
+bindkey '^P' up-line-or-beginning-search
+bindkey '^N' down-line-or-beginning-search
 
 # Vi Mode
 export KEYTIMEOUT=1
