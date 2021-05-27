@@ -11,18 +11,6 @@ font:
     style: Medium
 
 colors:
-  selection:
-    text: CellForeground
-    background: "0x444444"
-
-  search:
-    matches:
-      foreground: "0x181818"
-      background: "0xac4242"
-    bar:
-      foreground: "0xaaaaaa"
-      background: "0x282828"
-
   primary:
     foreground: "0xaaaaaa"
     background: "0x181818"
@@ -47,19 +35,53 @@ colors:
     cyan:    "0x297366"
     white:   "0xaaaaaa"
 
-mouse:
-  url:
-    launcher: firefox
+  search:
+    matches:
+      foreground: "0x181818"
+      background: "0xac4242"
+    focused_match:
+      foreground: "0xac4242"
+      background: "0x181818"
+    bar:
+      foreground: "0xaaaaaa"
+      background: "0x282828"
+
+  hints:
+    start:
+      foreground: "0x181818"
+      background: "0xac4242"
+    end:
+      background: "0xac4242"
+      foreground: "0x181818"
+
+hints:
+  alphabet: "hutenosadigpc.r,l'"
+  enabled:
+   - regex: "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+     command: firefox
+     post_processing: true
+     mouse:
+       enabled: true
+     binding:
+       key: U
+       mods: Control|Shift
+   - regex: "[a-f0-9]{40}|[a-f0-9]{7,8}"
+     action: Copy
+     binding:
+       key: H
+       mods: Control|Shift
 
 cursor:
   style: Underline
   vi_mode_style: Block
 
 key_bindings:
-  - { key: Escape, mods: Control,                 action: ToggleViMode      }
-  - { key: 5,      mods: Shift,         mode: Vi, action: Last              }
-  - { key: 6,      mods: Shift,         mode: Vi, action: Bracket           }
-  - { key: 7,      mods: Shift,         mode: Vi, action: FirstOccupied     }
-  - { key: 53,     mods: Shift,         mode: Vi, action: SearchBackward    }
-  - { key: N,      mods: Control,       mode: Vi, action: SearchEnd         }
-  - { key: N,      mods: Control|Shift, mode: Vi, action: SearchStart       }
+  - { key: Escape, mods: Control,                         action: ToggleViMode   }
+  - { key: I,                           mode: Vi|~Search, action: ToggleViMode   }
+  - { key: 7,      mods: Shift,         mode: Vi|~Search, action: FirstOccupied  }
+  - { key: 5,      mods: Shift,         mode: Vi|~Search, action: Last           }
+  - { key: 6,      mods: Shift,         mode: Vi|~Search, action: Bracket        }
+  - { key: 53,     mods: Shift,         mode: Vi|~Search, action: SearchBackward }
+  - { key: N,      mods: Control,       mode: Vi,         action: SearchEnd      }
+  - { key: N,      mods: Control|Shift, mode: Vi,         action: SearchStart    }
