@@ -22,7 +22,7 @@ set-card-profile <CARD_NAME> <PROFILE>
 ### Mono sound on stereo output
 
 Pulseaudio can be used to remap all stereo audio to equal mono audio on all
-channels.  The `OUTPUT_NAME` in the following config should be replaced with the
+channels. The `OUTPUT_NAME` in the following config should be replaced with the
 output listed in `pacmd list-sinks | grep -e 'name:'`.
 
 ```
