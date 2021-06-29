@@ -37,6 +37,7 @@ ln --force ./files/sshconfig ~/.ssh/config
 echo "Installing X…"
 dependency "xorg-xinit xorg-server"
 ln --force ./files/xinitrc ~/.xinitrc
+ln --force ./files/XCompose ~/.XCompose
 
 echo "Installing Zsh…"
 dependency "zsh zsh-autosuggestions"

@@ -6,9 +6,7 @@
 Section "InputClass"
     Identifier      "system-keyboard"
     MatchIsKeyboard "on"
-    Option          "XkbLayout"       "dvorak"
-    Option          "XkbModel"        "pc104"
-    Option          "XkbOptions"      "caps:backspace"
+    Option          "XkbOptions"      "compose:ralt"
 EndSection
 ```
 

@@ -1,0 +1,13 @@
+include "%L"
+
+# German
+<Multi_key> <a> <e> : "ä"
+<Multi_key> <A> <E> : "Ä"
+<Multi_key> <o> <e> : "ö"
+<Multi_key> <O> <E> : "Ö"
+<Multi_key> <u> <e> : "ü"
+<Multi_key> <U> <E> : "Ü"
+<Multi_key> <s> <z> : "ß"
+
+# Fun
+<Multi_key> <l> <e> <n> <n> <y> : "( ͡° ͜ʖ ͡°)"
