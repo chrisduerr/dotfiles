@@ -9,16 +9,12 @@ call plug#begin("~/.config/nvim/plugins")
 
 " Programming
     " Rust
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'make release'}
-    " Git diff
-    Plug 'airblade/vim-gitgutter'
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh'}
     " Comment/uncomment text
     Plug 'tpope/vim-commentary'
     " Snippets
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    " Display function signatures
-    Plug 'Shougo/echodoc.vim'
     " Auto completion engine
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     " Syntax highlighting for a ton of languages
@@ -27,8 +23,6 @@ call plug#begin("~/.config/nvim/plugins")
 " Usability
     " Mark trailing whitespaces
     Plug 'ntpeters/vim-better-whitespace'
-    " Fuzzy finder and stuff, used for LanguageClient
-    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'}
     " Surroundings
     Plug 'tpope/vim-surround'
     " Repeat plugin actions with '.'
@@ -59,9 +53,6 @@ nnoremap <C-L> :noh<CR><C-L>
 set relativenumber scrolloff=5
 
 " Buffer navigation
-map <Nop>a @<Plug>(GitGutterUndoHunk)
-map <Nop>b @<Plug>(GitGutterStageHunk)
-map <Nop>c @<Plug>(GitGutterPreviewHunk)
 nnoremap <silent> <Leader>l :bn<CR>
 nnoremap <silent> <Leader>h :bp<CR>
 
@@ -84,7 +75,7 @@ set hidden
 set completeopt-=preview
 
 " Language-specific
-au FileType css  set ts=2 sw=2 sts=2
+au FileType yaml set ts=2 sw=2 sts=2
 au FileType html set ts=2 sw=2 sts=2
 
 " Reset cursor after quitting vim
@@ -146,26 +137,11 @@ autocmd BufReadPost *
     " Better Whitespace Plugin
     highlight ExtraWhitespace ctermbg=01
 
-    " Echodoc
-    let g:echodoc_enable_at_startup = 1
-
     " Deoplete
     call deoplete#custom#option('num_processes', 12)
 
     " Deoplete lazy loading
     autocmd InsertEnter * call deoplete#enable()
-
-    " Denite
-    call denite#custom#map('insert', '<Down>',
-                         \ '<denite:move_to_next_line>', 'noremap')
-    call denite#custom#map('insert', '<Up>',
-                         \ '<denite:move_to_previous_line>', 'noremap')
-    call denite#custom#option('default', 'prompt', '')
-    call denite#custom#option('default', 'auto_resize', 'true')
-    call denite#custom#option('default', 'statusline', 0)
-    call denite#custom#option('default', 'highlight_matched_char', 'IncSearch')
-    call denite#custom#option('default', 'highlight_matched_range', 'Normal')
-    call denite#custom#option('default', 'highlight_mode_insert', 'NormalBold')
 
     " UltiSnips
     let g:UltiSnipsExpandTrigger="<c-y>"
@@ -173,12 +149,14 @@ autocmd BufReadPost *
     let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 
     " LanguageClient
-    let g:LanguageClient_autoStart = 1
-    let g:LanguageClient_useVirtualText = "No"
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
     \ }
-    nnoremap <silent> <Leader>D :Denite references<CR>
+    let g:LanguageClient_floatingHoverHighlight = "Normal:PmenuSel"
+    let g:LanguageClient_showCompletionDocs = 0
+    let g:LanguageClient_hasSnippetSupport = 1
+    let g:LanguageClient_diagnosticsEnable = 0
+    let g:LanguageClient_useVirtualText = "No"
     nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
