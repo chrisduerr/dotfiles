@@ -29,11 +29,6 @@ dependency "i3-gaps"
 mkdir -p ~/.config/i3
 ln --force ./files/i3config ~/.config/i3/config
 
-echo "Installing SSH…"
-dependency "openssh"
-mkdir -p ~/.ssh
-ln --force ./files/sshconfig ~/.ssh/config
-
 echo "Installing X…"
 dependency "xorg-xinit xorg-server"
 ln --force ./files/xinitrc ~/.xinitrc
