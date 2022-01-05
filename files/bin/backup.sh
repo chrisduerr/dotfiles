@@ -13,13 +13,5 @@ exclude="--exclude /programming/rust/**/target \
          --exclude /.cargo \
          --exclude /.local"
 
-# Setup mount
-mkdir -p /mnt/backup
-mount -t nfs backup:/nfsbackup /mnt/backup -o retry=0 -o timeo=1
-
 # Rsync files
 sudo -u undeadleech rsync -Phav --delete /home/undeadleech/ /mnt/backup/archhq $exclude
-
-# Destroy mount
-umount /mnt/backup
-rmdir /mnt/backup
