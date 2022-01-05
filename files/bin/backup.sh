@@ -14,4 +14,4 @@ exclude="--exclude /programming/rust/**/target \
          --exclude /.local"
 
 # Rsync files
-sudo -u undeadleech rsync -Phav --delete /home/undeadleech/ /mnt/backup/archhq $exclude
+rsync -Phav --delete /home/undeadleech/ /mnt/backup/archhq $exclude
