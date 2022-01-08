@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # Warn on missing parameters
-if [[ $# -lt 2 ]]; then
-    echo "Usage: snapshot <PATH> <MAX_SNAPSHOTS>"
+if [[ $# -lt 3 ]]; then
+    echo "Usage: snapshot <SRC_PATH> <DST_PATH> <MAX_SNAPSHOTS>"
     exit
 fi
 
-snapshot_path="$1"
-max_snapshots="$2"
+source_path="$1"
+snapshot_path="$2"
+max_snapshots="$3"
 
 # Create a new snapshot
-btrfs subvolume snapshot -r / "${snapshot_path}_$(date +%Y-%m-%dT%H:%M:%S)"
+btrfs subvolume snapshot -r "$source_path" "${snapshot_path}_$(date +%Y-%m-%dT%H:%M:%S)"
 
 # Delete excess snapshots
 snapshots=$(find "${snapshot_path}_"* -maxdepth 0 | wc -l)
