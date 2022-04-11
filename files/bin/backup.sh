@@ -1,7 +1,6 @@
 #!/bin/bash
 
 exclude="--exclude /programming/rust/**/target \
-         --exclude /programming/rust/vtebench \
          --exclude /programming/rust/rust \
          --exclude /programming/c/**/build \
          --exclude /movies \
@@ -11,7 +10,8 @@ exclude="--exclude /programming/rust/**/target \
          --exclude /.config/nvim/plugins \
          --exclude /.rustup \
          --exclude /.cargo \
-         --exclude /.local"
+         --exclude /.local/share/Steam/steamapps/common \
+         --exclude sysroot"
 
 # Rsync files
 rsync -Phav --delete /home/undeadleech/ /mnt/backup/archhq $exclude

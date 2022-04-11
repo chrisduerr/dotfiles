@@ -1,0 +1,8 @@
+[Unit]
+Description=Hourly home directory backups
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
