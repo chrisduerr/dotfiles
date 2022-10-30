@@ -99,6 +99,9 @@ set clipboard+=unnamedplus
 " Preview regex changes
 set inccommand=nosplit
 
+" Disable mouse mode
+set mouse=
+
 " Reopen files at last edit position
 autocmd BufReadPost *
 \ if line("'\"") > 1 && line("'\"") <= line("$") |
