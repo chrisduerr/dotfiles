@@ -63,7 +63,9 @@ vcs() {
     fi
 
     # Get color based on directory status
-    if [[ -n $(git status --porcelain) ]]; then
+    if [[ -v GIT_OFF ]]; then
+        echo $(colored " $branch$push " 0 3)
+    elif [[ -n $(git status --porcelain) ]]; then
         echo $(colored " $branch$push " 0 9)
     else
         echo $(colored " $branch$push " 0 10)
