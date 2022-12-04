@@ -47,5 +47,5 @@ scp "$binpath" "${remote}:~"
 if [ "$bin" == "catacomb" ]; then
     ssh "$remote" "setsid sh -c './$bin <> /dev/tty1'"
 else
-    ssh "$remote" "WAYLAND_DISPLAY=wayland-0 ./$bin"
+    ssh "$remote" "WAYLAND_DISPLAY=wayland-1 ./$bin"
 fi
