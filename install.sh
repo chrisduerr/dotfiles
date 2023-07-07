@@ -63,7 +63,9 @@ ln --force ./files/xdg.dirs ~/.config/user-dirs.dirs
 
 echo "Setting up GTK theme…"
 mkdir -p ~/.config/gtk-3.0
+mkdir -p ~/.config/gtk-4.0
 ln --force ./files/gtk3-settings.ini ~/.config/gtk-3.0/settings.ini
+ln --force ./files/gtk4-settings.ini ~/.config/gtk-4.0/settings.ini
 
 echo "Setting up systemd services…"
 dependency "rsync nfs-utils"
