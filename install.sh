@@ -11,6 +11,12 @@ function dependency {
 # Just making sure
 mkdir -p ~/.config
 
+echo "Installing Catacomb…"
+#dependency "squeekboard swaybg catacomb-git tzompantli-git epitaph-git"
+dependency "squeekboard swaybg"
+mkdir -p ~/.config/catacomb
+ln --force ./files/catacomb.sh ~/.config/catacomb/post_start.sh
+
 echo "Installing NeoVim…"
 dependency "python python-pynvim neovim"
 mkdir -p ~/.config/nvim/.backup
