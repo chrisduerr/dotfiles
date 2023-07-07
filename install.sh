@@ -17,7 +17,7 @@ mkdir -p ~/.config/picom
 ln --force ./files/picom.conf ~/.config/picom/picom.conf
 
 echo "Installing NeoVim…"
-dependency "python python-neovim neovim"
+dependency "python python-pynvim neovim"
 mkdir -p ~/.config/nvim/.backup
 ln --force ./files/init.vim ~/.config/nvim/init.vim
 
@@ -70,4 +70,3 @@ dependency "rsync nfs-utils"
 sudo ln --force ./files/systemd/* /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now backup.timer
-sudo systemctl enable --now rgbfusion.service
