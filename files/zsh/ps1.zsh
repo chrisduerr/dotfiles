@@ -84,7 +84,7 @@ current_user() {
     if [[ "$USER" == "root" ]]; then
         echo $(colored ' R! ' 0 $bg)
     else
-        echo $(colored ' UL ' 0 $bg)
+        echo $(colored ' PP ' 0 $bg)
     fi
 }
 

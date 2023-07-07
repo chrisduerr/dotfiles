@@ -11,4 +11,4 @@ exclude="--exclude /programming/**/target \
          --exclude alarm-sysroot"
 
 # Rsync files
-rsync -Phav --delete /home/undeadleech/ /mnt/zfast/backup/archhq $exclude
+rsync -Phav --delete /home/alarm/ /mnt/share/backup/minephonepro $exclude
