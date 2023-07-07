@@ -11,7 +11,7 @@ exclude="--exclude /programming/rust/**/target \
          --exclude /.rustup \
          --exclude /.cargo \
          --exclude /.local/share/Steam/steamapps/common \
-         --exclude sysroot"
+         --exclude alarm-sysroot"
 
 # Rsync files
-rsync -Phav --delete /home/undeadleech/ /mnt/share/backup/archhq $exclude
+rsync -Phav --delete /home/undeadleech/ /mnt/zfast/backup/archhq $exclude

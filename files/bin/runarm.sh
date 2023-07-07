@@ -33,19 +33,16 @@ set -e
 # Get executable
 binpath=$(find target/aarch64-unknown-linux-gnu/release -maxdepth 1 -executable -type f | head -n 1)
 bin=$(basename "$binpath")
+targetpath="~/bin/$bin"
 
 # Strip to improve copy speed
 aarch64-linux-gnu-strip "$binpath"
 
 # Kill potentially running previous executables
-ssh "$remote" "pkill $bin; rm $bin" 2> /dev/null || true
+ssh "$remote" "pkill $bin; rm $targetpath" 2> /dev/null || true
 
 # Copy to the remote machine
-scp "$binpath" "${remote}:~"
+scp "$binpath" "${remote}:$targetpath"
 
 # Execute on TTY1
-if [ "$bin" == "catacomb" ]; then
-    ssh "$remote" "setsid sh -c './$bin <> /dev/tty1'"
-else
-    ssh "$remote" "WAYLAND_DISPLAY=wayland-1 ./$bin"
-fi
+ssh "$remote" "PATH=~/bin:$PATH WAYLAND_DISPLAY=wayland-1 $targetpath"
