@@ -56,7 +56,7 @@ ln --force ./files/pulseaudio.pa ~/.config/pulse/default.pa
 echo "Setting up Alacritty…"
 dependency "ttf-fira-mono"
 mkdir -p ~/.config/alacritty
-ln --force ./files/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln --force ./files/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 echo "Setting up XDG directory names…"
 ln --force ./files/xdg.dirs ~/.config/user-dirs.dirs

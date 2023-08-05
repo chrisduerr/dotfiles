@@ -1,0 +1,90 @@
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 3
+y = 3
+
+[cursor]
+style = "Underline"
+vi_mode_style = "Block"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "Fira Mono"
+style = "Medium"
+
+[colors.primary]
+foreground = "#aaaaaa"
+background = "#181818"
+
+[colors.normal]
+black =   "#181818"
+red =     "#ac4242"
+green =   "#90a959"
+yellow =  "#f4bf75"
+blue =    "#6a9fb5"
+magenta = "#aa759f"
+cyan =    "#75b5aa"
+white =   "#666666"
+
+[colors.bright]
+black =   "#282828"
+red =     "#752a2a"
+green =   "#5d742a"
+yellow =  "#754e2a"
+blue =    "#2a4e74"
+magenta = "#703664"
+cyan =    "#297366"
+white =   "#aaaaaa"
+
+[colors.search.matches]
+foreground = "#181818"
+background = "#ac4242"
+
+[colors.search.focused_match]
+foreground = "#ac4242"
+background = "#181818"
+
+[colors.footer_bar]
+foreground = "#aaaaaa"
+background = "#282828"
+
+[colors.hints.start]
+foreground = "#181818"
+background = "#ac4242"
+
+[colors.hints.end]
+background = "#ac4242"
+foreground = "#181818"
+
+[hints]
+alphabet = "hutenosadigpc.r,l'"
+
+[[hints.enabled]]
+regex = """(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+    [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"""
+hyperlinks = true
+command = "firefox"
+post_processing = true
+mouse = { enabled = true }
+binding = { key = "U", mods = "Control|Shift" }
+
+[[hints.enabled]]
+regex = "[a-f0-9]{40}|[a-f0-9]{7,8}"
+action = "Copy"
+binding = { key = "H", mods = "Control|Shift" }
+
+[[hints.enabled]]
+regex = """(/?[^/ \"']*[a-zA-Z0-9][^/ \"':]*/([^/ \"']+/?)*)\
+    |(/[^/ \"']*[a-zA-Z0-9][^/ \"']*)"""
+action = "Copy"
+binding = { key = "P", mods = "Control|Shift" }
+
+[keyboard]
+bindings = [
+  { key = "Escape", mods = "Control",                            action = "ToggleViMode"   },
+  { key = "I",                              mode = "Vi|~Search", action = "ToggleViMode"   },
+]
