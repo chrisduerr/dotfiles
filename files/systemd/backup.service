@@ -3,8 +3,8 @@ Description=Backup home directory
 
 [Service]
 Type=simple
-User=undeadleech
-ExecStart=/home/undeadleech/bin/backup.sh
+User=alarm
+ExecStart=/home/alarm/bin/backup.sh
 
 [Install]
 WantedBy=multi-user.target

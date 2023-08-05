@@ -14,4 +14,4 @@ exclude="--exclude /programming/rust/**/target \
          --exclude alarm-sysroot"
 
 # Rsync files
-rsync -Phav --delete /home/alarm/ /mnt/share/backup/minephonepro $exclude
+rsync -Phav --delete /home/alarm/ /mnt/zfast/backup/minephonepro $exclude
