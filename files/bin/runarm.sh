@@ -44,5 +44,5 @@ ssh "$remote" "pkill $bin; rm $targetpath" 2> /dev/null || true
 # Copy to the remote machine
 scp "$binpath" "${remote}:$targetpath"
 
-# Execute on TTY1
+# Execute
 ssh "$remote" "PATH=~/bin:$PATH WAYLAND_DISPLAY=wayland-1 $targetpath"
