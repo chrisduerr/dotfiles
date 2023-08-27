@@ -33,7 +33,7 @@ set -e
 # Get executable
 binpath=$(find target/aarch64-unknown-linux-gnu/release -maxdepth 1 -executable -type f | head -n 1)
 bin=$(basename "$binpath")
-targetpath="~/bin/$bin"
+targetpath="/tmp/$bin"
 
 # Strip to improve copy speed
 aarch64-linux-gnu-strip "$binpath"
@@ -45,4 +45,4 @@ ssh "$remote" "pkill $bin; rm $targetpath" 2> /dev/null || true
 scp "$binpath" "${remote}:$targetpath"
 
 # Execute
-ssh "$remote" "PATH=~/bin:$PATH WAYLAND_DISPLAY=wayland-1 $targetpath"
+ssh "$remote" "WAYLAND_DISPLAY=wayland-1 $targetpath"
