@@ -9,7 +9,7 @@ if [ $# -lt 1 ]; then
 fi
 
 # Target platform sysroot.
-SYSROOT=$(realpath ~/programming/linux/alarm-sysroot)
+SYSROOT=$(realpath ~/programming/alarm-sysroot)
 
 # Setup pkgconfig.
 export PKG_CONFIG_LIBDIR="${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgconfig"
@@ -31,7 +31,8 @@ remote="$1"
 set -e
 
 # Get executable
-binpath=$(find target/aarch64-unknown-linux-gnu/release -maxdepth 1 -executable -type f | head -n 1)
+project_root=$(dirname "$(cargo locate-project --workspace | sed 's/.*:\"\(.*\)\".*/\1/')")
+binpath=$(find "$project_root/target/aarch64-unknown-linux-gnu/release" -maxdepth 1 -executable -type f | head -n 1)
 bin=$(basename "$binpath")
 targetpath="/tmp/$bin"
 
