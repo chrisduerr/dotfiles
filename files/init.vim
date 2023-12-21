@@ -29,6 +29,8 @@ call plug#begin("~/.config/nvim/plugins")
     Plug 'tpope/vim-repeat'
     " Undo history visualizer
     Plug 'mbbill/undotree'
+    " Automatic alignment
+    Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -164,3 +166,7 @@ autocmd BufReadPost *
     nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
     nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
     nnoremap <silent> <Leader>H :call LanguageClient_textDocument_hover()<CR>
+
+    " Easy Align
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
