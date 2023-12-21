@@ -1,8 +1,8 @@
 [Unit]
-Description=Hourly home directory backups
+Description=Quarter-hourly home directory backups
 
 [Timer]
-OnCalendar=hourly
+OnCalendar=*:0/15
 
 [Install]
 WantedBy=timers.target
