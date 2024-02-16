@@ -1,12 +1,17 @@
 #!/bin/sh
 
+# Exit on error
+set -e
 
 # Build project for aarch64.
 
 if [ $# -lt 1 ]; then
-    echo "USAGE: runarm.sh [USER@]<HOST>"
+    echo "USAGE: runarm.sh [USER@]<HOST> [RUST_FLAGS…]"
     exit 1
 fi
+
+remote="$1"
+rustflags="${@:2}"
 
 # Target platform sysroot.
 SYSROOT=$(realpath ~/programming/alarm-sysroot)
@@ -20,15 +25,10 @@ export PKG_CONFIG_ALLOW_CROSS=true
 export RUSTFLAGS="-C linker=aarch64-linux-gnu-gcc -C link-arg=--sysroot=${SYSROOT}"
 
 # Build!
-cargo build --release --target=aarch64-unknown-linux-gnu
+cargo build --release --target=aarch64-unknown-linux-gnu $rustflags
 
 
 # Run project on a separate device through SSH.
-
-remote="$1"
-
-# Exit on error
-set -e
 
 # Get executable
 project_root=$(dirname "$(cargo locate-project --workspace | sed 's/.*:\"\(.*\)\".*/\1/')")
