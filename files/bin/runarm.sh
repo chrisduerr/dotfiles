@@ -6,12 +6,22 @@ set -e
 # Build project for aarch64.
 
 if [ $# -lt 1 ]; then
-    echo "USAGE: runarm.sh [USER@]<HOST> [RUST_FLAGS…]"
+    echo "USAGE: runarm.sh [USER@]<HOST> [RUST_FLAGS…] -- [BIN_FLAGS]"
     exit 1
 fi
 
 remote="$1"
-rustflags="${@:2}"
+
+# Split options before and after `--`.
+separator_index=0
+for arg in "$@"; do
+    if [ "$arg" == "--" ]; then
+        break
+    fi
+    separator_index=$((separator_index + 1))
+done
+rustflags="${@:2:separator_index}"
+binflags="${@:separator_index + 2}"
 
 # Target platform sysroot.
 SYSROOT=$(realpath ~/programming/alarm-sysroot)
@@ -46,4 +56,4 @@ ssh "$remote" "pkill $bin; rm $targetpath" 2> /dev/null || true
 scp "$binpath" "${remote}:$targetpath"
 
 # Execute
-ssh "$remote" "WAYLAND_DISPLAY=wayland-1 $targetpath"
+ssh "$remote" "WAYLAND_DISPLAY=wayland-1 $targetpath $binflags"
