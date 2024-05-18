@@ -1,5 +1,5 @@
 # General
-export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
 
