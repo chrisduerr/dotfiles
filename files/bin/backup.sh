@@ -1,10 +1,7 @@
 #!/bin/bash
 
-exclude="--exclude /programming/rust/**/target \
-         --exclude /programming/rust/rust \
-         --exclude /programming/c/**/build \
-         --exclude /movies \
-         --exclude /music \
+exclude="--exclude /programming/**/target \
+         --exclude /programming/**/build \
          --exclude /downloads \
          --exclude /.cache \
          --exclude /.config/nvim/plugins \

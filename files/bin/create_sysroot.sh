@@ -23,7 +23,7 @@ echo "Creating sysroot at '$SYSROOT'…"
 
 # Create the sysroot.
 mkdir -p "$SYSROOT"
-rsync -Phav "$REMOTE":/{lib,lib64,usr} "$SYSROOT" --exclude "/usr/bin" --exclude "/usr/sbin"
+rsync -Phav --delete "$REMOTE":/{lib,lib64,usr} "$SYSROOT" --exclude "/usr/bin" --exclude "/usr/sbin"
 
 # Create lib64 symlinks for compatibility.
 if [ ! -d "${SYSROOT}/lib64" ]; then
