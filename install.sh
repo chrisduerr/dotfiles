@@ -12,10 +12,11 @@ function dependency {
 mkdir -p ~/.config
 
 echo "Installing Catacomb…"
-#dependency "squeekboard swaybg catacomb-git tzompantli-git epitaph-git"
-dependency "squeekboard swaybg"
+dependency "squeekboard swaybg catacomb-git tzompantli-git epitaph-git"
 mkdir -p ~/.config/catacomb
 ln --force ./files/catacomb.sh ~/.config/catacomb/post_start.sh
+mkdir -p ~/.local/share/squeekboard
+ln -sr --force ./files/keyboards ~/.local/share/squeekboard
 
 echo "Installing NeoVim…"
 dependency "python python-pynvim neovim"
