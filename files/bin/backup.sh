@@ -2,6 +2,7 @@
 
 exclude="--exclude /programming/**/target \
          --exclude /programming/**/build \
+         --exclude /programming/massive \
          --exclude /downloads \
          --exclude /.cache \
          --exclude /.config/nvim/plugins \
