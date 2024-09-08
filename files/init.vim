@@ -63,6 +63,7 @@ cnoremap w!! w !sudo tee % > /dev/null <CR>
 
 " Set colorscheme
 colorscheme undead
+set termguicolors&
 
 " Indentation
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
