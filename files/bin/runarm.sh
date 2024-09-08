@@ -21,7 +21,11 @@ for arg in "$@"; do
     separator_index=$((separator_index + 1))
 done
 rustflags="${@:2:separator_index}"
-binflags="${@:separator_index + 2}"
+
+# Quote each additional arg passed over SSH.
+for arg in "${@:separator_index + 2}"; do
+    binflags="$binflags '$arg'"
+done
 
 # Target platform sysroot.
 SYSROOT=$(realpath ~/programming/alarm-sysroot)
