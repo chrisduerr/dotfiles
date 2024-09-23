@@ -48,10 +48,10 @@ ln --force ./files/weechat/buflist.conf ~/.weechat/buflist.conf
 ln --force ./files/weechat/irc.conf ~/.weechat/irc.conf
 ln -sr --force ./files/weechat/python ~/.weechat/
 
-echo "Installing Pulseaudio…"
-dependency "pulseaudio"
-mkdir -p ~/.config/pulse
-ln --force ./files/pulseaudio.pa ~/.config/pulse/default.pa
+echo "Installing Pipewire…"
+dependency "pipewire-pulse"
+mkdir -p ~/.config/pipewire/pipewire.conf.d
+ln --force ./files/pipewire_mono.conf ~/.config/pipewire/pipewire.conf.d/mono.conf
 
 echo "Setting up Alacritty…"
 dependency "ttf-fira-mono"
