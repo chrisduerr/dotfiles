@@ -157,6 +157,7 @@ autocmd BufReadPost *
     " LanguageClient
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
+    \ 'cpp': ['clangd'],
     \ }
     let g:LanguageClient_floatingHoverHighlight = "Normal:PmenuSel"
     let g:LanguageClient_showCompletionDocs = 0
