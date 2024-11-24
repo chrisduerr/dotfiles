@@ -6,7 +6,7 @@ outlines:
 views:
     base:
         - "q w e r t y u i o p"
-        - "↹ a s d f g h j k l"
+        - "a s d f g h j k l ↹"
         - "Shift_L   z x c v b n m  BackSpace"
         - "show_numbers /         space        . Return"
     upper:
@@ -66,5 +66,5 @@ buttons:
     colon:
         text: ":"
     ↹:
-        outline: "action"
+        outline: "default"
         keysym: "Tab"
