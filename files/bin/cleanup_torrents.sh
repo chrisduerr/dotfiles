@@ -48,35 +48,52 @@ for torrent_dir in ${torrent_dirs[*]}; do
         fi
     done <<< "$unlinked"
 
-    # Skip cleanup if there's nothing to cleanup.
-    if [[ "${#nukem[@]}" == 0 ]]; then
-        echo -e "\e[32mNo unused torrents found\e[0m"
-        continue
-    fi
+    # Allow refinement of the torrent list.
+    while true; do
+        # Stop once the list is empty.
+        if [[ ${#nukem[@]} == 0 ]]; then
+            echo -e "\e[32mNo unused torrents found\e[0m\n"
+            continue 2
+        fi
 
-    # List all torrents which will be deleted.
-    echo -e "\e[31mTorrents to be deleted:\e[0m"
-    for nuke in "${nukem[@]}"; do
-        shortened=${nuke#"${torrent_dir}/"}
-        if [[ -d "$nuke" ]]; then
-            echo -e "  \e[34m$shortened\e[0m"
+        # List all torrents which will be deleted.
+        echo -e "\e[31mTorrents to be deleted:\e[0m"
+        for ((i=0; i < ${#nukem[@]}; i++)); do
+            nuke=${nukem[i]}
+            shortened=${nuke#"${torrent_dir}/"}
+            if [[ -d "$nuke" ]]; then
+                echo -e "  [$i] \e[34m$shortened\e[0m"
+            else
+                echo -e "  [$i] \e[32m$shortened\e[0m"
+            fi
+        done
+
+        # Prompt for user choice.
+        printf "\n\e[31mEnter number of torrent to exclude, or 'y' to confirm all: \e[0m"
+        read -r
+
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            break
+        elif [[ $REPLY =~ ^[0-9]+$ && -n "${nukem[REPLY]}" ]]; then
+            shortened=${nukem[REPLY]#"${torrent_dir}/"}
+            echo -e "\e[32mIgnoring torrent \"$shortened\"\n"
+
+            # Create a new array without the excluded element.
+            new_nukem=()
+            for ((i=0; i < ${#nukem[@]}; i++)); do
+                if [[ $i != $REPLY ]]; then
+                    new_nukem+=("${nukem[i]}")
+                fi
+            done
+            nukem=("${new_nukem[@]}")
         else
-            echo -e "  \e[32m$shortened\e[0m"
+            echo -e "\e[31mInvalid input: \e[0m$REPLY\n"
         fi
     done
 
-    # Prompt for confirmation.
-    printf "\n\e[31mDelete all unused torrents? [y/N] \e[0m"
-    read -n 1 -r
-    echo
-
     # Nukeit.
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        for nuke in "${nukem[@]}"; do
-            sudo rm -rf "$nuke"
-        done
-    fi
-
-    # Bye. :)
-    echo -e "\e[32mSuccessfully deleted all unused torrents.\e[0m"
+    for nuke in "${nukem[@]}"; do
+        sudo rm -rf "$nuke"
+    done
+    echo -e "\e[32mSuccessfully deleted ${#nukem[@]} unused torrents\e[0m\n"
 done
