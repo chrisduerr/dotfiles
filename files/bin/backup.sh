@@ -2,7 +2,7 @@
 
 exclude="--exclude /programming/*/*/target \
          --exclude /programming/*/*/build \
-         --exclude /programming/massive \
+         --exclude /programming/webkit \
          --exclude /downloads \
          --exclude /music \
          --exclude /.cache \
