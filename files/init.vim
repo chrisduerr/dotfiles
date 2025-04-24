@@ -156,7 +156,7 @@ autocmd BufReadPost *
 
     " LanguageClient
     let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rust-analyzer'],
+    \ 'rust': ['bash', '-c', 'RUSTUP_TOOLCHAIN=nightly rust-analyzer'],
     \ 'cpp': ['clangd'],
     \ }
     let g:LanguageClient_floatingHoverHighlight = "Normal:PmenuSel"
