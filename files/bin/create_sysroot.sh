@@ -33,3 +33,12 @@ fi
 if [ ! -d "${SYSROOT}/usr/lib64" ]; then
     ln -s "./lib" "${SYSROOT}/usr/lib64"
 fi
+
+# Create binary symlink to host binaries, for utilities executed at compile time.
+# This seems to be necessary for protobuf, though there's probably a better solution…
+if [ ! -d "${SYSROOT}/usr/bin" ]; then
+    ln -s "/usr/bin" "${SYSROOT}/usr/bin"
+fi
+if [ ! -d "${SYSROOT}/usr/sbin" ]; then
+    ln -s "/usr/sbin" "${SYSROOT}/usr/sbin"
+fi

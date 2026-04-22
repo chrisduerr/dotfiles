@@ -35,6 +35,9 @@ export PKG_CONFIG_LIBDIR="${SYSROOT}/usr/lib/pkgconfig:${SYSROOT}/usr/share/pkgc
 export PKG_CONFIG_SYSROOT_DIR="${SYSROOT}"
 export PKG_CONFIG_ALLOW_CROSS=true
 
+# Ensure CMAKE isn't using host headers.
+export CMAKE_PREFIX_PATH="${SYSROOT}/usr"
+
 # Setup linker.
 export RUSTFLAGS="-C linker=aarch64-linux-gnu-gcc -C link-arg=--sysroot=${SYSROOT}"
 
