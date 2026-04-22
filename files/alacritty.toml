@@ -10,11 +10,14 @@ style = "Underline"
 vi_mode_style = "Block"
 
 [font]
-size = 10.0
+size = 11.5
 
 [font.normal]
 family = "Fira Mono"
 style = "Medium"
+
+[terminal]
+osc52 = "CopyPaste"
 
 [colors.primary]
 foreground = "#aaaaaa"
@@ -65,7 +68,7 @@ alphabet = "hutenosadigpc.r,l'"
 
 [[hints.enabled]]
 regex = """(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-    [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"""
+    [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`\\\\]+"""
 hyperlinks = true
 command = "firefox"
 post_processing = true

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ws_index=$1
+sway_get_outputs=$(swaymsg -t get_outputs)
+focused_output=$(echo "$sway_get_outputs" | tr -d '\n' | sed 's/.*"name": "\([^"]*\)".*"focused": true.*/\1/')
+outputs=$(echo "$sway_get_outputs" | grep '"name":' | sed 's/.*"name": "\([^"]*\)".*/\1/')
+
+# Build Sway command to serially switch all outputs.
+sway_cmd=""
+for output in $outputs; do
+    sway_cmd="${sway_cmd};focus output $output; workspace $output-$ws_index"
+done
+
+# Submit command to Sway.
+if [[ $sway_cmd != "" ]]; then
+    swaymsg "$sway_cmd"
+fi

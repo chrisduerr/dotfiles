@@ -112,7 +112,7 @@ function create {
     fi
 
     # Copy url to clipboard and print to stdout
-    echo -n "$paste_url" | xclip -selection c
+    echo -n "$paste_url" | wl-copy
     echo "$paste_url"
 
     # Add to paste cache

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ws_index=$1
+sway_get_outputs=$(swaymsg -t get_outputs)
+focused_output=$(echo "$sway_get_outputs" | tr -d '\n' | sed 's/.*"name": "\([^"]*\)".*"focused": true.*/\1/')
+
+swaymsg workspace "$focused_output-$1"
