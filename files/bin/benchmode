@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "USAGE: benchmode <program>"
+    exit 1
+fi
+
+# Disable ASLR.
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space > /dev/null
+
+# Enable performance governor for all CPUs.
+for governor in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+do
+  echo performance | sudo tee $governor > /dev/null
+done
+
+# Run command on CPU 0.
+taskset -c 0 $@
+
+# Enable ASLR.
+echo 2 | sudo tee /proc/sys/kernel/randomize_va_space > /dev/null
+
+# Disable performance governor for all CPUs.
+for governor in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+do
+  echo powersave | sudo tee $governor > /dev/null
+done
