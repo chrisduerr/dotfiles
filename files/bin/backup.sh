@@ -15,5 +15,11 @@ exclude="--exclude /programming/*/*/target \
          --exclude /.local/share/Steam/steamapps/common \
          --exclude alarm-sysroot"
 
+# Ensure the local network is available.
+if ! ping -c 1 xcp-ng-1; then
+    exit 1
+fi
+
 # Rsync files
-rsync -Phav --delete /home/alarm/ /mnt/zfast/backup/minephonepro $exclude
+systemd-inhibit --what sleep \
+    rsync -Phav --delete /home/alarm/ /mnt/zfast/backup/lairphone $exclude

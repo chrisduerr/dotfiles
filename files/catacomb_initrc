@@ -1,0 +1,101 @@
+#!/bin/sh
+
+# Exit on error
+set -e
+
+# Import display environment variable into systemd
+systemctl --user import-environment WAYLAND_DISPLAY
+
+# Key Bindings
+
+## Ignore power-button press, to allow binding to it
+if command -v systemd-inhibit; then
+    systemd-inhibit --what handle-power-key sh -c "while true; do sleep 86400; done" &
+else
+    elogind-inhibit --what handle-power-key sh -c "while true; do sleep 86400; done" &
+fi
+
+## Launch `tzompantli` when holding the power button
+catacomb msg bind-key --trigger press '*' XF86PowerOff bash -c \
+    "sleep 0 0 0 0 0 0 0 0.5 &&
+        if [ \"\$(catacomb msg dpms)\" == \"on\" ]; then
+            (tremor 150 0 1; tzompantli)
+        fi"
+
+## Toggle display when pressing the power button
+catacomb msg bind-key --trigger release '*' XF86PowerOff bash -c \
+    "if pkill -SIGINT -xf \"sleep 0 0 0 0 0 0 0 0.5\"; then
+        if [ \"\$(catacomb msg dpms)\" == \"on\" ]; then
+            catacomb msg dpms off;
+        else
+            catacomb msg dpms on;
+        fi
+    fi"
+
+## Take a screenshot on `power + volume down` and save it to /tmp/screenshot.png
+catacomb msg bind-key --trigger press '*' XF86PowerOff+XF86AudioLowerVolume bash -c \
+    "pkill -SIGINT -xf \"sleep 0 0 0 0 0 0 0 0.5\";
+    tremor 150 0 1;
+    geometry=\$(slurp 2>&1);
+    if [[ \$geometry == \"selection cancelled\" ]]; then
+        grim ~/pictures/tmp.png;
+    else
+        grim -g \"\$geometry\" ~/pictures/tmp.png;
+    fi"
+
+## Defined reusable wvkbd command
+wvkbd="wvkbd-mobintl \
+    --wayland-layer top \
+    -R 0 \
+    --bg 181818 \
+    --fg 282828 --fg-sp 282828 \
+    --press 383838 --press-sp 383838 \
+    --text aaaaaa --text-sp aaaaaa --text-press aaaaaa --text-press-sp aaaaaa"
+
+## Allow manually toggling the virtual keyboard
+catacomb msg bind-key '*' EnableVirtualKeyboard \
+    bash -c "pkill wvkbd; $wvkbd"
+catacomb msg bind-key '*' DisableVirtualKeyboard \
+    pkill wvkbd
+catacomb msg bind-key '*' AutoVirtualKeyboard \
+    bash -c "pkill wvkbd; $wvkbd --hidden --auto"
+
+## Bind global volume keys
+catacomb msg bind-key --trigger repeat '*' XF86AudioRaiseVolume \
+    pactl set-sink-volume 0 +5%
+catacomb msg bind-key --trigger repeat '*' XF86AudioLowerVolume \
+    pactl set-sink-volume 0 -5%
+
+# Turn off display after 3 minutes, suspend 30s later
+systemctl="systemctl"
+if ! command -v systemctl; then
+    systemctl="loginctl"
+fi
+swayidle -w \
+    timeout 180 "catacomb msg dpms off" \
+    timeout 210 "$systemctl suspend" \
+    before-sleep "catacomb msg dpms off" \
+    after-resume \
+        "# Resuspend after 30 seconds on wakeup with no activity.
+        swayidle -w timeout 30 \"$systemctl suspend\" &
+        sleep 30.1;
+        kill \$!" &
+
+# Work around cutouts.
+catacomb msg deadzone global --orientation portrait --bottom 90
+catacomb msg deadzone global --orientation inverse-portrait --top 120
+catacomb msg deadzone global --orientation landscape --top 105 --bottom 105 --left 10 --right 10
+catacomb msg deadzone global --orientation inverse-landscape --top 105 --bottom 105 --left 10 --right 10
+catacomb msg deadzone fullscreen --top 105 --bottom 105 --left 10 --right 10
+
+# Per-application scale overrides
+catacomb msg scale --app-id anki 2
+
+# Spawn background apps
+tabula -i ~/pictures/wallpapers/lich.jpg -f .5+.2 &
+aevum-cli daemon &
+$wvkbd --hidden --auto &
+epitaph &
+
+# Wait for completion
+wait

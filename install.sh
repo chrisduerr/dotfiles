@@ -12,9 +12,9 @@ function dependency {
 mkdir -p ~/.config
 
 echo "Installing Catacomb…"
-dependency "squeekboard swaybg catacomb-git tzompantli-git epitaph-git"
+dependency "catacomb-meta"
 mkdir -p ~/.config/catacomb
-ln --force ./files/catacomb.sh ~/.config/catacomb/post_start.sh
+ln --force ./files/catacomb_initrc ~/.config/catacomb/initrc
 mkdir -p ~/.local/share/squeekboard
 ln -sr --force ./files/keyboards ~/.local/share/squeekboard
 
